@@ -40,21 +40,22 @@ def booking():
 def planner():
     return read_html("planner.html")
 
-@app.route("/room-booking")
+@app.route("/room_booking")
 def room_booking():
     return read_html("room_booking.html")
 
-@app.route("/room-details")
+@app.route("/room_details")
 def room_details():
     return read_html("room_details.html")
 
-@app.route("/user-dashboard")
+@app.route("/user_dashboard")
 def user_dashboard():
     return read_html("user_dashboard.html")
 
 @app.route("/report-fraud")
 def report_fraud():
     return read_html("fraud_report.html")
+
 
 @app.route("/admin_dashboard")
 def admin_overview():
@@ -133,18 +134,18 @@ def signin():
     password = request.form.get("password", "")
 
     if not email or not password:
-        return redirect(url_for("signin", error="Email and password are required."))
+        return redirect(url_for("signin_page", error="Email and password are required."))
 
     try:
         result = supabase.table("User").select("user_id, full_name, password_hash, role").eq("email", email).execute()
 
         if not result.data:
-            return redirect(url_for("signin", error="Invalid email or password."))
+            return redirect(url_for("signin_page", error="Invalid email or password."))
 
         user = result.data[0]
 
         if not check_password_hash(user["password_hash"], password):
-            return redirect(url_for("signin", error="Invalid email or password."))
+            return redirect(url_for("signin_page", error="Invalid email or password."))
 
         session["user_id"]   = user["user_id"]
         session["full_name"] = user["full_name"]
@@ -152,7 +153,7 @@ def signin():
         session["role"]      = user["role"]
 
         response = make_response(redirect(
-            url_for("admin_overview") if user["role"] == "admin" else url_for("index")
+            url_for("admin_overview") if user["role"] == "admin" else url_for("home")
         ))
         response.set_cookie("logged_in", "true", max_age=60*60*24*7)
         response.set_cookie("user_role", user["role"], max_age=60*60*24*7)
@@ -160,14 +161,14 @@ def signin():
 
     except Exception as e:
         print(f"[SIGNIN ERROR] {e}")
-        return redirect(url_for("signin", error="Something went wrong. Please try again."))
+        return redirect(url_for("signin_page", error="Something went wrong. Please try again."))
 
 
 # ── Sign Out ──────────────────────────────────────────────────────────────────
 @app.route("/signout")
 def signout():
     session.clear()
-    response = make_response(redirect(url_for("index")))
+    response = make_response(redirect(url_for("home")))
     response.delete_cookie("logged_in")
     response.delete_cookie("user_role")
     return response
