@@ -1,0 +1,321 @@
+<!doctype html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sign In - Egypt Discovery</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              outline: "#70787e",
+              "primary-fixed": "#bfe9ff",
+              "surface-tint": "#0c6684",
+              error: "#ba1a1a",
+              "inverse-primary": "#89d0f1",
+              primary: "#00556f",
+              "on-error": "#ffffff",
+              "on-background": "#1b1c1a",
+              "surface-container-low": "#f5f3ef",
+              "outline-variant": "#bfc8cd",
+              "tertiary-fixed": "#ffe08e",
+              "on-secondary": "#ffffff",
+              "primary-container": "#1c6e8c",
+              secondary: "#685d46",
+              "on-primary-container": "#c5ebff",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1b1c1a",
+              "surface-container": "#efeeea",
+              "surface-bright": "#fbf9f5",
+              "on-surface-variant": "#40484d",
+              "surface-variant": "#e4e2de",
+              tertiary: "#755b00",
+              "secondary-container": "#f0e1c3",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#eae8e4",
+              background: "#fbf9f5",
+              surface: "#fbf9f5",
+              "surface-container-highest": "#e4e2de",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background font-body text-on-surface min-h-screen flex flex-col"
+  >
+    <!-- TopNavBar -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-[#fbf9f5]/70 backdrop-blur-md shadow-[0_20px_40px_rgba(27,28,26,0.05)]"
+    >
+      <div
+        class="flex justify-between items-center px-8 py-6 max-w-full mx-auto"
+      >
+        <div
+          class="text-2xl font-bold tracking-tighter text-[#00556f] font-headline"
+        >
+          <a href="/index">Sikka</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center pt-32 pb-20 px-6">
+      <div
+        class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 bg-surface-container-lowest rounded-3xl overflow-hidden shadow-[0_20px_40px_rgba(27,28,26,0.05)]"
+      >
+        <!-- Left Side: Visual -->
+        <div class="relative hidden lg:block h-full min-h-[600px]">
+          <img
+            alt="Ancient Egyptian architecture"
+            class="absolute inset-0 w-full h-full object-cover"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3a9ktJkL7OWjvnuPPT2-EZ_0AcmJQ7w3tWIxeE6_iXCOpZQgsU3g4UBQyQhCdUhJa7oT2PIl1XV92YEREmVDfR7m27rFY5hfNOTQcYYTHEV_nHJ0tjHhY9qsl0SxFfpGhVPbzSctuJoYb8BfYAGg-1jNCVwU-LM0Zf58L-G4zyuG5_d7bQJwZJQxA-n-hKO9XSm41gJpEx8Xz6SUQTUJHVRT-rp60h-ysSC6C583cX0-afT-W8FbsjpHrQuZnM6zwFHbfrgNEPMIB"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-12"
+          >
+            <h1
+              class="font-headline text-5xl font-extrabold text-white leading-tight mb-4 tracking-tight"
+            >
+              Experience the <br /><span class="text-tertiary-fixed"
+                >Eternal Sands</span
+              >
+            </h1>
+            <p class="text-on-primary-container/90 text-lg max-w-md">
+              Join our community of modern curators and discover the hidden
+              wonders of the Nile.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Side: Form -->
+        <div class="p-12 md:p-16 flex flex-col justify-center">
+          <div class="max-w-md mx-auto w-full">
+            <header class="mb-10">
+              <h2 class="font-headline text-3xl font-bold text-primary mb-2">
+                Welcome Back
+              </h2>
+              <p class="text-secondary font-medium">
+                Please enter your details to continue your journey.
+              </p>
+            </header>
+
+            <!-- ✅ Error message block -->
+            {% if error %}
+            <div
+              class="mb-6 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium flex items-center gap-2"
+            >
+              <span class="material-symbols-outlined text-base">error</span>
+              {{ error }}
+            </div>
+            {% endif %}
+
+            <!-- ✅ Form posts to Flask /signin route -->
+            <form action="/sign_in" method="POST" class="space-y-6">
+              <div class="space-y-2">
+                <label
+                  class="block font-label text-sm font-semibold text-secondary"
+                  for="email"
+                  >Email Address</label
+                >
+                <input
+                  class="w-full px-4 py-4 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary/40 focus:bg-surface-container-lowest transition-all duration-300 text-on-surface placeholder:text-outline-variant"
+                  id="email"
+                  name="email"
+                  placeholder="curator@discovery.com"
+                  type="email"
+                  required
+                />
+              </div>
+              <div class="space-y-2">
+                <div class="flex justify-between items-center">
+                  <label
+                    class="block font-label text-sm font-semibold text-secondary"
+                    for="password"
+                    >Password</label
+                  >
+                  <a
+                    class="text-xs font-semibold text-tertiary hover:underline"
+                    href="#"
+                    >Forgot password?</a
+                  >
+                </div>
+                <input
+                  class="w-full px-4 py-4 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary/40 focus:bg-surface-container-lowest transition-all duration-300 text-on-surface placeholder:text-outline-variant"
+                  id="password"
+                  name="password"
+                  placeholder="••••••••"
+                  type="password"
+                  required
+                />
+              </div>
+              <button
+                class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-xl shadow-lg hover:opacity-90 hover:scale-[0.98] transition-all duration-300"
+                type="submit"
+              >
+                Sign In
+              </button>
+            </form>
+
+            <div class="relative my-10">
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-surface-variant"></div>
+              </div>
+              <div class="relative flex justify-center text-sm">
+                <span
+                  class="px-4 bg-surface-container-lowest text-secondary font-medium italic"
+                  >or continue with</span
+                >
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <button
+                class="flex items-center justify-center gap-3 py-3.5 border border-outline-variant/30 rounded-xl hover:bg-surface-container-low transition-all duration-200 group"
+              >
+                <svg
+                  class="w-5 h-5 group-hover:scale-110 transition-transform"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                    fill="#4285F4"
+                  />
+                  <path
+                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                    fill="#34A853"
+                  />
+                  <path
+                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                    fill="#FBBC05"
+                  />
+                  <path
+                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                    fill="#EA4335"
+                  />
+                </svg>
+                <span class="text-sm font-semibold text-on-surface-variant"
+                  >Google</span
+                >
+              </button>
+              <button
+                class="flex items-center justify-center gap-3 py-3.5 border border-outline-variant/30 rounded-xl hover:bg-surface-container-low transition-all duration-200 group"
+              >
+                <svg
+                  class="w-5 h-5 fill-[#1877F2] group-hover:scale-110 transition-transform"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  />
+                </svg>
+                <span class="text-sm font-semibold text-on-surface-variant"
+                  >Facebook</span
+                >
+              </button>
+            </div>
+
+            <p class="mt-10 text-center text-sm text-secondary font-medium">
+              Don't have an account?
+              <a
+                class="text-primary font-bold hover:underline decoration-tertiary decoration-2 underline-offset-4 transition-all"
+                href="/sign_up"
+                >Start your journey here</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full mt-auto bg-[#f7f2ea]">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 w-full">
+        <div class="col-span-1">
+          <div class="text-xl font-bold text-[#00556f] font-headline mb-6">
+            Sikka
+          </div>
+          <p class="text-[#685d46] text-sm leading-relaxed">
+            Crafting digital galleries for the modern curator.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-headline font-bold text-primary mb-6">Company</h4>
+          <ul class="space-y-4">
+            <li>
+              <a class="text-[#685d46] hover:text-[#00556f]" href="#"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a class="text-[#685d46] hover:text-[#00556f]" href="#"
+                >Sustainability</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-headline font-bold text-primary mb-6">Explore</h4>
+          <ul class="space-y-4">
+            <li>
+              <a class="text-[#685d46] hover:text-[#00556f]" href="#"
+                >Cultural Heritage</a
+              >
+            </li>
+            <li>
+              <a class="text-[#685d46] hover:text-[#00556f]" href="#"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-headline font-bold text-primary mb-6">Legal</h4>
+          <ul class="space-y-4">
+            <li>
+              <a class="text-[#685d46] hover:text-[#00556f]" href="#"
+                >Privacy</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="px-12 py-8 border-t border-surface-variant/30 text-center">
+        <p class="text-[#685d46] text-xs">
+          © 2024 Egypt Discovery. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

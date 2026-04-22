@@ -1,0 +1,504 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Deluxe Nile View Room - The Modern Curator</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#2f312f",
+              "secondary-fixed-dim": "#d3c5a8",
+              "surface-tint": "#0c6684",
+              "on-secondary": "#ffffff",
+              tertiary: "#755b00",
+              surface: "#faf9f6",
+              secondary: "#685d46",
+              "primary-fixed": "#bfe9ff",
+              "tertiary-container": "#cea72c",
+              "surface-container": "#efeeeb",
+              background: "#faf9f6",
+              "surface-variant": "#e3e2e0",
+              "on-background": "#1a1c1a",
+              "outline-variant": "#bfc8cd",
+              "on-error-container": "#93000a",
+              primary: "#00556f",
+              "on-tertiary-fixed": "#241a00",
+              "on-primary-fixed": "#001f2a",
+              "surface-container-low": "#f4f3f1",
+              "secondary-container": "#f0e1c3",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#ffe08e",
+              "on-surface-variant": "#40484d",
+              "surface-container-lowest": "#ffffff",
+              error: "#ba1a1a",
+              outline: "#70787e",
+              "inverse-on-surface": "#f1f1ee",
+              "primary-fixed-dim": "#89d0f1",
+              "error-container": "#ffdad6",
+              "surface-container-high": "#e9e8e5",
+              "on-primary": "#ffffff",
+              "tertiary-fixed-dim": "#ecc246",
+              "on-primary-fixed-variant": "#004d65",
+              "on-surface": "#1a1c1a",
+              "secondary-fixed": "#f0e1c3",
+              "on-secondary-fixed-variant": "#4f4630",
+              "primary-container": "#1c6e8c",
+              "on-tertiary-container": "#503d00",
+              "on-primary-container": "#c5ebff",
+              "on-tertiary": "#ffffff",
+              "inverse-primary": "#89d0f1",
+              "surface-dim": "#dbdad7",
+              "surface-container-highest": "#e3e2e0",
+              "on-tertiary-fixed-variant": "#584400",
+              "on-secondary-container": "#6e634c",
+              "on-secondary-fixed": "#221b08",
+              "surface-bright": "#faf9f6",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Epilogue"],
+              body: ["Manrope"],
+              label: ["Manrope"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .editorial-shadow {
+        box-shadow: 0 8px 32px rgba(26, 28, 26, 0.06);
+      }
+      .asymmetric-radius {
+        border-top-left-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed"
+  >
+    <!-- TopNavBar -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-[#fbf9f5]/70 dark:bg-slate-950/70 backdrop-blur-md shadow-[0_20px_40px_rgba(27,28,26,0.05)]"
+    >
+      <div
+        class="flex justify-between items-center px-8 py-6 max-w-full mx-auto"
+      >
+        <div
+          class="text-2xl font-bold tracking-tighter text-[#00556f] dark:text-[#1C6E8C]"
+        >
+          <a href="/index">Sikka</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/index"
+            >Home</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/explore"
+            >Explore</a
+          >
+          <a
+            class="text-[#00556f] dark:text-white font-bold border-b-2 border-[#755b00] pb-1 transition-all duration-300"
+            href="/booking"
+            >Booking</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/attractions"
+            >Attractions</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/planner"
+            >Plan Your Day</a
+          >
+        </div>
+        <div class="flex items-center space-x-6">
+          <div class="relative hidden lg:block">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm"
+              data-icon="search"
+              >search</span
+            >
+            <input
+              class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all"
+              placeholder="Search destinations..."
+              type="text"
+            />
+          </div>
+
+          <div id="auth-btn"></div>
+          <script>
+            fetch("/api/me")
+              .then((r) => {
+                if (r.ok) {
+                  document.getElementById("auth-btn").innerHTML =
+                    `<a href="/signout" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign Out</a>`;
+                } else {
+                  document.getElementById("auth-btn").innerHTML =
+                    `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+                }
+              })
+              .catch(() => {
+                document.getElementById("auth-btn").innerHTML =
+                  `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+              });
+          </script>
+        </div>
+      </div>
+    </nav>
+    <main class="max-w-7xl mx-auto px-6 pt-32 pb-24">
+      <!-- Breadcrumb & Title -->
+      <div class="mb-12">
+        <nav
+          class="flex items-center gap-2 text-label-md text-secondary uppercase tracking-[0.1em] mb-4"
+        >
+          <span>Luxor</span>
+          <span class="material-symbols-outlined text-[10px]"
+            >arrow_forward_ios</span
+          >
+          <span>Heritage Collection</span>
+          <span class="material-symbols-outlined text-[10px]"
+            >arrow_forward_ios</span
+          >
+          <span class="text-tertiary font-bold">Deluxe Nile View</span>
+        </nav>
+        <h1
+          class="text-4xl md:text-5xl font-headline font-extrabold text-on-surface tracking-tighter leading-tight"
+        >
+          Deluxe Nile <span class="text-primary">View Room</span>
+        </h1>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <!-- Left Column: Gallery & Details -->
+        <div class="lg:col-span-8 space-y-16">
+          <!-- Editorial Image Gallery -->
+          <section class="grid grid-cols-2 gap-4">
+            <div class="col-span-2 overflow-hidden rounded-xl h-[500px]">
+              <img
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                data-alt="luxurious hotel room with modern egyptian decor overlooking the nile river at sunset with warm golden lighting"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXtMF2vKvjezPdqVSXboIqXYUKb2mVVTr4i61IPhUqCyOxoyiphOR33WpcaKCNuJZg_CTqKMlxsIXdemX--du9C_-RJWzi8dxnUUY0i-bQGarnIR-4u4hwx6McGmCsny0skThbJQuj7FEi3IPuRC_rZOiiEJT8Vksai7aUZPYzM0GX_EwxHxPRhl4DkVwEJHYpjl2cGeHX3HZDlbBBX_d1ExjeSHvPkSZ4E-R141mCVI7v8x57lBc0XF3uGCdcUw3EiU_QCnlnDo5M"
+              />
+            </div>
+            <div class="rounded-xl overflow-hidden h-[300px]">
+              <img
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                data-alt="high-end bathroom featuring sand-colored marble tiles and a rainfall shower with warm accent lighting"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBQa44_-z2ayzmJ0TAbaSoV5jVrRQjl-F4Xs_ZiJ8Gy9UREdtwvcOh173aIAtZdB_x6MKQDsH4CLvOXEq5-VNBEGkotgyQSVLNaPM3Ro-WMxtwJ8B4K56BchZva4zZyWsbvPIYYEKyS-rKWx1rPxankkDwiwmlAxQzZhATZBX3VVhsaJSxwPsXPKkwWD-kRm3KGq6PosrJsWLJEn4pgO3l7burSx-D5oRe9djvI1mJDIeW0QUdqsDTXdGGxmRFLiN1U4XpFrKPRA9_"
+              />
+            </div>
+            <div class="rounded-xl overflow-hidden h-[300px]">
+              <img
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                data-alt="private balcony with wrought iron railing overlooking the ancient temples of luxor across the river nile"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNNpLfFnP7UTDXq_TM2LRkkuMHoMsI9LrWwFgneWxjGWjuyIUfkERwWAXdCoFY_lkkc2ppfThjia3Oq_ckoGHYk7SUoJnXKV8lTtJp_2-rw6dYEw7eP6jh8orckLtSPqm0shYqz9-xyjuz6pB9kLJ4b4_VGY3qIyHHhXZRKNl1_LOoyXuCqhKEStrKCukYr_S4frB3R4py18U3kVVCq3j3oBQH-g2Bf0mj5ZGhgFCRp-Qp0goOUrd66Fqef5-JJyb5mfb9eljl13Rt"
+              />
+            </div>
+          </section>
+          <!-- Amenities Grid -->
+          <section>
+            <h2 class="text-2xl font-headline font-bold mb-8 text-on-surface">
+              Curated Comforts
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div
+                class="p-6 bg-surface-container-low rounded-xl text-center space-y-3"
+              >
+                <span class="material-symbols-outlined text-primary text-3xl"
+                  >wifi</span
+                >
+                <p class="text-sm font-semibold text-on-surface">
+                  High-Speed WiFi
+                </p>
+              </div>
+              <div
+                class="p-6 bg-surface-container-low rounded-xl text-center space-y-3"
+              >
+                <span class="material-symbols-outlined text-primary text-3xl"
+                  >ac_unit</span
+                >
+                <p class="text-sm font-semibold text-on-surface">
+                  Climate Control
+                </p>
+              </div>
+              <div
+                class="p-6 bg-surface-container-low rounded-xl text-center space-y-3"
+              >
+                <span class="material-symbols-outlined text-primary text-3xl"
+                  >restaurant_menu</span
+                >
+                <p class="text-sm font-semibold text-on-surface">
+                  Artisan Breakfast
+                </p>
+              </div>
+              <div
+                class="p-6 bg-surface-container-low rounded-xl text-center space-y-3"
+              >
+                <span class="material-symbols-outlined text-primary text-3xl"
+                  >deck</span
+                >
+                <p class="text-sm font-semibold text-on-surface">
+                  Nile View Deck
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- Description & Story Inset -->
+          <section class="grid grid-cols-1 md:grid-cols-5 gap-8">
+            <div class="md:col-span-3">
+              <h3 class="text-xl font-headline font-bold mb-4">
+                A Sanctuary of Modern Heritage
+              </h3>
+              <p class="text-body text-secondary leading-relaxed mb-6">
+                Experience the timeless beauty of Luxor from our most
+                prestigious suite. The Deluxe Nile View Room blends mid-century
+                modern furniture with artisanal Egyptian textiles, creating a
+                space that feels both grounded and ethereal.
+              </p>
+              <p class="text-body text-secondary leading-relaxed">
+                Wake up to the soft call of the river and the silhouette of the
+                Valley of the Kings. Every detail, from the hand-woven linen to
+                the locally sourced stone finishes, has been curated to honor
+                the history of the Pharaohs while providing contemporary luxury.
+              </p>
+            </div>
+            <div class="md:col-span-2">
+              <div
+                class="bg-tertiary-container/10 asymmetric-radius p-8 border border-tertiary/20"
+              >
+                <h4
+                  class="text-tertiary font-headline font-bold uppercase tracking-widest text-xs mb-3"
+                >
+                  Curator's Note
+                </h4>
+                <p
+                  class="text-sm italic text-on-tertiary-container leading-relaxed"
+                >
+                  "The light in Luxor is unlike anywhere else on earth. We've
+                  positioned the bed to ensure your first sight upon waking is
+                  the golden reflection of the sun on the Nile."
+                </p>
+                <div class="mt-4 flex items-center gap-3">
+                  <div
+                    class="w-8 h-8 rounded-full bg-secondary-fixed-dim"
+                  ></div>
+                  <span
+                    class="text-xs font-bold text-on-surface uppercase tracking-tighter"
+                    >Amira Z., Lead Curator</span
+                  >
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- Right Column: Booking Summary -->
+        <div class="lg:col-span-4">
+          <div class="sticky top-32 space-y-6">
+            <div
+              class="bg-surface-container-lowest rounded-xl p-8 editorial-shadow border border-surface-variant/20"
+            >
+              <div class="flex justify-between items-end mb-8">
+                <div>
+                  <span class="text-3xl font-headline font-bold text-primary"
+                    >$120</span
+                  >
+                  <span class="text-secondary text-sm"> / night</span>
+                </div>
+                <div class="flex items-center gap-1 text-tertiary">
+                  <span
+                    class="material-symbols-outlined text-lg"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                  <span class="text-sm font-bold">4.9</span>
+                </div>
+              </div>
+              <!-- Date Pickers -->
+              <div
+                class="grid grid-cols-2 border border-outline-variant/30 rounded-xl mb-6 overflow-hidden"
+              >
+                <div
+                  class="p-4 border-r border-outline-variant/30 hover:bg-surface-container-low transition-colors cursor-pointer"
+                >
+                  <label
+                    class="block text-[10px] uppercase tracking-widest text-secondary font-bold mb-1"
+                    >Check-in</label
+                  >
+                  <span class="text-sm font-semibold">Oct 24, 2024</span>
+                </div>
+                <div
+                  class="p-4 hover:bg-surface-container-low transition-colors cursor-pointer"
+                >
+                  <label
+                    class="block text-[10px] uppercase tracking-widest text-secondary font-bold mb-1"
+                    >Check-out</label
+                  >
+                  <span class="text-sm font-semibold">Oct 29, 2024</span>
+                </div>
+              </div>
+              <!-- Price Breakdown -->
+              <div class="space-y-4 mb-8">
+                <div class="flex justify-between text-sm">
+                  <span class="text-secondary">$120 x 5 nights</span>
+                  <span class="font-semibold">$600</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                  <span class="text-secondary">Heritage Conservation Fee</span>
+                  <span class="font-semibold">$45</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                  <span class="text-secondary">Breakfast &amp; Service</span>
+                  <span class="font-semibold">$0</span>
+                </div>
+                <div
+                  class="pt-4 border-t border-outline-variant/30 flex justify-between"
+                >
+                  <span class="font-headline font-bold">Total</span>
+                  <span class="font-headline font-bold text-xl text-primary"
+                    >$645</span
+                  >
+                </div>
+              </div>
+              <!-- Action Button -->
+              <button
+                class="w-full bg-primary text-on-primary py-4 rounded-xl font-headline font-bold tracking-tight text-lg hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/10"
+              >
+                Confirm Booking
+              </button>
+              <p
+                class="text-center text-[10px] text-secondary uppercase tracking-widest mt-4"
+              >
+                No payment required until check-in
+              </p>
+            </div>
+            <!-- Trust Badge -->
+            <div
+              class="bg-surface-container-high rounded-xl p-6 flex items-start gap-4"
+            >
+              <span class="material-symbols-outlined text-tertiary"
+                >verified_user</span
+              >
+              <div>
+                <h5 class="text-sm font-bold mb-1">Curator's Guarantee</h5>
+                <p class="text-xs text-secondary leading-relaxed">
+                  Experience worry-free travel with our localized support and
+                  flexible cancellation policy.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full mt-auto bg-[#f7f2ea] dark:bg-slate-900">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 w-full">
+        <div class="col-span-1 md:col-span-1">
+          <div
+            class="text-xl font-bold text-[#00556f] dark:text-[#1C6E8C] mb-6"
+          >
+            Egypt Discovery
+          </div>
+          <p class="text-[#685d46] dark:text-slate-300 text-sm leading-relaxed">
+            Crafting timeless experiences in the land of eternity. From the
+            Nile's edge to the desert's heart.
+          </p>
+        </div>
+        <div class="flex flex-col space-y-4">
+          <h4 class="font-headline font-bold text-on-surface">Explore</h4>
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >About Us</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Sustainability</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Cultural Heritage</a
+          >
+        </div>
+        <div class="flex flex-col space-y-4">
+          <h4 class="font-headline font-bold text-on-surface">Legal</h4>
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Privacy Policy</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Terms of Service</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Cookie Policy</a
+          >
+        </div>
+        <div class="flex flex-col space-y-4">
+          <h4 class="font-headline font-bold text-on-surface">Connect</h4>
+          <div class="flex space-x-4">
+            <span
+              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
+              data-icon="public"
+              >public</span
+            >
+            <span
+              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
+              data-icon="mail"
+              >mail</span
+            >
+            <span
+              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
+              data-icon="chat"
+              >chat</span
+            >
+          </div>
+          <p class="text-xs text-[#685d46] mt-4">
+            © 2024 Egypt Discovery. All rights reserved. Crafted for the Modern
+            Curator.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

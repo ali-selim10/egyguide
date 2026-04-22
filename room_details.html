@@ -1,0 +1,504 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#2f312f",
+              "secondary-fixed-dim": "#d3c5a8",
+              "surface-tint": "#0c6684",
+              "on-secondary": "#ffffff",
+              tertiary: "#755b00",
+              surface: "#faf9f6",
+              secondary: "#685d46",
+              "primary-fixed": "#bfe9ff",
+              "tertiary-container": "#cea72c",
+              "surface-container": "#efeeeb",
+              background: "#faf9f6",
+              "surface-variant": "#e3e2e0",
+              "on-background": "#1a1c1a",
+              "outline-variant": "#bfc8cd",
+              "on-error-container": "#93000a",
+              primary: "#00556f",
+              "on-tertiary-fixed": "#241a00",
+              "on-primary-fixed": "#001f2a",
+              "surface-container-low": "#f4f3f1",
+              "secondary-container": "#f0e1c3",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#ffe08e",
+              "on-surface-variant": "#40484d",
+              "surface-container-lowest": "#ffffff",
+              error: "#ba1a1a",
+              outline: "#70787e",
+              "inverse-on-surface": "#f1f1ee",
+              "primary-fixed-dim": "#89d0f1",
+              "error-container": "#ffdad6",
+              "surface-container-high": "#e9e8e5",
+              "on-primary": "#ffffff",
+              "tertiary-fixed-dim": "#ecc246",
+              "on-primary-fixed-variant": "#004d65",
+              "on-surface": "#1a1c1a",
+              "secondary-fixed": "#f0e1c3",
+              "on-secondary-fixed-variant": "#4f4630",
+              "primary-container": "#1c6e8c",
+              "on-tertiary-container": "#503d00",
+              "on-primary-container": "#c5ebff",
+              "on-tertiary": "#ffffff",
+              "inverse-primary": "#89d0f1",
+              "surface-dim": "#dbdad7",
+              "surface-container-highest": "#e3e2e0",
+              "on-tertiary-fixed-variant": "#584400",
+              "on-secondary-container": "#6e634c",
+              "on-secondary-fixed": "#221b08",
+              "surface-bright": "#faf9f6",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Epilogue"],
+              body: ["Manrope"],
+              label: ["Manrope"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        font-family: "Manrope", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      .brand-font {
+        font-family: "Epilogue", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-surface text-on-surface">
+    <!-- Top Navigation -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-[#fbf9f5]/70 dark:bg-slate-950/70 backdrop-blur-md shadow-[0_20px_40px_rgba(27,28,26,0.05)]"
+    >
+      <div
+        class="flex justify-between items-center px-8 py-6 max-w-full mx-auto"
+      >
+        <div
+          class="text-2xl font-bold tracking-tighter text-[#00556f] dark:text-[#1C6E8C]"
+        >
+          <a href="/index">Sikka</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/index"
+            >Home</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/explore"
+            >Explore</a
+          >
+          <a
+            class="text-[#00556f] dark:text-white font-bold border-b-2 border-[#755b00] pb-1 transition-all duration-300"
+            href="/booking"
+            >Booking</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/attractions"
+            >Attractions</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/planner"
+            >Plan Your Day</a
+          >
+        </div>
+        <div class="flex items-center space-x-6">
+          <div class="relative hidden lg:block">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm"
+              data-icon="search"
+              >search</span
+            >
+            <input
+              class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all"
+              placeholder="Search destinations..."
+              type="text"
+            />
+          </div>
+
+          <div id="auth-btn"></div>
+          <script>
+            fetch("/api/me")
+              .then((r) => {
+                if (r.ok) {
+                  document.getElementById("auth-btn").innerHTML =
+                    `<a href="/signout" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign Out</a>`;
+                } else {
+                  document.getElementById("auth-btn").innerHTML =
+                    `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+                }
+              })
+              .catch(() => {
+                document.getElementById("auth-btn").innerHTML =
+                  `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+              });
+          </script>
+        </div>
+      </div>
+    </nav>
+    <main class="pt-24 pb-20 max-w-7xl mx-auto px-6">
+      <!-- Search Header -->
+      <header class="mb-12">
+        <h1
+          class="text-4xl md:text-5xl font-bold text-primary mb-2 tracking-tight"
+        >
+          Luxor Heritage Escapes
+        </h1>
+        <p class="text-secondary font-medium text-lg mb-8">
+          24 properties found in Luxor
+        </p>
+        <div
+          class="bg-surface-container-low p-2 rounded-2xl flex flex-wrap md:flex-nowrap items-center gap-2 shadow-sm"
+        >
+          <div
+            class="flex-1 min-w-[150px] flex items-center px-4 py-3 bg-surface rounded-xl"
+          >
+            <span
+              class="material-symbols-outlined text-secondary mr-3"
+              data-icon="calendar_today"
+              >calendar_today</span
+            >
+            <input
+              class="bg-transparent border-none focus:ring-0 text-on-surface w-full font-medium"
+              placeholder="Add dates"
+              type="text"
+            />
+          </div>
+          <div
+            class="flex-1 min-w-[150px] flex items-center px-4 py-3 bg-surface rounded-xl"
+          >
+            <span
+              class="material-symbols-outlined text-secondary mr-3"
+              data-icon="group"
+              >group</span
+            >
+            <input
+              class="bg-transparent border-none focus:ring-0 text-on-surface w-full font-medium"
+              placeholder="Add guests"
+              type="text"
+            />
+          </div>
+          <button
+            class="bg-primary text-on-primary h-full px-8 py-3 rounded-xl font-bold hover:bg-primary-container transition-colors"
+          >
+            Search Availability
+          </button>
+        </div>
+      </header>
+      <section class="space-y-12">
+        <!-- Main Hotel Section: Old Winter Palace -->
+        <div class="space-y-8">
+          <div
+            class="flex justify-between items-end border-b border-surface-container-high pb-4"
+          >
+            <div>
+              <span
+                class="text-xs font-bold text-tertiary uppercase tracking-[0.2em] mb-1 block"
+                >Featured Heritage Hotel</span
+              >
+              <h2 class="text-3xl font-headline font-bold text-on-surface">
+                Old Winter Palace Luxor
+              </h2>
+              <div class="flex items-center gap-1 text-secondary text-sm mt-1">
+                <span
+                  class="material-symbols-outlined text-sm"
+                  data-icon="location_on"
+                  >location_on</span
+                >
+                <span>East Bank, Luxor</span>
+              </div>
+            </div>
+            <div
+              class="flex items-center gap-2 text-sm font-bold text-primary cursor-pointer"
+            >
+              <span>Sort rooms by: Price</span>
+              <span
+                class="material-symbols-outlined text-sm"
+                data-icon="expand_more"
+                >expand_more</span
+              >
+            </div>
+          </div>
+          <!-- Room Variations Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Room 1 -->
+            <div
+              class="group bg-surface-container-lowest rounded-xl overflow-hidden transition-all hover:shadow-[0_8px_32px_rgba(26,28,26,0.06)] border border-surface-container"
+            >
+              <div class="relative h-56 overflow-hidden">
+                <img
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  data-alt="Luxurious bedroom with a view of the Nile river"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQY-xxvGwxMOPjYHtMtIVgjFQEfJwjEhuYNf3-0XF_zqICeS4WLWQqiwjoeBUVARdZYybJc-EI7k86GkHcCYSAFkeBA5BC9_Fg0bEo8dDNjwVxTQ7yJDVAtfw0SgQwiJ8W-rWrecBq_MDSmUrsXbQafAhBoPqf_jl3fCHnqbKLoG8uoaUN-sd6azA0Ln4CyJNOJlmczGm73C1bhI7mxesCIhf-TJicowdAz1dcWKZtpOUJIJNsulCJX1jhkEt67YZ0QchFDLakVCBZ"
+                />
+              </div>
+              <div class="p-6">
+                <h3
+                  class="text-xl font-headline font-bold text-on-surface mb-2"
+                >
+                  Deluxe Nile View
+                </h3>
+                <div class="flex flex-wrap gap-3 mb-6">
+                  <div
+                    class="flex items-center gap-1 text-secondary text-xs font-medium"
+                  >
+                    <span class="material-symbols-outlined text-sm">bed</span>
+                    <span>1 Bedroom (1 Bed)</span>
+                  </div>
+                  <div
+                    class="flex items-center gap-1 text-secondary text-xs font-medium"
+                  >
+                    <span class="material-symbols-outlined text-sm"
+                      >bathtub</span
+                    >
+                    <span>1 Bathroom</span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between mt-auto">
+                  <div class="flex flex-col">
+                    <span class="text-xs text-secondary font-medium"
+                      >Per night</span
+                    >
+                    <span class="text-2xl font-bold text-primary">$120</span>
+                  </div>
+                  <button
+                    onclick="window.location.href = '/room-booking'"
+                    class="bg-primary text-on-primary px-6 py-3 rounded-xl text-sm font-bold hover:bg-primary-container active:scale-95 transition-all"
+                  >
+                    Select Room
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Room 2 -->
+            <div
+              class="group bg-surface-container-lowest rounded-xl overflow-hidden transition-all hover:shadow-[0_8px_32px_rgba(26,28,26,0.06)] border border-surface-container"
+            >
+              <div class="relative h-56 overflow-hidden">
+                <img
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  data-alt="Classic twin room with heritage decor"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCea5Ak0I3zWvPXU_zAAtYhGpZ02tqceKUlwPoup1w3CXZHDZKk-AMhC4yrn7Q123qwe33WGBgdqjZfOrdXhFTOLXtXzGUXhv560xN3FSa5DFXD8C2UqFadJDaQpNasMbgpqk60HpMd4k56BIszRwzPBq78xHt4ef7xzNlvsRBFw1rM8pzMoG7Wpi9W34Annj9TDpBVltaCZi6hiSDutQK_74dLL_4GWVxk7s0KBydms3ATsm3G8zrr9La_Sr_bPK2E8YcZhgD0Ufuk"
+                />
+              </div>
+              <div class="p-6">
+                <h3
+                  class="text-xl font-headline font-bold text-on-surface mb-2"
+                >
+                  Twin Heritage Room
+                </h3>
+                <div class="flex flex-wrap gap-3 mb-6">
+                  <div
+                    class="flex items-center gap-1 text-secondary text-xs font-medium"
+                  >
+                    <span class="material-symbols-outlined text-sm">bed</span>
+                    <span>1 Bedroom (2 Beds)</span>
+                  </div>
+                  <div
+                    class="flex items-center gap-1 text-secondary text-xs font-medium"
+                  >
+                    <span class="material-symbols-outlined text-sm"
+                      >bathtub</span
+                    >
+                    <span>1 Bathroom</span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between mt-auto">
+                  <div class="flex flex-col">
+                    <span class="text-xs text-secondary font-medium"
+                      >Per night</span
+                    >
+                    <span class="text-2xl font-bold text-primary">$105</span>
+                  </div>
+                  <button
+                    onclick="window.location.href = '/room-booking'"
+                    class="bg-primary text-on-primary px-6 py-3 rounded-xl text-sm font-bold hover:bg-primary-container active:scale-95 transition-all"
+                  >
+                    Select Room
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Room 3 -->
+            <div
+              class="group bg-surface-container-lowest rounded-xl overflow-hidden transition-all hover:shadow-[0_8px_32px_rgba(26,28,26,0.06)] border border-surface-container"
+            >
+              <div class="relative h-56 overflow-hidden">
+                <img
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  data-alt="Large family suite with multiple beds and sitting area"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl7vsZbt385lwP0pnyiRPITZD4AYY_G4jfzVdkM8-fnJXA_00_FBZhAZh-mcxV-MEoYYOOPK4E-Kd7ysilgY1pVbbznmSABzaKpjJR62l5QzNWyoZv_NtrX4mqUStlkbh2GqUw0p-5A6mgVGY9XCmwcNi3mpfMlOtPaMpgMX6IdBsDR1T2t46jq0WDKlYMJ0lUO2LfBF0RdIQxlbYEBCiYeGQnEbNPZKMrKu8ePx3Wc3kC22Vf3A5RC0yVLVePZft_jDaBcFlqFrJk"
+                />
+              </div>
+              <div class="p-6">
+                <h3
+                  class="text-xl font-headline font-bold text-on-surface mb-2"
+                >
+                  Family Grand Suite
+                </h3>
+                <div class="flex flex-wrap gap-3 mb-6">
+                  <div
+                    class="flex items-center gap-1 text-secondary text-xs font-medium"
+                  >
+                    <span class="material-symbols-outlined text-sm"
+                      >family_restroom</span
+                    >
+                    <span>3 Beds (Family Room)</span>
+                  </div>
+                  <div
+                    class="flex items-center gap-1 text-secondary text-xs font-medium"
+                  >
+                    <span class="material-symbols-outlined text-sm"
+                      >bathtub</span
+                    >
+                    <span>2 Bathrooms</span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between mt-auto">
+                  <div class="flex flex-col">
+                    <span class="text-xs text-secondary font-medium"
+                      >Per night</span
+                    >
+                    <span class="text-2xl font-bold text-primary">$210</span>
+                  </div>
+                  <button
+                    onclick="window.location.href = '/room-booking'"
+                    class="bg-primary text-on-primary px-6 py-3 rounded-xl text-sm font-bold hover:bg-primary-container active:scale-95 transition-all"
+                  >
+                    Select Room
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Map View Toggle Floating -->
+        <div class="fixed bottom-10 left-1/2 -translate-x-1/2 z-40">
+          <button
+            class="bg-inverse-surface text-inverse-on-surface flex items-center gap-3 px-8 py-4 rounded-full font-bold shadow-xl hover:scale-105 active:scale-95 transition-all"
+          >
+            <span>Show Map</span>
+            <span class="material-symbols-outlined" data-icon="map">map</span>
+          </button>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full mt-auto bg-[#f7f2ea] dark:bg-slate-900">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 w-full">
+        <div class="col-span-1 md:col-span-1">
+          <div
+            class="text-xl font-bold text-[#00556f] dark:text-[#1C6E8C] mb-6"
+          >
+            Egypt Discovery
+          </div>
+          <p class="text-[#685d46] dark:text-slate-300 text-sm leading-relaxed">
+            Crafting timeless experiences in the land of eternity. From the
+            Nile's edge to the desert's heart.
+          </p>
+        </div>
+        <div class="flex flex-col space-y-4">
+          <h4 class="font-headline font-bold text-on-surface">Explore</h4>
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >About Us</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Sustainability</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Cultural Heritage</a
+          >
+        </div>
+        <div class="flex flex-col space-y-4">
+          <h4 class="font-headline font-bold text-on-surface">Legal</h4>
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Privacy Policy</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Terms of Service</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Cookie Policy</a
+          >
+        </div>
+        <div class="flex flex-col space-y-4">
+          <h4 class="font-headline font-bold text-on-surface">Connect</h4>
+          <div class="flex space-x-4">
+            <span
+              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
+              data-icon="public"
+              >public</span
+            >
+            <span
+              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
+              data-icon="mail"
+              >mail</span
+            >
+            <span
+              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
+              data-icon="chat"
+              >chat</span
+            >
+          </div>
+          <p class="text-xs text-[#685d46] mt-4">
+            © 2024 Egypt Discovery. All rights reserved. Crafted for the Modern
+            Curator.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

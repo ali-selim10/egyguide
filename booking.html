@@ -1,0 +1,636 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              outline: "#70787e",
+              "primary-fixed": "#bfe9ff",
+              "surface-tint": "#0c6684",
+              error: "#ba1a1a",
+              "on-tertiary-fixed-variant": "#584400",
+              "on-secondary-fixed-variant": "#4f4630",
+              "inverse-primary": "#89d0f1",
+              primary: "#00556f",
+              "on-error": "#ffffff",
+              "on-secondary-fixed": "#221b08",
+              "on-background": "#1b1c1a",
+              "surface-container-low": "#f5f3ef",
+              "on-primary-fixed": "#001f2a",
+              "inverse-surface": "#30312e",
+              "outline-variant": "#bfc8cd",
+              "tertiary-fixed": "#ffe08e",
+              "on-tertiary-fixed": "#241a00",
+              "surface-dim": "#dbdad6",
+              "on-secondary": "#ffffff",
+              "primary-container": "#1c6e8c",
+              "on-tertiary": "#ffffff",
+              secondary: "#685d46",
+              "on-primary-container": "#c5ebff",
+              "tertiary-container": "#cea72c",
+              "inverse-on-surface": "#f2f0ed",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#503d00",
+              "secondary-fixed": "#f0e1c3",
+              "secondary-fixed-dim": "#d3c5a8",
+              "on-surface": "#1b1c1a",
+              "surface-container": "#efeeea",
+              "surface-bright": "#fbf9f5",
+              "on-surface-variant": "#40484d",
+              "surface-variant": "#e4e2de",
+              "on-error-container": "#93000a",
+              tertiary: "#755b00",
+              "on-secondary-container": "#6e634c",
+              "secondary-container": "#f0e1c3",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#eae8e4",
+              background: "#fbf9f5",
+              surface: "#fbf9f5",
+              "surface-container-highest": "#e4e2de",
+              "primary-fixed-dim": "#89d0f1",
+              "tertiary-fixed-dim": "#ecc246",
+              "on-primary-fixed-variant": "#004d65",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .editorial-gradient {
+        background: linear-gradient(135deg, #00556f 0%, #1c6e8c 100%);
+      }
+      .glass-nav {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed"
+  >
+    <nav
+      class="fixed top-0 w-full z-50 bg-[#fbf9f5]/70 dark:bg-slate-950/70 backdrop-blur-md shadow-[0_20px_40px_rgba(27,28,26,0.05)]"
+    >
+      <div
+        class="flex justify-between items-center px-8 py-6 max-w-full mx-auto"
+      >
+        <div
+          class="text-2xl font-bold tracking-tighter text-[#00556f] dark:text-[#1C6E8C]"
+        >
+          <a href="/index">Sikka</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/index"
+            >Home</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/explore"
+            >Explore</a
+          >
+          <a
+            class="text-[#00556f] dark:text-white font-bold border-b-2 border-[#755b00] pb-1 transition-all duration-300"
+            href="/booking"
+            >Booking</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/attractions"
+            >Attractions</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/planner"
+            >Plan Your Day</a
+          >
+        </div>
+        <div class="flex items-center space-x-6">
+          <div class="relative hidden lg:block">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm"
+              data-icon="search"
+              >search</span
+            >
+            <input
+              class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all"
+              placeholder="Search destinations..."
+              type="text"
+            />
+          </div>
+
+          <div id="auth-btn"></div>
+          <script>
+            fetch("/api/me")
+              .then((r) => {
+                if (r.ok) {
+                  document.getElementById("auth-btn").innerHTML =
+                    `<a href="/signout" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign Out</a>`;
+                } else {
+                  document.getElementById("auth-btn").innerHTML =
+                    `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+                }
+              })
+              .catch(() => {
+                document.getElementById("auth-btn").innerHTML =
+                  `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+              });
+          </script>
+        </div>
+      </div>
+    </nav>
+    <main class="pt-32 pb-20 px-8 max-w-7xl mx-auto">
+      <header class="mb-16">
+        <h1
+          class="font-headline text-5xl md:text-6xl font-extrabold text-primary tracking-tight mb-4"
+        >
+          Your Sanctuary Awaits.
+        </h1>
+        <p class="text-secondary text-lg max-w-2xl leading-relaxed">
+          From the timeless majesty of the Giza Plateau to the crystalline
+          depths of the Red Sea, curate your journey through antiquity.
+        </p>
+      </header>
+      <section class="mb-12 overflow-x-auto no-scrollbar">
+        <div class="flex space-x-4 pb-4">
+          <button
+            class="flex items-center px-6 py-3 rounded-full bg-primary text-on-primary shadow-sm whitespace-nowrap transition-all"
+          >
+            <span class="material-symbols-outlined mr-2" data-icon="hotel"
+              >hotel</span
+            >
+            <span class="font-medium">Hotels</span>
+          </button>
+          <button
+            class="flex items-center px-6 py-3 rounded-full bg-surface-container-highest text-secondary hover:bg-surface-variant transition-all whitespace-nowrap"
+          >
+            <span
+              class="material-symbols-outlined mr-2"
+              data-icon="beach_access"
+              >beach_access</span
+            >
+            <span class="font-medium">Resorts</span>
+          </button>
+          <button
+            class="flex items-center px-6 py-3 rounded-full bg-surface-container-highest text-secondary hover:bg-surface-variant transition-all whitespace-nowrap"
+          >
+            <span class="material-symbols-outlined mr-2" data-icon="restaurant"
+              >restaurant</span
+            >
+            <span class="font-medium">Restaurants</span>
+          </button>
+          <button
+            class="flex items-center px-6 py-3 rounded-full bg-surface-container-highest text-secondary hover:bg-surface-variant transition-all whitespace-nowrap"
+          >
+            <span
+              class="material-symbols-outlined mr-2"
+              data-icon="account_balance"
+              >account_balance</span
+            >
+            <span class="font-medium">Monuments &amp; Attractions</span>
+          </button>
+        </div>
+      </section>
+      <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div class="group cursor-pointer">
+          <div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
+            <img
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              data-alt="luxury hotel balcony overlooking the Great Pyramids at sunset with golden warm lighting and elegant linen curtains"
+              src="https://media.gettyimages.com/id/2192508823/photo/a-picture-shows-the-historical-winter-palace-hotel-in-egypts-southern-city-of-luxor-on.jpg?s=612x612&w=0&k=20&c=T0OVVxVN8EtUATJxpc5jS7hZZtLj2o9alSb0DjXhU2Y="
+            />
+            <div
+              class="absolute top-4 right-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center shadow-sm"
+            >
+              <span
+                class="material-symbols-outlined text-tertiary text-lg mr-1"
+                data-icon="star"
+                data-weight="fill"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >star</span
+              >
+              <span class="font-bold text-sm text-on-surface">4.9</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-headline text-xl font-bold text-secondary">
+              Old Winter Palace Luxor
+            </h3>
+            <p class="text-primary font-bold text-lg">
+              EGP 12,400
+              <span class="text-on-surface-variant font-normal text-sm"
+                >/ night</span
+              >
+            </p>
+          </div>
+          <div class="flex items-center text-on-surface-variant mb-6">
+            <span
+              class="material-symbols-outlined text-sm mr-1"
+              data-icon="location_on"
+              >location_on</span
+            >
+            <span class="text-sm">Luxor</span>
+          </div>
+          <button
+            onclick="window.location.href = '/room-details'"
+            class="w-full editorial-gradient text-on-primary py-4 rounded-lg font-bold tracking-wide hover:opacity-90 transition-all active:scale-[0.98]"
+          >
+            Book Now
+          </button>
+        </div>
+        <div class="group cursor-pointer">
+          <div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
+            <img
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              data-alt="ultra modern luxury resort swimming pool at night with glowing blue lights and palm trees in Sharm El Sheikh"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAuP8DJqWLGfxExMJ5hBFaZ0M13_0gdzbJ1Kv4edMYQc7LgrdZcksCMeyvm3hdXvDpS7FXL9WnMp_irxd8IaEhsZbGcGR0Gg6c7AzgDB8VPdqSdyw_BM-RsJPBmcjXbvaZMAm0Av42dk0KYdUG_kShyMHsyGl5U9R-EZudLx6uxtprPx3cFOz3TSZ3SnMdfARFMed2b4IEjIEqPM5hflw43hOdg5GBUPFH6bJ5C1lrWEvbz2icSeSj6PLeMyzkpmJ4EfIsMuN4_d48"
+            />
+            <div
+              class="absolute top-4 right-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center shadow-sm"
+            >
+              <span
+                class="material-symbols-outlined text-tertiary text-lg mr-1"
+                data-icon="star"
+                data-weight="fill"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >star</span
+              >
+              <span class="font-bold text-sm text-on-surface">4.8</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-headline text-xl font-bold text-secondary">
+              Four Seasons Resort
+            </h3>
+            <p class="text-primary font-bold text-lg">
+              EGP 18,200
+              <span class="text-on-surface-variant font-normal text-sm"
+                >/ night</span
+              >
+            </p>
+          </div>
+          <div class="flex items-center text-on-surface-variant mb-6">
+            <span
+              class="material-symbols-outlined text-sm mr-1"
+              data-icon="location_on"
+              >location_on</span
+            >
+            <span class="text-sm">Sharm El Sheikh, South Sinai</span>
+          </div>
+          <button
+            class="w-full editorial-gradient text-on-primary py-4 rounded-lg font-bold tracking-wide hover:opacity-90 transition-all active:scale-[0.98]"
+          >
+            Book Now
+          </button>
+        </div>
+        <div class="group cursor-pointer">
+          <div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
+            <img
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              data-alt="fine dining restaurant interior with tall stone columns and dim atmospheric lighting overlooking the Nile river"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3GBs2083sVILNvutzYSX21PhYvuCwowxJ0jGXtIZt-rlmBqBkQvIKTLOGpXEziv8SPb81BjHDRRyEsjndlBPdPdLpn5505Gr_ok6GhbY93wyriipYWqLavrDlIlIzKBJGHu03pqyzLxEAqzH4U6VausgpOP8QxPWprlFC1eGocWD8iIML3OYYD1fMXGLCx76dMfvChLU1kPyz9yJp-O7qbMvYpIQiVrSleYHIRwNlm8QSIV6Z2IrwcUdL4Yn4E5uefC_Xn_4EvIvg"
+            />
+            <div
+              class="absolute top-4 right-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center shadow-sm"
+            >
+              <span
+                class="material-symbols-outlined text-tertiary text-lg mr-1"
+                data-icon="star"
+                data-weight="fill"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >star</span
+              >
+              <span class="font-bold text-sm text-on-surface">4.7</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-headline text-xl font-bold text-secondary">
+              1886 Restaurant
+            </h3>
+            <p class="text-primary font-bold text-lg">
+              EGP 2,500
+              <span class="text-on-surface-variant font-normal text-sm"
+                >avg</span
+              >
+            </p>
+          </div>
+          <div class="flex items-center text-on-surface-variant mb-6">
+            <span
+              class="material-symbols-outlined text-sm mr-1"
+              data-icon="location_on"
+              >location_on</span
+            >
+            <span class="text-sm">Old Winter Palace, Luxor</span>
+          </div>
+          <button
+            class="w-full editorial-gradient text-on-primary py-4 rounded-lg font-bold tracking-wide hover:opacity-90 transition-all active:scale-[0.98]"
+          >
+            Book Now
+          </button>
+        </div>
+        <div class="group cursor-pointer">
+          <div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
+            <img
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              data-alt="ancient Egyptian temple of Philae reflected in the calm waters of the Nile at dawn with soft violet sky"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCCKD3SnWuVuy7yR9-0fkiVLPkQb2rDIcdap-Xb0gT_LxpSigeR4nAi-FMx37iaIv99Gu4jrkgNADv8yX_syJdcHtEmz3TivPWZ97eAkwo4rB5eq1ofMVIDZgeM1ClC8hQZZkt-XzVKQ4gTpjnPkGjL6j28TFQQhBUREgGuEIB4ydtH-blyZ8fnXLe8t99JsQfsd9HbWbgxrWyjeERziJAWCqoyyVKQDjK3_0NYcwPhC_pxT2a6PBN9oLPjoxm9Zz40-KUKi7L9tfU"
+            />
+            <div
+              class="absolute top-4 right-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center shadow-sm"
+            >
+              <span
+                class="material-symbols-outlined text-tertiary text-lg mr-1"
+                data-icon="star"
+                data-weight="fill"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >star</span
+              >
+              <span class="font-bold text-sm text-on-surface">5.0</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-headline text-xl font-bold text-secondary">
+              Philae Temple Tour
+            </h3>
+            <p class="text-primary font-bold text-lg">
+              EGP 950
+              <span class="text-on-surface-variant font-normal text-sm"
+                >/ person</span
+              >
+            </p>
+          </div>
+          <div class="flex items-center text-on-surface-variant mb-6">
+            <span
+              class="material-symbols-outlined text-sm mr-1"
+              data-icon="location_on"
+              >location_on</span
+            >
+            <span class="text-sm">Aswan, Upper Egypt</span>
+          </div>
+          <button
+            class="w-full editorial-gradient text-on-primary py-4 rounded-lg font-bold tracking-wide hover:opacity-90 transition-all active:scale-[0.98]"
+          >
+            Book Now
+          </button>
+        </div>
+        <div class="group cursor-pointer">
+          <div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
+            <img
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              data-alt="overhead view of a luxury Dahabiya boat sailing slowly on the Nile river with white sails and wooden deck"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrqY8zPop7LQ-P1OYsr4bHmD9KJGt0t1Mvc3PGE9K0GKAR8jOo1lnjEbpbIwIMk0q4t6ZuZroOHtVGYnSqRCTgeCFYm7LqFHW1-b-bdf6tLPCWyvx7l6ppdMpZtcFWW_MU7RCz8PgAmAsqBlwL0RP0jEfwy_0Zd4Mh94fYNry8mXX7Py06GstmKod85PNAVjp3DykIngsb33_rQPIRSbJkMstjK7BQzHYjKgmoOfLhxjj7VO7UKYr0hYqA8N_P7TsTFubR59OHpsFo"
+            />
+            <div
+              class="absolute top-4 right-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center shadow-sm"
+            >
+              <span
+                class="material-symbols-outlined text-tertiary text-lg mr-1"
+                data-icon="star"
+                data-weight="fill"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >star</span
+              >
+              <span class="font-bold text-sm text-on-surface">4.9</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-headline text-xl font-bold text-secondary">
+              Nile Dahabiya Journey
+            </h3>
+            <p class="text-primary font-bold text-lg">
+              EGP 45,000
+              <span class="text-on-surface-variant font-normal text-sm"
+                >/ 4 days</span
+              >
+            </p>
+          </div>
+          <div class="flex items-center text-on-surface-variant mb-6">
+            <span
+              class="material-symbols-outlined text-sm mr-1"
+              data-icon="location_on"
+              >location_on</span
+            >
+            <span class="text-sm">Luxor to Aswan</span>
+          </div>
+          <button
+            class="w-full editorial-gradient text-on-primary py-4 rounded-lg font-bold tracking-wide hover:opacity-90 transition-all active:scale-[0.98]"
+          >
+            Book Now
+          </button>
+        </div>
+        <div class="group cursor-pointer">
+          <div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
+            <img
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              data-alt="stunning architectural detail of an Islamic Cairo mosque with intricate patterns and warm ambient evening light"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo3GgFMTGCdNKuej7k4XIXmXOsNWr0IOrwV4sMrOcYYaXBmXEsSBNcVGssMuG6SbfYsdCokRQx1MOdkfI8y4teCZ6vNK3urE0NfF3wjDzxtKv280ZaMlrKNQyLjQUr3XBGEd6KZG5BzCirbF9evO6I-nA8enV-8J6oCtD-eEt3A2XWiV_inmvjX4i7EsRPb6OpEbEoW4QX5UzfLHDm9LKn3qlAl6SF3bSwxYOxn_nghfRrat7Y-_tobwI5mUSJ4w9xQQQYkVrGH48p"
+            />
+            <div
+              class="absolute top-4 right-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center shadow-sm"
+            >
+              <span
+                class="material-symbols-outlined text-tertiary text-lg mr-1"
+                data-icon="star"
+                data-weight="fill"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >star</span
+              >
+              <span class="font-bold text-sm text-on-surface">4.6</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-headline text-xl font-bold text-secondary">
+              Old Cairo Heritage Walk
+            </h3>
+            <p class="text-primary font-bold text-lg">
+              EGP 1,200
+              <span class="text-on-surface-variant font-normal text-sm"
+                >/ person</span
+              >
+            </p>
+          </div>
+          <div class="flex items-center text-on-surface-variant mb-6">
+            <span
+              class="material-symbols-outlined text-sm mr-1"
+              data-icon="location_on"
+              >location_on</span
+            >
+            <span class="text-sm">El Moez St, Cairo</span>
+          </div>
+          <button
+            class="w-full editorial-gradient text-on-primary py-4 rounded-lg font-bold tracking-wide hover:opacity-90 transition-all active:scale-[0.98]"
+          >
+            Book Now
+          </button>
+        </div>
+      </section>
+      <div
+        class="mt-20 p-12 rounded-3xl bg-surface-container-low border border-outline-variant/10 flex flex-col md:flex-row items-center justify-between"
+      >
+        <div class="mb-8 md:mb-0 md:mr-12">
+          <h2 class="font-headline text-3xl font-bold text-primary mb-4">
+            The Curator's Concierge
+          </h2>
+          <p class="text-secondary leading-relaxed max-w-lg">
+            Not finding the exact sanctuary you seek? Our travel curators are
+            ready to assemble a bespoke Egyptian odyssey tailored to your
+            specific palette.
+          </p>
+        </div>
+        <button
+          class="px-10 py-5 bg-tertiary text-on-tertiary rounded-full font-bold shadow-lg hover:translate-y-[-2px] transition-all whitespace-nowrap"
+        >
+          Start Bespoke Journey
+        </button>
+      </div>
+    </main>
+    <footer class="w-full mt-auto bg-[#f7f2ea] dark:bg-slate-900">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 w-full">
+        <div class="col-span-1 md:col-span-1">
+          <div
+            class="text-xl font-bold text-[#00556f] dark:text-[#1C6E8C] mb-6"
+          >
+            Egypt Discovery
+          </div>
+          <p class="text-[#685d46] dark:text-slate-300 text-sm leading-relaxed">
+            Crafting timeless experiences in the land of eternity. From the
+            Nile's edge to the desert's heart.
+          </p>
+        </div>
+        <div class="flex flex-col space-y-4">
+          <h4 class="font-headline font-bold text-on-surface">Explore</h4>
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >About Us</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Sustainability</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Cultural Heritage</a
+          >
+        </div>
+        <div class="flex flex-col space-y-4">
+          <h4 class="font-headline font-bold text-on-surface">Legal</h4>
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Privacy Policy</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Terms of Service</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Cookie Policy</a
+          >
+        </div>
+        <div class="flex flex-col space-y-4">
+          <h4 class="font-headline font-bold text-on-surface">Connect</h4>
+          <div class="flex space-x-4">
+            <span
+              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
+              data-icon="public"
+              >public</span
+            >
+            <span
+              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
+              data-icon="mail"
+              >mail</span
+            >
+            <span
+              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
+              data-icon="chat"
+              >chat</span
+            >
+          </div>
+          <p class="text-xs text-[#685d46] mt-4">
+            © 2024 Egypt Discovery. All rights reserved. Crafted for the Modern
+            Curator.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <div class="fixed bottom-8 right-8 flex flex-col gap-4 z-40">
+      <a
+        class="bg-error text-on-error w-16 h-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all group relative"
+        href="/report-fraud"
+      >
+        <span
+          class="material-symbols-outlined text-3xl"
+          data-icon="report"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >report</span
+        >
+        <span
+          class="absolute right-full mr-4 bg-on-surface text-white px-4 py-2 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 whitespace-nowrap transition-all"
+          >Report Fraud / SOS</span
+        >
+      </a>
+      <button
+        class="bg-tertiary text-on-tertiary w-16 h-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all group relative"
+      >
+        <span
+          class="material-symbols-outlined text-3xl"
+          data-icon="chat_bubble"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >chat_bubble</span
+        >
+        <span
+          class="absolute right-full mr-4 bg-on-surface text-white px-4 py-2 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 whitespace-nowrap transition-all"
+          >AI Travel Assistant</span
+        >
+      </button>
+    </div>
+  </body>
+</html>

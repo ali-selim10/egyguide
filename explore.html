@@ -1,0 +1,532 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Explore Egypt Discovery</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              outline: "#70787e",
+              "primary-fixed": "#bfe9ff",
+              "surface-tint": "#0c6684",
+              error: "#ba1a1a",
+              "on-tertiary-fixed-variant": "#584400",
+              "on-secondary-fixed-variant": "#4f4630",
+              "inverse-primary": "#89d0f1",
+              primary: "#00556f",
+              "on-error": "#ffffff",
+              "on-secondary-fixed": "#221b08",
+              "on-background": "#1b1c1a",
+              "surface-container-low": "#f5f3ef",
+              "on-primary-fixed": "#001f2a",
+              "inverse-surface": "#30312e",
+              "outline-variant": "#bfc8cd",
+              "tertiary-fixed": "#ffe08e",
+              "on-tertiary-fixed": "#241a00",
+              "surface-dim": "#dbdad6",
+              "on-secondary": "#ffffff",
+              "primary-container": "#1c6e8c",
+              "on-tertiary": "#ffffff",
+              secondary: "#685d46",
+              "on-primary-container": "#c5ebff",
+              "tertiary-container": "#cea72c",
+              "inverse-on-surface": "#f2f0ed",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#503d00",
+              "secondary-fixed": "#f0e1c3",
+              "secondary-fixed-dim": "#d3c5a8",
+              "on-surface": "#1b1c1a",
+              "surface-container": "#efeeea",
+              "surface-bright": "#fbf9f5",
+              "on-surface-variant": "#40484d",
+              "surface-variant": "#e4e2de",
+              "on-error-container": "#93000a",
+              tertiary: "#755b00",
+              "on-secondary-container": "#6e634c",
+              "secondary-container": "#f0e1c3",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#eae8e4",
+              background: "#fbf9f5",
+              surface: "#fbf9f5",
+              "surface-container-highest": "#e4e2de",
+              "primary-fixed-dim": "#89d0f1",
+              "tertiary-fixed-dim": "#ecc246",
+              "on-primary-fixed-variant": "#004d65",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      .brand-font {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .glass-nav {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-surface min-h-screen flex flex-col selection:bg-tertiary-fixed selection:text-on-tertiary-fixed"
+  >
+    <!-- Top Navigation Bar -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-[#fbf9f5]/70 dark:bg-slate-950/70 backdrop-blur-md shadow-[0_20px_40px_rgba(27,28,26,0.05)]"
+    >
+      <div
+        class="flex justify-between items-center px-8 py-6 max-w-full mx-auto"
+      >
+        <div
+          class="text-2xl font-bold tracking-tighter text-[#00556f] dark:text-[#1C6E8C]"
+        >
+          <a href="/index">Sikka</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/index"
+            >Home</a
+          >
+          <a
+            class="text-[#00556f] dark:text-white font-bold border-b-2 border-[#755b00] pb-1 transition-all duration-300"
+            href="/explore"
+            >Explore</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/booking"
+            >Booking</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/attractions"
+            >Attractions</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/planner"
+            >Plan Your Day</a
+          >
+        </div>
+        <div class="flex items-center space-x-6">
+          <div class="relative hidden lg:block">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm"
+              data-icon="search"
+              >search</span
+            >
+            <input
+              class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all"
+              placeholder="Search destinations..."
+              type="text"
+            />
+          </div>
+
+          <div id="auth-btn"></div>
+          <script>
+            fetch("/api/me")
+              .then((r) => {
+                if (r.ok) {
+                  document.getElementById("auth-btn").innerHTML =
+                    `<a href="/signout" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign Out</a>`;
+                } else {
+                  document.getElementById("auth-btn").innerHTML =
+                    `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+                }
+              })
+              .catch(() => {
+                document.getElementById("auth-btn").innerHTML =
+                  `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+              });
+          </script>
+        </div>
+      </div>
+    </nav>
+    <main class="pt-32 pb-20 px-8 max-w-7xl mx-auto w-full">
+      <!-- Hero Section -->
+      <header class="mb-16">
+        <h1
+          class="text-5xl md:text-6xl font-extrabold text-primary tracking-tight mb-4"
+        >
+          Wander the Infinite.
+        </h1>
+        <p class="text-secondary max-w-2xl text-lg leading-relaxed">
+          Discover Egypt’s soul through its open streets, ancient marketplaces,
+          and public squares. These experiences require no ticket—only your
+          curiosity.
+        </p>
+      </header>
+      <!-- Category Filters -->
+      <div class="flex flex-wrap gap-3 mb-12">
+        <button
+          class="px-6 py-2 rounded-full bg-primary text-on-primary font-medium transition-all shadow-sm"
+        >
+          All Spaces
+        </button>
+        <button
+          class="px-6 py-2 rounded-full bg-surface-variant text-on-surface-variant font-medium hover:bg-surface-container-high transition-all"
+        >
+          Historic Streets
+        </button>
+        <button
+          class="px-6 py-2 rounded-full bg-surface-variant text-on-surface-variant font-medium hover:bg-surface-container-high transition-all"
+        >
+          Local Markets
+        </button>
+        <button
+          class="px-6 py-2 rounded-full bg-surface-variant text-on-surface-variant font-medium hover:bg-surface-container-high transition-all"
+        >
+          Cultural Hubs
+        </button>
+        <button
+          class="px-6 py-2 rounded-full bg-surface-variant text-on-surface-variant font-medium hover:bg-surface-container-high transition-all"
+        >
+          Public Parks
+        </button>
+      </div>
+      <!-- Asymmetric Bento Grid for Exploration -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <!-- Featured Card: Khan el-Khalili -->
+        <div class="md:col-span-8 group cursor-pointer">
+          <div class="relative h-[500px] overflow-hidden rounded-3xl mb-4">
+            <img
+              alt="Khan el-Khalili Market"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              data-alt="wide shot of a bustling traditional Egyptian bazaar with lanterns, textiles, and intricate copper goods under warm golden evening light"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaiProMPHAnfKBwhUa7JMSiIQVaoipfpCk43XrqFUN6Hbw2Z66aFNkzVsIXhCoQMAnpAWVUVEywKeygWkJzmB6Hy6gqvgnri9HhmwCg45iedo9jNe5zFb3difHqG-9W5fsNgmK07oXWtker8HBtJN2r1_af6y9OFVuck_Gy88I3Kryq3BFdfLIz-ub0BPYnXg3E42BCb9kUEYI-jzmDzhbKHzy05Uq5_wWb_7SdxYqRwE-GjKI5DAgnoN2mPy9P5jP-Yhmx_Pi--T6"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+            ></div>
+            <div class="absolute bottom-8 left-8 text-white">
+              <span
+                class="bg-tertiary text-on-tertiary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block"
+                >Marketplace</span
+              >
+              <h2 class="text-4xl font-bold mb-2">Khan el-Khalili</h2>
+              <div class="flex items-center gap-2 text-sm opacity-90">
+                <span class="material-symbols-outlined text-sm"
+                  >location_on</span
+                >
+                <span>Islamic Cairo, Egypt</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-on-surface-variant leading-relaxed max-w-3xl">
+            A labyrinthine souq in the historic center of Cairo. Established as
+            a center of trade in the Mamluk era, it remains a sensory feast of
+            spices, gold, and artisanal crafts.
+          </p>
+        </div>
+        <!-- Side Card: Muizz Street -->
+        <div class="md:col-span-4 group cursor-pointer">
+          <div class="relative h-[500px] overflow-hidden rounded-3xl mb-4">
+            <img
+              alt="Al-Muizz Street"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              data-alt="vertical perspective of an ancient Cairo street with minarets and ornate stone architecture against a clear blue sky"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi7kk19T25KESW-Ka35q8lM_xmMkQd2-aKgMOjUK6cfa6g-MDJz7xDN0af8Ib5fxsGhhFtBPrFuydXt2B0H_HowEa0EQucd7exTU_p3ZLbp5-5r7ylykIlxkTyOyFbiovR0tu8D4EKLrqfaUGzg3fdxrKuyiwgOOJdSGcSlvsuCh7lsikD9V5TYfikkiS5RfAtReeW69TunT4VHofW-ywySFj6MRGk7jk0QYLvPKmLGLzeaZ71DAayOvsjo1-7hG_iq22tekRwR3bf"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+            ></div>
+            <div class="absolute bottom-8 left-8 text-white">
+              <span
+                class="bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block"
+                >Historical</span
+              >
+              <h3 class="text-2xl font-bold mb-2">Muizz Street</h3>
+              <div class="flex items-center gap-2 text-sm opacity-90">
+                <span class="material-symbols-outlined text-sm"
+                  >location_on</span
+                >
+                <span>Old Cairo</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-on-surface-variant text-sm leading-relaxed">
+            Walking through Al-Muizz is like stepping into an open-air museum of
+            Islamic architecture, featuring monuments from the 10th century
+            onwards.
+          </p>
+        </div>
+        <!-- Cultural Spot: Qasr el-Nil Bridge -->
+        <div class="md:col-span-4 group cursor-pointer">
+          <div class="relative h-[400px] overflow-hidden rounded-3xl mb-4">
+            <img
+              alt="Qasr el-Nil Bridge"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              data-alt="stately bronze lions guarding a grand bridge over the Nile River at sunset with cityscape silhouettes in the distance"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8hnRLQJbcm9AYPPWeWW7kO5XFUeQTYZGmr0jxD0lWRvZeVXsSKMUxsPQ2c4vN-HGo0WW1r0douEiUM21Wn-ipbG2AlwuMb2N0_DYcDjcLD_ZZnDXuTArj45qhqArcBvH_8cBKnrdUYHu7neoddTN3fEfl41LLjqQvjeyjOE0aFyJj1ICZVHl6BZMfwTKZA5erVJgyer__0MaHheugGUGsk2HB5Mr0HdleLA3R6MmrcqMsMe0gcYA4VubjeIToy03q3oneQoVuuB-T"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+            ></div>
+            <div class="absolute bottom-8 left-8 text-white">
+              <span
+                class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block"
+                >Riverfront</span
+              >
+              <h3 class="text-2xl font-bold mb-2">Qasr el-Nil Bridge</h3>
+            </div>
+          </div>
+          <p class="text-on-surface-variant text-sm leading-relaxed">
+            The pulse of Cairo. Famous for its four bronze lion statues, it’s
+            the city’s favorite spot for evening strolls and views of the Nile.
+          </p>
+        </div>
+        <!-- Public Spot: Al-Azhar Park -->
+        <div class="md:col-span-4 group cursor-pointer">
+          <div class="relative h-[400px] overflow-hidden rounded-3xl mb-4">
+            <img
+              alt="Al-Azhar Park"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              data-alt="lush green landscaped gardens with fountains and traditional architecture overlooking a historic cityscape"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS7RPnVgDlhNx2omsoStCa7YcABLZIUwu-SIKegarbyYdxouK2ahTv2zP7QVjgfItdA0trE5_TmHc58o17N0y_zqOvVVeeMQS_nxfT0MFrkcMrzu8MKlo2PtlnhZfet_hUnQG3LHgV3TZvUmqPQol3KCR9w_ujBB3OQ3UD0ZfxLHMMA4bsZFZMadf7WOLEMj91cyx8hwsLiY1IUqWKhs9hD1-reg0Y_kMxoAot1xmZPF2M8avWt5KhixguQyHdyIGphHLHUtIfeLjD"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+            ></div>
+            <div class="absolute bottom-8 left-8 text-white">
+              <span
+                class="bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block"
+                >Nature</span
+              >
+              <h3 class="text-2xl font-bold mb-2">Al-Azhar Park</h3>
+            </div>
+          </div>
+          <p class="text-on-surface-variant text-sm leading-relaxed">
+            A green oasis built on what was once a landfill, offering the most
+            spectacular panoramic views of Cairo's skyline and the Citadel.
+          </p>
+        </div>
+        <!-- Hidden Gem: Corniche el-Nil (Alexandria) -->
+        <div class="md:col-span-4 group cursor-pointer">
+          <div class="relative h-[400px] overflow-hidden rounded-3xl mb-4">
+            <img
+              alt="Alexandria Corniche"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              data-alt="scenic mediterranean sea promenade with waves crashing against stone barriers and old european style architecture"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6qtgcjrRjhSU3ri8q9wFG7NczC0Q647Ds48qcl_X64N4vSqHihiFPhoDoc6BdNX-opZ97n62Y6hredC7TNp7vsQm03fYX8M7vjsZ9IJ07cZxjVuLaq9B_PdgKzprcgNbiyfaifV6vgs7G6pAH1CzyWoOCi8LtCf41udLVM1_fEL3Gkd5mJRceho3DD9wjUBDu7gOOsF35CdUhSog3LqlSjDftkYSMOTBXs04Kj2nTc1FJz5FiYfV1e6DSLoiK1wrj9kxdTIReULR-"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+            ></div>
+            <div class="absolute bottom-8 left-8 text-white">
+              <span
+                class="bg-primary-container text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block"
+                >Coastal</span
+              >
+              <h3 class="text-2xl font-bold mb-2">The Corniche</h3>
+            </div>
+          </div>
+          <p class="text-on-surface-variant text-sm leading-relaxed">
+            Alexandria's waterfront promenade. A perfect place to watch the
+            Mediterranean sunset while enjoying the cool sea breeze and historic
+            cafes.
+          </p>
+        </div>
+      </div>
+      <!-- Featured Quote Section (Tonal Shift) -->
+      <section
+        class="mt-24 bg-surface-container-low rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden"
+      >
+        <div class="relative z-10">
+          <span class="material-symbols-outlined text-tertiary text-5xl mb-6"
+            >format_quote</span
+          >
+          <blockquote
+            class="text-3xl md:text-4xl font-bold text-primary max-w-4xl mx-auto mb-8 leading-tight"
+          >
+            "Egypt is not a country we live in, but a country that lives within
+            us."
+          </blockquote>
+          <cite class="text-secondary font-medium block not-italic"
+            >— Pope Shenouda III</cite
+          >
+        </div>
+        <!-- Decorative circle -->
+        <div
+          class="absolute top-[-50%] right-[-10%] w-96 h-96 bg-tertiary/10 rounded-full blur-3xl"
+        ></div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="w-full mt-auto bg-[#f7f2ea] dark:bg-slate-900 grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20"
+    >
+      <div class="flex flex-col gap-6">
+        <div class="text-xl font-bold text-[#00556f] dark:text-[#1C6E8C]">
+          Egypt Discovery
+        </div>
+        <p class="text-[#685d46] dark:text-slate-300 text-sm leading-relaxed">
+          Curating the wonders of the Nile and the desert for the modern
+          traveler.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-bold text-primary mb-6">Discovery</h4>
+        <ul class="flex flex-col gap-4">
+          <li>
+            <a
+              class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+              href="#"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+              href="#"
+              >Sustainability</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+              href="#"
+              >Cultural Heritage</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-primary mb-6">Resources</h4>
+        <ul class="flex flex-col gap-4">
+          <li>
+            <a
+              class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+              href="#"
+              >Travel Guide</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+              href="#"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+              href="#"
+              >Privacy</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-primary mb-6">Newsletter</h4>
+        <p class="text-xs text-secondary mb-4">
+          Join the Curator’s list for hidden gems.
+        </p>
+        <div class="flex">
+          <input
+            class="bg-white/50 border-none rounded-l-lg py-2 px-4 text-sm w-full focus:ring-1 focus:ring-primary"
+            placeholder="Email address"
+            type="email"
+          />
+          <button
+            class="bg-primary text-white px-4 py-2 rounded-r-lg text-sm font-bold"
+          >
+            Join
+          </button>
+        </div>
+      </div>
+      <div
+        class="md:col-span-4 pt-12 border-t border-secondary/10 flex flex-col md:flex-row justify-between items-center gap-6"
+      >
+        <p class="text-xs text-secondary">
+          © 2024 Egypt Discovery. All rights reserved. Crafted for the Modern
+          Curator.
+        </p>
+        <div class="flex gap-6">
+          <span
+            class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer transition-colors"
+            >public</span
+          >
+          <span
+            class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer transition-colors"
+            >camera</span
+          >
+          <span
+            class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer transition-colors"
+            >share</span
+          >
+        </div>
+      </div>
+    </footer>
+    <div class="fixed bottom-8 right-8 flex flex-col gap-4 z-40">
+      <a
+        class="bg-error text-on-error w-16 h-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all group relative"
+        href="/report-fraud"
+      >
+        <span
+          class="material-symbols-outlined text-3xl"
+          data-icon="report"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >report</span
+        >
+        <span
+          class="absolute right-full mr-4 bg-on-surface text-white px-4 py-2 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 whitespace-nowrap transition-all"
+          >Report Fraud / SOS</span
+        >
+      </a>
+      <button
+        class="bg-tertiary text-on-tertiary w-16 h-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all group relative"
+      >
+        <span
+          class="material-symbols-outlined text-3xl"
+          data-icon="chat_bubble"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >chat_bubble</span
+        >
+        <span
+          class="absolute right-full mr-4 bg-on-surface text-white px-4 py-2 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 whitespace-nowrap transition-all"
+          >AI Travel Assistant</span
+        >
+      </button>
+    </div>
+  </body>
+</html>

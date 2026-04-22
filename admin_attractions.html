@@ -1,0 +1,1291 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              tertiary: "#755b00",
+              "on-tertiary-container": "#503d00",
+              "secondary-fixed": "#f0e1c3",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e4e2de",
+              "on-surface-variant": "#40484d",
+              "on-error": "#ffffff",
+              "inverse-surface": "#30312e",
+              "on-primary-container": "#c5ebff",
+              "inverse-primary": "#89d0f1",
+              "tertiary-fixed-dim": "#ecc246",
+              "on-background": "#1b1c1a",
+              surface: "#fbf9f5",
+              "surface-container": "#efeeea",
+              secondary: "#685d46",
+              "surface-tint": "#0c6684",
+              "primary-fixed": "#bfe9ff",
+              "on-primary": "#ffffff",
+              "secondary-container": "#f0e1c3",
+              "inverse-on-surface": "#f2f0ed",
+              "on-surface": "#1b1c1a",
+              "on-secondary-container": "#6e634c",
+              background: "#fbf9f5",
+              "surface-container-high": "#eae8e4",
+              "primary-container": "#1c6e8c",
+              "on-secondary-fixed-variant": "#4f4630",
+              "tertiary-container": "#cea72c",
+              "on-secondary-fixed": "#221b08",
+              "on-primary-fixed": "#001f2a",
+              "surface-container-low": "#f5f3ef",
+              error: "#ba1a1a",
+              "surface-bright": "#fbf9f5",
+              "secondary-fixed-dim": "#d3c5a8",
+              primary: "#00556f",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed-variant": "#004d65",
+              "tertiary-fixed": "#ffe08e",
+              outline: "#70787e",
+              "primary-fixed-dim": "#89d0f1",
+              "surface-dim": "#dbdad6",
+              "outline-variant": "#bfc8cd",
+              "surface-container-highest": "#e4e2de",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed": "#241a00",
+              "on-tertiary-fixed-variant": "#584400",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .glass-panel {
+        background: rgba(251, 249, 245, 0.7);
+        backdrop-filter: blur(12px);
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #fbf9f5;
+        color: #1b1c1a;
+      }
+      h1,
+      h2,
+      h3,
+      .font-headline {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-surface text-on-surface">
+    <!-- SideNavBar (Execution from JSON) -->
+    <!-- SideNavBar -->
+    <aside
+      class="flex flex-col h-full py-6 px-4 h-screen w-64 fixed left-0 top-0 border-r-0 bg-slate-50 dark:bg-slate-900 z-50"
+    >
+      <div class="mb-10 px-2">
+        <h1
+          class="text-xl font-bold tracking-tight text-cyan-900 dark:text-cyan-100 uppercase"
+        >
+          Nile Admin
+        </h1>
+        <p class="text-xs text-slate-500 font-medium">Management Console</p>
+      </div>
+      <nav class="flex-1 space-y-2">
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-cyan-900 dark:hover:text-cyan-100 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors duration-200 active:scale-90 transition-transform"
+          href="admin_dashboard.html"
+        >
+          <span class="material-symbols-outlined" data-icon="dashboard"
+            >dashboard</span
+          >
+          <span class="text-sm">Overview</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-cyan-900 dark:hover:text-cyan-100 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors duration-200 active:scale-90 transition-transform"
+          href="admin_attractions.html"
+        >
+          <span class="material-symbols-outlined" data-icon="location_on"
+            >location_on</span
+          >
+          <span class="text-sm">Attractions</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-cyan-900 dark:hover:text-cyan-100 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors duration-200 active:scale-90 transition-transform"
+          href="admin_fraud_report.html"
+        >
+          <span class="material-symbols-outlined" data-icon="report_problem"
+            >report_problem</span
+          >
+          <span class="text-sm">Fraud Reports</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-cyan-700 dark:text-cyan-300 font-semibold border-r-4 border-cyan-700 dark:border-cyan-400 bg-cyan-50/50 dark:bg-cyan-900/20 transition-all duration-200"
+        >
+          <span class="material-symbols-outlined" data-icon="payments"
+            >payments</span
+          >
+          <span class="text-sm">User Plans</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-cyan-900 dark:hover:text-cyan-100 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors duration-200 active:scale-90 transition-transform"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="settings"
+            >settings</span
+          >
+          <span class="text-sm">Settings</span>
+        </a>
+      </nav>
+      <div class="mt-auto px-2">
+        <button
+          class="w-full bg-primary-container text-on-primary-container py-3 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+        >
+          <span class="material-symbols-outlined text-sm" data-icon="add"
+            >add</span
+          >
+          New Report
+        </button>
+        <div
+          class="mt-6 flex items-center gap-3 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          <div
+            class="w-10 h-10 rounded-full bg-cyan-700 flex items-center justify-center text-white font-bold text-sm"
+            id="admin-avatar"
+          >
+            ?
+          </div>
+          <div>
+            <p
+              class="text-sm font-bold text-slate-900 dark:text-slate-100"
+              id="admin-name"
+            >
+              Loading...
+            </p>
+            <p class="text-[10px] text-slate-500 uppercase tracking-widest">
+              Administrator
+            </p>
+          </div>
+        </div>
+        <script>
+          fetch("/api/me")
+            .then((r) => r.json())
+            .then((data) => {
+              if (data.full_name) {
+                document.getElementById("admin-name").textContent =
+                  data.full_name;
+                document.getElementById("admin-avatar").textContent =
+                  data.full_name.charAt(0).toUpperCase();
+              }
+            })
+            .catch(() => {
+              document.getElementById("admin-name").textContent = "Admin";
+              document.getElementById("admin-avatar").textContent = "A";
+            });
+        </script>
+        <a
+          href="signout"
+          class="mt-3 w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 font-semibold text-sm transition-all duration-200"
+        >
+          <span class="material-symbols-outlined text-sm">logout</span>
+          Sign Out
+        </a>
+      </div>
+    </aside>
+    <!-- TopAppBar (Execution from JSON) -->
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 flex justify-between items-center h-16 px-8 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md shadow-sm dark:shadow-none"
+    >
+      <div class="flex items-center gap-4 flex-1">
+        <div class="relative w-full max-w-md group">
+          <span
+            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg"
+            data-icon="search"
+            >search</span
+          >
+          <input
+            class="w-full bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-cyan-500/20 focus:bg-surface-container-lowest transition-all"
+            placeholder="Search experiences, users, or logs..."
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button
+          class="p-2 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors relative"
+        >
+          <span class="material-symbols-outlined" data-icon="notifications"
+            >notifications</span
+          >
+          <span
+            class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-white"
+          ></span>
+        </button>
+        <button
+          class="p-2 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors"
+        >
+          <span class="material-symbols-outlined" data-icon="help_outline"
+            >help_outline</span
+          >
+        </button>
+        <div class="h-8 w-px bg-slate-200 mx-2"></div>
+        <h2
+          class="text-sm font-bold text-cyan-900 dark:text-cyan-400 Plus Jakarta Sans Title-LG"
+        >
+          Manage Attractions
+        </h2>
+      </div>
+    </header>
+    <!-- Main Content Canvas -->
+    <main class="ml-64 pt-24 p-8 min-h-screen">
+      <!-- Header Section -->
+      <div
+        class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6"
+      >
+        <div class="max-w-2xl">
+          <h1
+            class="text-4xl font-extrabold tracking-tight text-on-surface mb-2"
+          >
+            Manage Attractions
+          </h1>
+          <p class="text-secondary text-sm leading-relaxed">
+            Curate the world's most breathtaking Egyptian destinations. Add,
+            edit, or archive experiences to maintain a premium gallery for
+            global travelers.
+          </p>
+        </div>
+        <button
+          onclick="openModal()"
+          class="px-6 py-3 bg-gradient-to-br from-primary to-primary-container text-white font-semibold rounded-xl flex items-center gap-2 shadow-lg hover:shadow-primary/20 transition-all active:scale-[0.98]"
+        >
+          <span class="material-symbols-outlined">add_location_alt</span>
+          Add New Attraction
+        </button>
+      </div>
+      <!-- Quick Stats Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+        <div
+          class="bg-surface-container-low p-6 rounded-2xl flex items-start justify-between border-b border-transparent hover:bg-surface-container-lowest transition-colors duration-300"
+        >
+          <div>
+            <p
+              class="text-xs font-semibold text-secondary uppercase tracking-wider mb-1"
+            >
+              Total Sites
+            </p>
+            <h3 class="text-3xl font-bold text-primary">124</h3>
+            <p class="text-xs text-green-600 mt-2 font-medium">
+              +12 this month
+            </p>
+          </div>
+          <div class="bg-primary/10 p-2 rounded-lg text-primary">
+            <span class="material-symbols-outlined">museum</span>
+          </div>
+        </div>
+        <div
+          class="bg-surface-container-low p-6 rounded-2xl flex items-start justify-between hover:bg-surface-container-lowest transition-colors duration-300"
+        >
+          <div>
+            <p
+              class="text-xs font-semibold text-secondary uppercase tracking-wider mb-1"
+            >
+              Pending Approval
+            </p>
+            <h3 class="text-3xl font-bold text-tertiary">08</h3>
+            <p class="text-xs text-slate-500 mt-2 font-medium text-amber-600">
+              Action required
+            </p>
+          </div>
+          <div class="bg-tertiary/10 p-2 rounded-lg text-tertiary">
+            <span class="material-symbols-outlined">pending_actions</span>
+          </div>
+        </div>
+        <div
+          class="bg-surface-container-low p-6 rounded-2xl flex items-start justify-between hover:bg-surface-container-lowest transition-colors duration-300"
+        >
+          <div>
+            <p
+              class="text-xs font-semibold text-secondary uppercase tracking-wider mb-1"
+            >
+              Total Visitors
+            </p>
+            <h3 class="text-3xl font-bold text-on-surface">1.2M</h3>
+            <p class="text-xs text-green-600 mt-2 font-medium">↑ 8% growth</p>
+          </div>
+          <div class="bg-on-surface/5 p-2 rounded-lg text-on-surface">
+            <span class="material-symbols-outlined">groups</span>
+          </div>
+        </div>
+        <div
+          class="bg-surface-container-low p-6 rounded-2xl flex items-start justify-between hover:bg-surface-container-lowest transition-colors duration-300"
+        >
+          <div>
+            <p
+              class="text-xs font-semibold text-secondary uppercase tracking-wider mb-1"
+            >
+              Review Score
+            </p>
+            <h3 class="text-3xl font-bold text-primary-container">4.9</h3>
+            <div class="flex gap-0.5 mt-2 text-tertiary">
+              <span
+                class="material-symbols-outlined text-sm"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >star</span
+              >
+              <span
+                class="material-symbols-outlined text-sm"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >star</span
+              >
+              <span
+                class="material-symbols-outlined text-sm"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >star</span
+              >
+              <span
+                class="material-symbols-outlined text-sm"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >star</span
+              >
+              <span
+                class="material-symbols-outlined text-sm"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >star</span
+              >
+            </div>
+          </div>
+          <div
+            class="bg-primary-container/10 p-2 rounded-lg text-primary-container"
+          >
+            <span class="material-symbols-outlined">star_rate</span>
+          </div>
+        </div>
+      </div>
+      <!-- Filters & Layout Toggle -->
+      <div class="flex items-center justify-between mb-8">
+        <div class="flex gap-3">
+          <span
+            class="px-4 py-2 bg-primary text-on-primary rounded-full text-xs font-bold"
+            >All Destinations</span
+          >
+          <span
+            class="px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-bold hover:bg-surface-container-high transition-colors cursor-pointer"
+            >Historical</span
+          >
+          <span
+            class="px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-bold hover:bg-surface-container-high transition-colors cursor-pointer"
+            >Nature</span
+          >
+          <span
+            class="px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-bold hover:bg-surface-container-high transition-colors cursor-pointer"
+            >Urban</span
+          >
+        </div>
+        <div class="flex bg-surface-container-low p-1 rounded-xl">
+          <button class="p-2 bg-white shadow-sm rounded-lg text-primary">
+            <span class="material-symbols-outlined">grid_view</span>
+          </button>
+          <button class="p-2 text-slate-400">
+            <span class="material-symbols-outlined">format_list_bulleted</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Edit Attraction Modal -->
+      <div
+        id="edit-modal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm"
+      >
+        <div
+          class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto"
+        >
+          <div class="p-8">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-2xl font-bold text-cyan-900">Edit Attraction</h2>
+              <button
+                onclick="closeEditModal()"
+                class="text-slate-400 hover:text-slate-600 transition-colors"
+              >
+                <span class="material-symbols-outlined text-2xl">close</span>
+              </button>
+            </div>
+            <div
+              id="edit-form-error"
+              class="hidden mb-4 px-4 py-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl"
+            ></div>
+            <div
+              id="edit-form-success"
+              class="hidden mb-4 px-4 py-3 bg-green-50 border border-green-200 text-green-700 text-sm rounded-xl"
+            ></div>
+            <input type="hidden" id="e-id" />
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-semibold text-slate-700 mb-1"
+                    >Name *</label
+                  >
+                  <input
+                    id="e-name"
+                    class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-500 outline-none"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-slate-700 mb-1"
+                    >Region *</label
+                  >
+                  <select
+                    id="e-region"
+                    class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none"
+                  >
+                    <option value="upper-egypt">Upper Egypt</option>
+                    <option value="lower-egypt">Lower Egypt</option>
+                    <option value="red-sea">Red Sea</option>
+                  </select>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-semibold text-slate-700 mb-1"
+                    >Location *</label
+                  >
+                  <input
+                    id="e-location"
+                    class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-slate-700 mb-1"
+                    >Entry Fee *</label
+                  >
+                  <input
+                    id="e-fee"
+                    class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none"
+                  />
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1"
+                  >Category</label
+                >
+                <input
+                  id="e-category"
+                  class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1"
+                  >Description *</label
+                >
+                <textarea
+                  id="e-description"
+                  rows="2"
+                  class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none resize-none"
+                ></textarea>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1"
+                  >History</label
+                >
+                <textarea
+                  id="e-history"
+                  rows="3"
+                  class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none resize-none"
+                ></textarea>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1"
+                  >Best Time to Visit</label
+                >
+                <input
+                  id="e-best-time"
+                  class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1"
+                  >Activities
+                  <span class="text-slate-400 font-normal"
+                    >(comma separated)</span
+                  ></label
+                >
+                <textarea
+                  id="e-activities"
+                  rows="2"
+                  class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none resize-none"
+                ></textarea>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1"
+                  >What to Bring
+                  <span class="text-slate-400 font-normal"
+                    >(comma separated)</span
+                  ></label
+                >
+                <input
+                  id="e-bring"
+                  class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1"
+                  >Image URL</label
+                >
+                <input
+                  id="e-image"
+                  class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none"
+                />
+                <div id="e-img-preview" class="mt-2 hidden">
+                  <img
+                    id="e-img-preview-img"
+                    class="w-full h-40 object-cover rounded-lg border border-slate-200"
+                    src=""
+                    alt="Preview"
+                  />
+                </div>
+              </div>
+              <div class="flex gap-3 pt-2">
+                <button
+                  onclick="closeEditModal()"
+                  class="flex-1 py-3 border border-slate-200 rounded-xl font-semibold text-sm text-slate-600 hover:bg-slate-50 transition-all"
+                >
+                  Cancel
+                </button>
+                <button
+                  onclick="submitEdit()"
+                  id="edit-submit-btn"
+                  class="flex-1 py-3 bg-cyan-700 text-white rounded-xl font-semibold text-sm hover:bg-cyan-800 transition-all"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Attractions Grid -->
+      <div id="dynamic-grid" class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div class="md:col-span-12 py-16 text-center text-secondary">
+          Loading attractions...
+        </div>
+      </div>
+
+      <script>
+        // ── Edit Modal ─────────────────────────────────────────────────────────────
+        function openEditModal(a) {
+          document.getElementById("e-id").value = a.attraction_id;
+          document.getElementById("e-name").value = a.name || "";
+          document.getElementById("e-region").value = a.region || "upper-egypt";
+          document.getElementById("e-location").value = a.location || "";
+          document.getElementById("e-fee").value = a.entry_fee || "";
+          document.getElementById("e-category").value = a.category || "";
+          document.getElementById("e-description").value = a.description || "";
+          document.getElementById("e-history").value = a.history || "";
+          document.getElementById("e-best-time").value = a.best_time || "";
+          document.getElementById("e-activities").value = a.activities || "";
+          document.getElementById("e-bring").value = a.what_to_bring || "";
+          document.getElementById("e-image").value = a.image_url || "";
+          var prev = document.getElementById("e-img-preview");
+          var prevImg = document.getElementById("e-img-preview-img");
+          if (a.image_url) {
+            prevImg.src = a.image_url;
+            prev.classList.remove("hidden");
+          } else {
+            prev.classList.add("hidden");
+          }
+          document.getElementById("edit-form-error").classList.add("hidden");
+          document.getElementById("edit-form-success").classList.add("hidden");
+          document.getElementById("edit-modal").classList.remove("hidden");
+          document.getElementById("edit-modal").classList.add("flex");
+        }
+
+        function closeEditModal() {
+          document.getElementById("edit-modal").classList.add("hidden");
+          document.getElementById("edit-modal").classList.remove("flex");
+        }
+
+        document
+          .getElementById("e-image")
+          .addEventListener("input", function () {
+            var url = this.value.trim();
+            var prev = document.getElementById("e-img-preview");
+            var img = document.getElementById("e-img-preview-img");
+            if (url) {
+              img.src = url;
+              prev.classList.remove("hidden");
+            } else {
+              prev.classList.add("hidden");
+            }
+          });
+
+        function submitEdit() {
+          var btn = document.getElementById("edit-submit-btn");
+          var errDiv = document.getElementById("edit-form-error");
+          var okDiv = document.getElementById("edit-form-success");
+          errDiv.classList.add("hidden");
+          okDiv.classList.add("hidden");
+
+          var id = document.getElementById("e-id").value;
+          var data = {
+            name: document.getElementById("e-name").value.trim(),
+            region: document.getElementById("e-region").value,
+            location: document.getElementById("e-location").value.trim(),
+            entry_fee: document.getElementById("e-fee").value.trim(),
+            category: document.getElementById("e-category").value.trim(),
+            description: document.getElementById("e-description").value.trim(),
+            history: document.getElementById("e-history").value.trim(),
+            best_time: document.getElementById("e-best-time").value.trim(),
+            activities: document.getElementById("e-activities").value.trim(),
+            what_to_bring: document.getElementById("e-bring").value.trim(),
+            image_url: document.getElementById("e-image").value.trim(),
+          };
+
+          if (
+            !data.name ||
+            !data.region ||
+            !data.location ||
+            !data.description ||
+            !data.entry_fee
+          ) {
+            errDiv.textContent = "Please fill in all required fields.";
+            errDiv.classList.remove("hidden");
+            return;
+          }
+
+          btn.textContent = "Saving...";
+          btn.disabled = true;
+
+          fetch("/api/attractions/edit/" + id, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          })
+            .then((r) => r.json())
+            .then((res) => {
+              btn.textContent = "Save Changes";
+              btn.disabled = false;
+              if (res.success) {
+                okDiv.textContent = "Attraction updated!";
+                okDiv.classList.remove("hidden");
+                loadGrid();
+                setTimeout(closeEditModal, 1200);
+              } else {
+                errDiv.textContent = res.error || "Something went wrong.";
+                errDiv.classList.remove("hidden");
+              }
+            })
+            .catch(() => {
+              btn.textContent = "Save Changes";
+              btn.disabled = false;
+              errDiv.textContent = "Network error.";
+              errDiv.classList.remove("hidden");
+            });
+        }
+
+        // ── Delete ─────────────────────────────────────────────────────────────────
+        function deleteAttraction(id) {
+          if (
+            !confirm(
+              "Archive this attraction? It will no longer appear on the site.",
+            )
+          )
+            return;
+          fetch("/api/attractions/delete/" + id, { method: "DELETE" })
+            .then((r) => r.json())
+            .then((res) => {
+              if (res.success) loadGrid();
+            });
+        }
+
+        // ── Build card HTML ────────────────────────────────────────────────────────
+        function buildAdminCard(a, index) {
+          var img =
+            a.image_url ||
+            "https://via.placeholder.com/800x400?text=" +
+              encodeURIComponent(a.name);
+          var regionLabel = (a.region || "")
+            .replace(/-/g, " ")
+            .replace(/\w/g, (c) => c.toUpperCase());
+          var dataAttr =
+            "data-attraction='" +
+            JSON.stringify(a).replace(/'/g, "&#39;") +
+            "'";
+
+          if (index === 0) {
+            // Hero/large card
+            return `
+    <div class="md:col-span-8 group relative bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-transparent hover:border-outline-variant/10">
+      <div class="relative h-96 overflow-hidden">
+        <img alt="${a.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="${img}" onerror="this.src='https://via.placeholder.com/800x400?text=${encodeURIComponent(a.name)}'"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        <div class="absolute top-6 left-6 flex gap-2">
+          <span class="px-3 py-1 bg-tertiary/90 text-white rounded-full text-[10px] font-extrabold uppercase tracking-widest backdrop-blur-md">${a.category || "Featured"}</span>
+          <span class="px-3 py-1 bg-white/20 text-white rounded-full text-[10px] font-bold uppercase tracking-widest backdrop-blur-md">Active</span>
+        </div>
+        <div class="absolute bottom-8 left-8 right-8">
+          <h3 class="text-white text-4xl font-extrabold mb-2 font-headline tracking-tight">${a.name}</h3>
+          <div class="flex items-center gap-4 text-white/90">
+            <span class="flex items-center gap-1 text-sm"><span class="material-symbols-outlined text-sm">location_on</span>${a.location}</span>
+            <span class="flex items-center gap-1 text-sm"><span class="material-symbols-outlined text-sm">payments</span>${a.entry_fee}</span>
+          </div>
+        </div>
+      </div>
+      <div class="p-8 flex items-center justify-end gap-4">
+        <button onclick='openEditModal(${JSON.stringify(a)})' class="p-3 text-secondary hover:bg-surface-container-low rounded-xl transition-colors">
+          <span class="material-symbols-outlined">edit</span>
+        </button>
+        <button onclick="deleteAttraction(${a.attraction_id})" class="p-3 text-error hover:bg-error-container/20 rounded-xl transition-colors">
+          <span class="material-symbols-outlined">delete</span>
+        </button>
+      </div>
+    </div>`;
+          } else {
+            // Standard card
+            return `
+    <div class="md:col-span-4 group bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-sm hover:shadow-md transition-all border border-transparent">
+      <div class="h-64 overflow-hidden relative">
+        <img alt="${a.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="${img}" onerror="this.src='https://via.placeholder.com/400x300?text=${encodeURIComponent(a.name)}'"/>
+        <div class="absolute top-4 right-4 p-2 bg-white/90 backdrop-blur-md rounded-full text-green-600">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+        </div>
+      </div>
+      <div class="p-6">
+        <span class="text-[10px] font-bold text-secondary tracking-widest uppercase mb-1 block">${regionLabel}</span>
+        <h3 class="text-xl font-bold text-on-surface mb-2">${a.name}</h3>
+        <p class="text-sm text-secondary mb-4 line-clamp-2">${a.description || ""}</p>
+        <div class="flex items-center justify-between text-xs text-slate-500 font-medium mb-6">
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">payments</span>${a.entry_fee}</span>
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span>${a.location}</span>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <button onclick='openEditModal(${JSON.stringify(a)})' class="py-2.5 flex items-center justify-center gap-2 border border-outline-variant/30 rounded-xl text-sm font-semibold hover:bg-surface-container-low transition-colors">
+            <span class="material-symbols-outlined text-[18px]">edit</span> Edit
+          </button>
+          <button onclick="deleteAttraction(${a.attraction_id})" class="py-2.5 flex items-center justify-center gap-2 border border-outline-variant/30 rounded-xl text-sm font-semibold hover:bg-error/5 hover:text-error transition-colors">
+            <span class="material-symbols-outlined text-[18px]">delete</span> Remove
+          </button>
+        </div>
+      </div>
+    </div>`;
+          }
+        }
+
+        // ── Load grid ──────────────────────────────────────────────────────────────
+        function loadGrid() {
+          var grid = document.getElementById("dynamic-grid");
+          grid.innerHTML =
+            '<div class="md:col-span-12 py-16 text-center text-secondary">Loading attractions...</div>';
+          fetch("/api/attractions")
+            .then((r) => r.json())
+            .then((data) => {
+              if (!data.length) {
+                grid.innerHTML =
+                  '<div class="md:col-span-12 py-16 text-center text-secondary">No attractions yet. Click "Add New Attraction" to get started.</div>';
+                return;
+              }
+              grid.innerHTML = data
+                .map((a, i) => buildAdminCard(a, i))
+                .join("");
+            })
+            .catch(() => {
+              grid.innerHTML =
+                '<div class="md:col-span-12 py-16 text-center text-red-400">Failed to load attractions.</div>';
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", loadGrid);
+      </script>
+    </main>
+    <!-- Slide-over Backdrop (Simulated Modal) -->
+    <div
+      class="fixed inset-0 bg-on-surface/40 backdrop-blur-sm z-[60] flex justify-end invisible"
+    >
+      <!-- New Attraction Form Overlay -->
+      <div
+        class="w-full max-w-xl bg-white h-full shadow-2xl p-10 overflow-y-auto transform translate-x-full transition-transform duration-500"
+      >
+        <div class="flex items-center justify-between mb-10">
+          <h2 class="text-2xl font-extrabold text-on-surface">
+            New Attraction
+          </h2>
+          <button
+            class="p-2 hover:bg-surface-container-low rounded-full transition-colors"
+          >
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <form class="space-y-8">
+          <div>
+            <label
+              class="block text-xs font-bold text-secondary uppercase tracking-widest mb-3"
+              >Attraction Name</label
+            >
+            <input
+              class="w-full bg-surface-container-low border-none rounded-xl p-4 focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all text-sm"
+              placeholder="e.g. Karnak Temple"
+              type="text"
+            />
+          </div>
+          <div class="grid grid-cols-2 gap-6">
+            <div>
+              <label
+                class="block text-xs font-bold text-secondary uppercase tracking-widest mb-3"
+                >Location</label
+              >
+              <input
+                class="w-full bg-surface-container-low border-none rounded-xl p-4 focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all text-sm"
+                placeholder="City or Region"
+                type="text"
+              />
+            </div>
+            <div>
+              <label
+                class="block text-xs font-bold text-secondary uppercase tracking-widest mb-3"
+                >Category</label
+              >
+              <select
+                class="w-full bg-surface-container-low border-none rounded-xl p-4 focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all text-sm appearance-none"
+              >
+                <option>Historical Site</option>
+                <option>Natural Wonder</option>
+                <option>Museum</option>
+                <option>Urban Experience</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label
+              class="block text-xs font-bold text-secondary uppercase tracking-widest mb-3"
+              >Experience Description</label
+            >
+            <textarea
+              class="w-full bg-surface-container-low border-none rounded-xl p-4 focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all text-sm"
+              placeholder="Tell the story of this destination..."
+              rows="4"
+            ></textarea>
+          </div>
+          <div>
+            <label
+              class="block text-xs font-bold text-secondary uppercase tracking-widest mb-3"
+              >Gallery Upload</label
+            >
+            <div
+              class="border-2 border-dashed border-outline-variant/50 rounded-[2rem] p-12 flex flex-col items-center justify-center bg-surface-container-lowest hover:bg-surface transition-colors cursor-pointer group"
+            >
+              <div
+                class="bg-primary/5 p-4 rounded-full text-primary mb-4 group-hover:scale-110 transition-transform"
+              >
+                <span class="material-symbols-outlined text-3xl"
+                  >cloud_upload</span
+                >
+              </div>
+              <p class="text-sm font-bold text-on-surface mb-1">
+                Click to upload or drag and drop
+              </p>
+              <p class="text-[11px] text-secondary">
+                High-res JPEG or PNG (Max 10MB)
+              </p>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-surface-container-low flex gap-4">
+            <button
+              class="flex-1 py-4 bg-surface-container-high text-on-surface-variant font-bold rounded-xl active:scale-[0.98] transition-transform"
+              type="button"
+            >
+              Cancel
+            </button>
+            <button
+              class="flex-[2] py-4 bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-xl shadow-lg active:scale-[0.98] transition-transform"
+              type="submit"
+            >
+              Publish Attraction
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add Attraction Modal -->
+    <div
+      id="add-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm"
+    >
+      <div
+        class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto"
+      >
+        <div class="p-8">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-cyan-900">Add New Attraction</h2>
+            <button
+              onclick="closeModal()"
+              class="text-slate-400 hover:text-slate-600 transition-colors"
+            >
+              <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+          </div>
+          <div
+            id="form-error"
+            class="hidden mb-4 px-4 py-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl"
+          ></div>
+          <div
+            id="form-success"
+            class="hidden mb-4 px-4 py-3 bg-green-50 border border-green-200 text-green-700 text-sm rounded-xl"
+          ></div>
+          <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1"
+                  >Name *</label
+                >
+                <input
+                  id="f-name"
+                  class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-500 outline-none"
+                  placeholder="e.g. Karnak Temple"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1"
+                  >Region *</label
+                >
+                <select
+                  id="f-region"
+                  class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none"
+                >
+                  <option value="">Select region...</option>
+                  <option value="upper-egypt">Upper Egypt</option>
+                  <option value="lower-egypt">Lower Egypt</option>
+                  <option value="red-sea">Red Sea</option>
+                </select>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1"
+                  >Location *</label
+                >
+                <input
+                  id="f-location"
+                  class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none"
+                  placeholder="e.g. Luxor, Upper Egypt"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1"
+                  >Entry Fee *</label
+                >
+                <input
+                  id="f-fee"
+                  class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none"
+                  placeholder="e.g. $25"
+                />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1"
+                >Category</label
+              >
+              <input
+                id="f-category"
+                class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none"
+                placeholder="e.g. World Heritage Site"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1"
+                >Description *</label
+              >
+              <textarea
+                id="f-description"
+                rows="2"
+                class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none resize-none"
+                placeholder="Short description shown on the card..."
+              ></textarea>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1"
+                >History</label
+              >
+              <textarea
+                id="f-history"
+                rows="3"
+                class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none resize-none"
+                placeholder="Historical background..."
+              ></textarea>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1"
+                >Best Time to Visit</label
+              >
+              <input
+                id="f-best-time"
+                class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none"
+                placeholder="e.g. October to April"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1"
+                >Activities
+                <span class="text-slate-400 font-normal"
+                  >(comma separated)</span
+                ></label
+              >
+              <textarea
+                id="f-activities"
+                rows="2"
+                class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none resize-none"
+                placeholder="e.g. Guided tour, Photography, Camel ride"
+              ></textarea>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1"
+                >What to Bring
+                <span class="text-slate-400 font-normal"
+                  >(comma separated)</span
+                ></label
+              >
+              <input
+                id="f-bring"
+                class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none"
+                placeholder="e.g. Sunscreen, Water bottle, Camera"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1"
+                >Image URL</label
+              >
+              <input
+                id="f-image"
+                class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-cyan-500/20 outline-none"
+                placeholder="https://..."
+              />
+              <div id="img-preview" class="mt-2 hidden">
+                <img
+                  id="img-preview-img"
+                  class="w-full h-40 object-cover rounded-lg border border-slate-200"
+                  src=""
+                  alt="Preview"
+                />
+              </div>
+            </div>
+            <div class="flex gap-3 pt-2">
+              <button
+                onclick="closeModal()"
+                class="flex-1 py-3 border border-slate-200 rounded-xl font-semibold text-sm text-slate-600 hover:bg-slate-50 transition-all"
+              >
+                Cancel
+              </button>
+              <button
+                onclick="submitAttraction()"
+                id="submit-btn"
+                class="flex-1 py-3 bg-cyan-700 text-white rounded-xl font-semibold text-sm hover:bg-cyan-800 transition-all"
+              >
+                Add Attraction
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Attractions Table -->
+    <div
+      id="attractions-table"
+      class="mt-8 bg-white rounded-2xl shadow-sm overflow-hidden"
+    >
+      <div class="p-6 border-b border-slate-100">
+        <h3 class="font-bold text-slate-900">All Attractions</h3>
+      </div>
+      <div id="table-body" class="divide-y divide-slate-100">
+        <div class="p-8 text-center text-slate-400 text-sm">
+          Loading attractions...
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ── Modal ──────────────────────────────────────────────────────────────────
+      function openModal() {
+        document.getElementById("add-modal").classList.remove("hidden");
+        document.getElementById("add-modal").classList.add("flex");
+      }
+      function closeModal() {
+        document.getElementById("add-modal").classList.add("hidden");
+        document.getElementById("add-modal").classList.remove("flex");
+        document.getElementById("form-error").classList.add("hidden");
+        document.getElementById("form-success").classList.add("hidden");
+      }
+
+      // ── Image preview ──────────────────────────────────────────────────────────
+      document.getElementById("f-image").addEventListener("input", function () {
+        var url = this.value.trim();
+        var preview = document.getElementById("img-preview");
+        var img = document.getElementById("img-preview-img");
+        if (url) {
+          img.src = url;
+          preview.classList.remove("hidden");
+        } else {
+          preview.classList.add("hidden");
+        }
+      });
+
+      // ── Submit attraction ──────────────────────────────────────────────────────
+      function submitAttraction() {
+        var btn = document.getElementById("submit-btn");
+        var errDiv = document.getElementById("form-error");
+        var okDiv = document.getElementById("form-success");
+        errDiv.classList.add("hidden");
+        okDiv.classList.add("hidden");
+
+        var data = {
+          name: document.getElementById("f-name").value.trim(),
+          region: document.getElementById("f-region").value,
+          location: document.getElementById("f-location").value.trim(),
+          entry_fee: document.getElementById("f-fee").value.trim(),
+          category: document.getElementById("f-category").value.trim(),
+          description: document.getElementById("f-description").value.trim(),
+          history: document.getElementById("f-history").value.trim(),
+          best_time: document.getElementById("f-best-time").value.trim(),
+          activities: document.getElementById("f-activities").value.trim(),
+          what_to_bring: document.getElementById("f-bring").value.trim(),
+          image_url: document.getElementById("f-image").value.trim(),
+        };
+
+        if (
+          !data.name ||
+          !data.region ||
+          !data.location ||
+          !data.description ||
+          !data.entry_fee
+        ) {
+          errDiv.textContent = "Please fill in all required fields (*)";
+          errDiv.classList.remove("hidden");
+          return;
+        }
+
+        btn.textContent = "Saving...";
+        btn.disabled = true;
+
+        fetch("/api/attractions/add", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        })
+          .then((r) => r.json())
+          .then((res) => {
+            btn.textContent = "Add Attraction";
+            btn.disabled = false;
+            if (res.success) {
+              okDiv.textContent = "Attraction added successfully!";
+              okDiv.classList.remove("hidden");
+              loadAttractions();
+              setTimeout(closeModal, 1500);
+            } else {
+              errDiv.textContent = res.error || "Something went wrong.";
+              errDiv.classList.remove("hidden");
+            }
+          })
+          .catch(() => {
+            btn.textContent = "Add Attraction";
+            btn.disabled = false;
+            errDiv.textContent = "Network error. Please try again.";
+            errDiv.classList.remove("hidden");
+          });
+      }
+
+      // ── Delete attraction ──────────────────────────────────────────────────────
+      function deleteAttraction(id) {
+        if (
+          !confirm(
+            "Archive this attraction? It will no longer appear on the site.",
+          )
+        )
+          return;
+        fetch("/api/attractions/delete/" + id, { method: "DELETE" })
+          .then((r) => r.json())
+          .then((res) => {
+            if (res.success) loadAttractions();
+          });
+      }
+
+      // ── Load attractions table ─────────────────────────────────────────────────
+      function loadAttractions() {
+        fetch("/api/attractions")
+          .then((r) => r.json())
+          .then((data) => {
+            var body = document.getElementById("table-body");
+            if (!data.length) {
+              body.innerHTML =
+                '<div class="p-8 text-center text-slate-400 text-sm">No attractions yet. Click "Add New Attraction" to get started.</div>';
+              return;
+            }
+            body.innerHTML = data
+              .map(
+                (a) => `
+        <div class="flex items-center gap-4 p-4 hover:bg-slate-50 transition-colors">
+          <img src="${a.image_url || "https://via.placeholder.com/80x60?text=No+Image"}" class="w-20 h-14 object-cover rounded-lg flex-shrink-0" onerror="this.src='https://via.placeholder.com/80x60?text=No+Image'"/>
+          <div class="flex-grow min-w-0">
+            <p class="font-bold text-slate-900 text-sm truncate">${a.name}</p>
+            <p class="text-xs text-slate-500">${a.location} · <span class="capitalize">${(a.region || "").replace("-", " ")}</span></p>
+            <p class="text-xs text-slate-400 truncate mt-0.5">${a.description || ""}</p>
+          </div>
+          <div class="flex items-center gap-3 flex-shrink-0">
+            <span class="text-sm font-bold text-cyan-700">${a.entry_fee || ""}</span>
+            <button onclick="deleteAttraction(${a.attraction_id})" class="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">
+              <span class="material-symbols-outlined text-sm">delete</span>
+            </button>
+          </div>
+        </div>
+      `,
+              )
+              .join("");
+          })
+          .catch(() => {
+            document.getElementById("table-body").innerHTML =
+              '<div class="p-8 text-center text-red-400 text-sm">Failed to load attractions.</div>';
+          });
+      }
+
+      // Wire up Add New Attraction button
+      document.addEventListener("DOMContentLoaded", function () {
+        var addBtn = document.querySelector("button.btn-add-attraction");
+        if (addBtn) addBtn.addEventListener("click", openModal);
+        loadAttractions();
+      });
+    </script>
+  </body>
+</html>

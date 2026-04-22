@@ -1,0 +1,748 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Nile Admin - User Plans &amp; Itineraries</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              tertiary: "#755b00",
+              "on-tertiary-container": "#503d00",
+              "secondary-fixed": "#f0e1c3",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e4e2de",
+              "on-surface-variant": "#40484d",
+              "on-error": "#ffffff",
+              "inverse-surface": "#30312e",
+              "on-primary-container": "#c5ebff",
+              "inverse-primary": "#89d0f1",
+              "tertiary-fixed-dim": "#ecc246",
+              "on-background": "#1b1c1a",
+              surface: "#fbf9f5",
+              "surface-container": "#efeeea",
+              secondary: "#685d46",
+              "surface-tint": "#0c6684",
+              "primary-fixed": "#bfe9ff",
+              "on-primary": "#ffffff",
+              "secondary-container": "#f0e1c3",
+              "inverse-on-surface": "#f2f0ed",
+              "on-surface": "#1b1c1a",
+              "on-secondary-container": "#6e634c",
+              background: "#fbf9f5",
+              "surface-container-high": "#eae8e4",
+              "primary-container": "#1c6e8c",
+              "on-secondary-fixed-variant": "#4f4630",
+              "tertiary-container": "#cea72c",
+              "on-secondary-fixed": "#221b08",
+              "on-primary-fixed": "#001f2a",
+              "surface-container-low": "#f5f3ef",
+              error: "#ba1a1a",
+              "surface-bright": "#fbf9f5",
+              "secondary-fixed-dim": "#d3c5a8",
+              primary: "#00556f",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed-variant": "#004d65",
+              "tertiary-fixed": "#ffe08e",
+              outline: "#70787e",
+              "primary-fixed-dim": "#89d0f1",
+              "surface-dim": "#dbdad6",
+              "outline-variant": "#bfc8cd",
+              "surface-container-highest": "#e4e2de",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed": "#241a00",
+              "on-tertiary-fixed-variant": "#584400",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .glass-panel {
+        background: rgba(251, 249, 245, 0.7);
+        backdrop-filter: blur(12px);
+      }
+      .premium-gradient {
+        background: linear-gradient(135deg, #00556f 0%, #1c6e8c 100%);
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-surface">
+    <!-- SideNavBar -->
+    <aside
+      class="flex flex-col h-full py-6 px-4 h-screen w-64 fixed left-0 top-0 border-r-0 bg-slate-50 dark:bg-slate-900 z-50"
+    >
+      <div class="mb-10 px-2">
+        <h1
+          class="text-xl font-bold tracking-tight text-cyan-900 dark:text-cyan-100 uppercase"
+        >
+          Nile Admin
+        </h1>
+        <p class="text-xs text-slate-500 font-medium">Management Console</p>
+      </div>
+      <nav class="flex-1 space-y-2">
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-cyan-900 dark:hover:text-cyan-100 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors duration-200 active:scale-90 transition-transform"
+          href="admin_dashboard.html"
+        >
+          <span class="material-symbols-outlined" data-icon="dashboard"
+            >dashboard</span
+          >
+          <span class="text-sm">Overview</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-cyan-900 dark:hover:text-cyan-100 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors duration-200 active:scale-90 transition-transform"
+          href="admin_attractions.html"
+        >
+          <span class="material-symbols-outlined" data-icon="location_on"
+            >location_on</span
+          >
+          <span class="text-sm">Attractions</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-cyan-900 dark:hover:text-cyan-100 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors duration-200 active:scale-90 transition-transform"
+          href="admin_fraud_report.html"
+        >
+          <span class="material-symbols-outlined" data-icon="report_problem"
+            >report_problem</span
+          >
+          <span class="text-sm">Fraud Reports</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-cyan-700 dark:text-cyan-300 font-semibold border-r-4 border-cyan-700 dark:border-cyan-400 bg-cyan-50/50 dark:bg-cyan-900/20 transition-all duration-200"
+        >
+          <span class="material-symbols-outlined" data-icon="payments"
+            >payments</span
+          >
+          <span class="text-sm">User Plans</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-cyan-900 dark:hover:text-cyan-100 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors duration-200 active:scale-90 transition-transform"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="settings"
+            >settings</span
+          >
+          <span class="text-sm">Settings</span>
+        </a>
+      </nav>
+      <div class="mt-auto px-2">
+        <button
+          class="w-full bg-primary-container text-on-primary-container py-3 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+        >
+          <span class="material-symbols-outlined text-sm" data-icon="add"
+            >add</span
+          >
+          New Report
+        </button>
+        <div
+          class="mt-6 flex items-center gap-3 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          <div
+            class="w-10 h-10 rounded-full bg-cyan-700 flex items-center justify-center text-white font-bold text-sm"
+            id="admin-avatar"
+          >
+            ?
+          </div>
+          <div>
+            <p
+              class="text-sm font-bold text-slate-900 dark:text-slate-100"
+              id="admin-name"
+            >
+              Loading...
+            </p>
+            <p class="text-[10px] text-slate-500 uppercase tracking-widest">
+              Administrator
+            </p>
+          </div>
+        </div>
+        <script>
+          fetch("/api/me")
+            .then((r) => r.json())
+            .then((data) => {
+              if (data.full_name) {
+                document.getElementById("admin-name").textContent =
+                  data.full_name;
+                document.getElementById("admin-avatar").textContent =
+                  data.full_name.charAt(0).toUpperCase();
+              }
+            })
+            .catch(() => {
+              document.getElementById("admin-name").textContent = "Admin";
+              document.getElementById("admin-avatar").textContent = "A";
+            });
+        </script>
+        <a
+          href="signout"
+          class="mt-3 w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 font-semibold text-sm transition-all duration-200"
+        >
+          <span class="material-symbols-outlined text-sm">logout</span>
+          Sign Out
+        </a>
+      </div>
+    </aside>
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 flex justify-between items-center h-16 px-8 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md shadow-sm dark:shadow-none"
+    >
+      <div class="flex items-center gap-4 flex-1">
+        <div class="relative w-full max-w-md group">
+          <span
+            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg"
+            data-icon="search"
+            >search</span
+          >
+          <input
+            class="w-full bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-cyan-500/20 focus:bg-surface-container-lowest transition-all"
+            placeholder="Search experiences, users, or logs..."
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button
+          class="p-2 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors relative"
+        >
+          <span class="material-symbols-outlined" data-icon="notifications"
+            >notifications</span
+          >
+          <span
+            class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-white"
+          ></span>
+        </button>
+        <button
+          class="p-2 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors"
+        >
+          <span class="material-symbols-outlined" data-icon="help_outline"
+            >help_outline</span
+          >
+        </button>
+        <div class="h-8 w-px bg-slate-200 mx-2"></div>
+        <h2
+          class="text-sm font-bold text-cyan-900 dark:text-cyan-400 Plus Jakarta Sans Title-LG"
+        >
+          User Plans & Insights
+        </h2>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main class="ml-64 pt-24 px-8 pb-12 min-h-screen">
+      <!-- Dashboard Header / Key Insights Bento -->
+      <section class="grid grid-cols-12 gap-6 mb-8">
+        <div
+          class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-8 rounded-3xl flex flex-col justify-between relative overflow-hidden"
+        >
+          <div class="relative z-10">
+            <h2 class="text-3xl font-extrabold text-primary mb-2">
+              Seasonal Trends: Cairo Peak
+            </h2>
+            <p class="text-secondary max-w-md mb-6 leading-relaxed">
+              Itinerary creation for Giza Plateau has surged by 24% this week.
+              Most users are bundling the Grand Egyptian Museum with evening
+              Felucca rides.
+            </p>
+            <div class="flex gap-4">
+              <div class="bg-surface-container px-4 py-2 rounded-xl">
+                <span
+                  class="text-[10px] uppercase font-bold text-slate-500 block mb-1"
+                  >Most Active Hub</span
+                >
+                <span class="text-lg font-bold text-on-surface"
+                  >Giza Necropolis</span
+                >
+              </div>
+              <div class="bg-surface-container px-4 py-2 rounded-xl">
+                <span
+                  class="text-[10px] uppercase font-bold text-slate-500 block mb-1"
+                  >Avg. Bundle Size</span
+                >
+                <span class="text-lg font-bold text-on-surface"
+                  >4.2 Activities</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Decorative Graphic -->
+          <div
+            class="absolute right-0 top-0 h-full w-1/3 bg-primary-container/5 transform skew-x-12 translate-x-16"
+          ></div>
+        </div>
+        <div
+          class="col-span-12 lg:col-span-4 bg-primary-container p-8 rounded-3xl text-white flex flex-col justify-between"
+        >
+          <div>
+            <span
+              class="material-symbols-outlined text-tertiary-fixed text-4xl mb-4"
+              data-icon="trending_up"
+              >trending_up</span
+            >
+            <h3 class="text-xl font-bold mb-2">Growth Opportunity</h3>
+            <p class="text-primary-fixed text-sm">
+              Users in Luxor are requesting more private dinner options than
+              currently available in bundles.
+            </p>
+          </div>
+          <button
+            class="bg-white/10 hover:bg-white/20 transition-colors py-3 rounded-xl text-sm font-semibold border border-white/20"
+          >
+            View Market Analysis
+          </button>
+        </div>
+      </section>
+      <!-- Popular Itineraries Grid -->
+      <div class="flex justify-between items-end mb-6">
+        <div>
+          <h2 class="text-2xl font-bold text-on-surface">
+            Top User-Generated Plans
+          </h2>
+          <p class="text-slate-500 text-sm">
+            Real-time analysis of the 'Plan Your Day' feature outputs
+          </p>
+        </div>
+        <div class="flex gap-2">
+          <span
+            class="px-4 py-2 bg-primary text-white rounded-full text-xs font-semibold cursor-pointer"
+            >Week</span
+          >
+          <span
+            class="px-4 py-2 bg-surface-container text-secondary rounded-full text-xs font-semibold cursor-pointer"
+            >Month</span
+          >
+          <span
+            class="px-4 py-2 bg-surface-container text-secondary rounded-full text-xs font-semibold cursor-pointer"
+            >Quarter</span
+          >
+        </div>
+      </div>
+      <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Itinerary Card 1 -->
+        <div
+          class="group bg-surface-container-low rounded-3xl overflow-hidden hover:bg-white transition-all duration-300"
+        >
+          <div class="relative h-48 overflow-hidden">
+            <img
+              alt="Giza Pyramids"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              data-alt="wide cinematic shot of the Great Pyramids of Giza during sunset with a soft orange and purple sky"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP4FOAjPnsz2tB3xF1yOqm8UgTsZ2xgCJr5nKxregQ8Stb9-cCapkNLm36Oxmvv0pf4PezStDCdkusokGwlXaYqum729SAUwtk7t-pZsUHYYaS2P1sA9DXR9vohj4tdGDOQ6hmrcmLkW8nXa5q9SnVksgOkLguanA30m7p2H-BFsF2gSVqSRQWbCjd-A-XX-JfIZlt2we_t4MVpFGiXspnBbgM5Qo-N8Hj8zqwJSGq_HAOrCJTjhd3vadhpvIgSfiOf_zilbnckTM"
+            />
+            <div
+              class="absolute top-4 left-4 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase text-primary"
+            >
+              Popular Bundle
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h4 class="text-lg font-bold text-on-surface">
+                  The Pharaoh's Path
+                </h4>
+                <p class="text-sm text-secondary">
+                  Giza • 120 Plans this month
+                </p>
+              </div>
+              <div class="flex items-center gap-1 text-tertiary">
+                <span
+                  class="material-symbols-outlined text-sm"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >star</span
+                >
+                <span class="text-sm font-bold">4.9</span>
+              </div>
+            </div>
+            <div class="space-y-3 mb-6">
+              <div
+                class="flex items-center gap-3 text-xs text-on-surface-variant"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Sunrise Pyramid Walk
+              </div>
+              <div
+                class="flex items-center gap-3 text-xs text-on-surface-variant"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Grand Egyptian Museum (Private)
+              </div>
+              <div
+                class="flex items-center gap-3 text-xs text-on-surface-variant"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Sunset Felucca Dinner
+              </div>
+            </div>
+            <div
+              class="flex items-center justify-between pt-4 border-t border-outline-variant/20"
+            >
+              <span class="text-xs font-medium text-slate-400"
+                >Avg. Cost: $420</span
+              >
+              <button
+                class="text-primary text-xs font-bold flex items-center gap-1 group-hover:gap-2 transition-all"
+              >
+                Details
+                <span class="material-symbols-outlined text-sm"
+                  >arrow_forward</span
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Itinerary Card 2 -->
+        <div
+          class="group bg-surface-container-low rounded-3xl overflow-hidden hover:bg-white transition-all duration-300"
+        >
+          <div class="relative h-48 overflow-hidden">
+            <img
+              alt="Luxor Temple"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              data-alt="interior view of Luxor temple columns at night illuminated by dramatic warm floodlights"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKBlAKYWp2lrZyT5PxMZJpdH3d9dJzoJWZFLi1bBUhU6DjPlsRKw5VQTWoQ51HzoJ2xpwlF9JHtPzSEcRukcnFnpPUfpbb_GLi17CEpzSca8a1ndU1ed3tmdOkS89usA37-Qh4f3z7IaXyY1U5I9dh5wbqPkX3S2E9LoT7skCDQ8E0-qbtopoG23pdyF577-dK8cUUHREhHK7I393cvGNUUBAA75dJ1XAm02KN1k3Kpy0Ntks6FfznQQteMVKPv3RLFbIz3zjm8Zs"
+            />
+            <div
+              class="absolute top-4 left-4 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase text-primary"
+            >
+              High Conversion
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h4 class="text-lg font-bold text-on-surface">
+                  The Valley Secrets
+                </h4>
+                <p class="text-sm text-secondary">
+                  Luxor • 85 Plans this month
+                </p>
+              </div>
+              <div class="flex items-center gap-1 text-tertiary">
+                <span
+                  class="material-symbols-outlined text-sm"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >star</span
+                >
+                <span class="text-sm font-bold">4.7</span>
+              </div>
+            </div>
+            <div class="space-y-3 mb-6">
+              <div
+                class="flex items-center gap-3 text-xs text-on-surface-variant"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Valley of the Kings Access
+              </div>
+              <div
+                class="flex items-center gap-3 text-xs text-on-surface-variant"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Hatshepsut Temple Tour
+              </div>
+              <div
+                class="flex items-center gap-3 text-xs text-on-surface-variant"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Local Artisan Workshop
+              </div>
+            </div>
+            <div
+              class="flex items-center justify-between pt-4 border-t border-outline-variant/20"
+            >
+              <span class="text-xs font-medium text-slate-400"
+                >Avg. Cost: $310</span
+              >
+              <button
+                class="text-primary text-xs font-bold flex items-center gap-1 group-hover:gap-2 transition-all"
+              >
+                Details
+                <span class="material-symbols-outlined text-sm"
+                  >arrow_forward</span
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Itinerary Card 3 -->
+        <div
+          class="group bg-surface-container-low rounded-3xl overflow-hidden hover:bg-white transition-all duration-300"
+        >
+          <div class="relative h-48 overflow-hidden">
+            <img
+              alt="Siwa Oasis"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              data-alt="serene view of an oasis in Egypt with turquoise water and palm trees against a clear blue sky"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh4k9rUJxTyaahOtbf7XgsratPyZhUcYhZLr6Y7nCFf-jKig9klPr6Uwzu6ertyeIBpOlHGRoGWisPEEbNAj8Xybn9kC3fz7SU261M5XZGkHa9010-hdIOr6VKlb-hMiegfy4g1Kj7L65pb1bphedMisAS8pZYiRmtNRYoqfKliK5gvVFp83BI4uJzz3KwF9Sp91DElFhrg994rh-ko-zHaBzEdUArvW9BDhmPYTWj-Zl5RTQSeJdDcPkQEw5nkHxZ2aQAPTD1TzI"
+            />
+            <div
+              class="absolute top-4 left-4 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase text-primary"
+            >
+              Emerging Trend
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h4 class="text-lg font-bold text-on-surface">
+                  Desert Serenity
+                </h4>
+                <p class="text-sm text-secondary">Siwa • 42 Plans this month</p>
+              </div>
+              <div class="flex items-center gap-1 text-tertiary">
+                <span
+                  class="material-symbols-outlined text-sm"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >star</span
+                >
+                <span class="text-sm font-bold">5.0</span>
+              </div>
+            </div>
+            <div class="space-y-3 mb-6">
+              <div
+                class="flex items-center gap-3 text-xs text-on-surface-variant"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Salt Lake Bathing
+              </div>
+              <div
+                class="flex items-center gap-3 text-xs text-on-surface-variant"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Temple of Amun History
+              </div>
+              <div
+                class="flex items-center gap-3 text-xs text-on-surface-variant"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Eco-Lodge Stay
+              </div>
+            </div>
+            <div
+              class="flex items-center justify-between pt-4 border-t border-outline-variant/20"
+            >
+              <span class="text-xs font-medium text-slate-400"
+                >Avg. Cost: $550</span
+              >
+              <button
+                class="text-primary text-xs font-bold flex items-center gap-1 group-hover:gap-2 transition-all"
+              >
+                Details
+                <span class="material-symbols-outlined text-sm"
+                  >arrow_forward</span
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Market Heatmap / Bundle Analysis -->
+      <section class="mt-12 grid grid-cols-12 gap-8">
+        <!-- Activity Bundling Matrix (Simplified UI) -->
+        <div
+          class="col-span-12 lg:col-span-7 bg-white p-8 rounded-3xl shadow-sm"
+        >
+          <div class="flex justify-between items-center mb-8">
+            <h3 class="text-xl font-bold text-on-surface">
+              Activity Bundling Insights
+            </h3>
+            <div
+              class="flex items-center gap-2 text-xs text-secondary font-medium"
+            >
+              <span class="w-3 h-3 rounded-sm bg-primary/20"></span> Weak
+              <span class="w-3 h-3 rounded-sm bg-primary/60 ml-2"></span> Strong
+              <span class="w-3 h-3 rounded-sm bg-primary ml-2"></span> High
+              Demand
+            </div>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+              <thead>
+                <tr class="text-slate-400 border-b border-outline-variant/10">
+                  <th class="pb-4 font-medium">Activity A</th>
+                  <th class="pb-4 font-medium">Activity B</th>
+                  <th class="pb-4 font-medium">Bundle Freq.</th>
+                  <th class="pb-4 font-medium">Profit Margin</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-outline-variant/10">
+                <tr>
+                  <td class="py-4 font-semibold text-primary">Pyramid Tour</td>
+                  <td class="py-4 text-secondary">Camel Safari</td>
+                  <td class="py-4">
+                    <div
+                      class="w-32 h-2 bg-slate-100 rounded-full overflow-hidden"
+                    >
+                      <div class="bg-primary h-full w-[88%]"></div>
+                    </div>
+                  </td>
+                  <td class="py-4 text-on-surface font-medium">+18%</td>
+                </tr>
+                <tr>
+                  <td class="py-4 font-semibold text-primary">Nile Cruise</td>
+                  <td class="py-4 text-secondary">Aswany Market</td>
+                  <td class="py-4">
+                    <div
+                      class="w-32 h-2 bg-slate-100 rounded-full overflow-hidden"
+                    >
+                      <div class="bg-primary h-full w-[62%]"></div>
+                    </div>
+                  </td>
+                  <td class="py-4 text-on-surface font-medium">+12%</td>
+                </tr>
+                <tr>
+                  <td class="py-4 font-semibold text-primary">Museum Visit</td>
+                  <td class="py-4 text-secondary">Old Cairo Walk</td>
+                  <td class="py-4">
+                    <div
+                      class="w-32 h-2 bg-slate-100 rounded-full overflow-hidden"
+                    >
+                      <div class="bg-primary h-full w-[45%]"></div>
+                    </div>
+                  </td>
+                  <td class="py-4 text-on-surface font-medium">+24%</td>
+                </tr>
+                <tr>
+                  <td class="py-4 font-semibold text-primary">
+                    Hot Air Balloon
+                  </td>
+                  <td class="py-4 text-secondary">Breakfast Picnic</td>
+                  <td class="py-4">
+                    <div
+                      class="w-32 h-2 bg-slate-100 rounded-full overflow-hidden"
+                    >
+                      <div class="bg-primary h-full w-[94%]"></div>
+                    </div>
+                  </td>
+                  <td class="py-4 text-on-surface font-medium">+31%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Regional Popularity List -->
+        <div
+          class="col-span-12 lg:col-span-5 bg-surface-container-high p-8 rounded-3xl"
+        >
+          <h3 class="text-xl font-bold text-on-surface mb-6">
+            Regional Performance
+          </h3>
+          <div class="space-y-6">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-primary shadow-sm"
+                >
+                  <span class="material-symbols-outlined">temple_hindu</span>
+                </div>
+                <div>
+                  <p class="font-bold text-on-surface">Giza Necropolis</p>
+                  <p class="text-xs text-secondary">4,280 plans/mo</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="text-sm font-bold text-primary">↑ 12%</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-primary shadow-sm"
+                >
+                  <span class="material-symbols-outlined">waves</span>
+                </div>
+                <div>
+                  <p class="font-bold text-on-surface">Luxor East Bank</p>
+                  <p class="text-xs text-secondary">3,110 plans/mo</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="text-sm font-bold text-secondary">~ stable</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-primary shadow-sm"
+                >
+                  <span class="material-symbols-outlined">scuba_diving</span>
+                </div>
+                <div>
+                  <p class="font-bold text-on-surface">Sharm El-Sheikh</p>
+                  <p class="text-xs text-secondary">2,850 plans/mo</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="text-sm font-bold text-error">↓ 4%</p>
+              </div>
+            </div>
+            <div
+              class="flex items-center gap-4 mt-8 pt-8 border-t border-outline-variant/30"
+            >
+              <div class="flex-1">
+                <p
+                  class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2"
+                >
+                  Market Sentiment
+                </p>
+                <div class="flex items-center gap-1">
+                  <div class="h-1 flex-1 bg-primary rounded-full"></div>
+                  <div class="h-1 flex-1 bg-primary rounded-full"></div>
+                  <div class="h-1 flex-1 bg-primary rounded-full"></div>
+                  <div class="h-1 flex-1 bg-primary rounded-full"></div>
+                  <div
+                    class="h-1 flex-1 bg-outline-variant/30 rounded-full"
+                  ></div>
+                </div>
+              </div>
+              <span class="text-lg font-bold text-primary">8.2</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

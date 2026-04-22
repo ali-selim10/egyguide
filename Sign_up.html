@@ -1,0 +1,366 @@
+<!doctype html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Join Egypt Discovery | Create Your Account</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              outline: "#70787e",
+              primary: "#00556f",
+              "on-error": "#ffffff",
+              "on-background": "#1b1c1a",
+              "surface-container-low": "#f5f3ef",
+              "outline-variant": "#bfc8cd",
+              "on-secondary": "#ffffff",
+              "primary-container": "#1c6e8c",
+              secondary: "#685d46",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1b1c1a",
+              "surface-container": "#efeeea",
+              "on-surface-variant": "#40484d",
+              "surface-variant": "#e4e2de",
+              tertiary: "#755b00",
+              "secondary-container": "#f0e1c3",
+              "on-primary": "#ffffff",
+              background: "#fbf9f5",
+              surface: "#fbf9f5",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      .brand-font {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .btn-primary-gradient {
+        background: linear-gradient(135deg, #00556f 0%, #1c6e8c 100%);
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-background min-h-screen flex flex-col">
+    <!-- TopNavBar -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-[#fbf9f5]/70 backdrop-blur-md shadow-[0_20px_40px_rgba(27,28,26,0.05)]"
+    >
+      <div
+        class="flex justify-between items-center px-8 py-6 max-w-full mx-auto"
+      >
+        <div class="text-2xl font-bold tracking-tighter text-[#00556f]">
+          <a href="/index">Sikka</a>
+        </div>
+        <!-- <div class="flex items-center gap-4">
+          <a
+            class="text-[#00556f] font-semibold hover:opacity-80 transition-all duration-300"
+            href="/sign_in"
+            >Sign In</a
+          >
+        </div> -->
+      </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center pt-24 pb-12 px-6">
+      <div
+        class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+      >
+        <!-- Left: Visual -->
+        <div
+          class="hidden lg:block relative h-[700px] rounded-xl overflow-hidden shadow-2xl"
+        >
+          <img
+            class="absolute inset-0 w-full h-full object-cover"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGXoneiHWqwynCkr_EC3gJOQzIGJjUukMh-x_-5AK2rN_Uoxljtz5nH8BR23zxDyXKBbIV0vQWL6IeNhsUmHxCfS6q0_-z5IukvdbJQJgJ812Kubad_jLo_0XHJwoNU0HjSue7VUa7syKwJbwyd1yyRC5gafMnAcAMZk7es0nYSx8-A4Eansder_q68UdPZ8PNjje-ateTUBYNvTxmpX63lHQjiYshBdSUx5dW9SZfvErbmFPh1-iKD8NJn_PTPx-JK0eZQcOsHQiy"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-12"
+          >
+            <h2
+              class="text-4xl font-bold text-white mb-4 tracking-tight leading-tight"
+            >
+              Begin Your Journey Through Time.
+            </h2>
+            <p
+              class="text-white/90 text-lg max-w-md font-light leading-relaxed"
+            >
+              Join an exclusive community of explorers. Access curated
+              experiences across the land of the Pharaohs.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Sign Up Form -->
+        <div class="w-full max-w-md mx-auto">
+          <div class="mb-10">
+            <h1
+              class="text-3xl font-extrabold text-primary mb-2 tracking-tight"
+            >
+              Create Account
+            </h1>
+            <p class="text-secondary font-medium">
+              Join Egypt Discovery and start curating your dream escape.
+            </p>
+          </div>
+
+          <!-- ✅ Error message block -->
+          {% if error %}
+          <div
+            class="mb-6 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium flex items-center gap-2"
+          >
+            <span class="material-symbols-outlined text-base">error</span>
+            {{ error }}
+          </div>
+          {% endif %}
+
+          <!-- ✅ Form posts to Flask /signup route -->
+          <form action="/signup" method="POST" class="space-y-6">
+            <!-- Full Name -->
+            <div class="group">
+              <label
+                class="block text-sm font-semibold text-on-surface-variant mb-1.5 ml-1"
+                >Full Name</label
+              >
+              <div class="relative">
+                <input
+                  class="w-full bg-surface-container-low border-none rounded-lg px-4 py-3.5 text-on-surface focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary/40 transition-all duration-300 placeholder:text-outline/40"
+                  name="full_name"
+                  placeholder="Luxor Amenhotep"
+                  type="text"
+                  required
+                />
+                <span
+                  class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline/30"
+                  >person</span
+                >
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="group">
+              <label
+                class="block text-sm font-semibold text-on-surface-variant mb-1.5 ml-1"
+                >Email Address</label
+              >
+              <div class="relative">
+                <input
+                  class="w-full bg-surface-container-low border-none rounded-lg px-4 py-3.5 text-on-surface focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary/40 transition-all duration-300 placeholder:text-outline/40"
+                  name="email"
+                  placeholder="traveler@nile.com"
+                  type="email"
+                  required
+                />
+                <span
+                  class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline/30"
+                  >mail</span
+                >
+              </div>
+            </div>
+
+            <!-- Password + Confirm -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="group">
+                <label
+                  class="block text-sm font-semibold text-on-surface-variant mb-1.5 ml-1"
+                  >Password</label
+                >
+                <input
+                  class="w-full bg-surface-container-low border-none rounded-lg px-4 py-3.5 text-on-surface focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary/40 transition-all duration-300"
+                  name="password"
+                  placeholder="••••••••"
+                  type="password"
+                  required
+                  minlength="8"
+                />
+              </div>
+              <div class="group">
+                <label
+                  class="block text-sm font-semibold text-on-surface-variant mb-1.5 ml-1"
+                  >Confirm</label
+                >
+                <input
+                  class="w-full bg-surface-container-low border-none rounded-lg px-4 py-3.5 text-on-surface focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary/40 transition-all duration-300"
+                  name="confirm_password"
+                  placeholder="••••••••"
+                  type="password"
+                  required
+                  minlength="8"
+                />
+              </div>
+            </div>
+
+            <button
+              class="w-full btn-primary-gradient text-white font-bold py-4 rounded-lg shadow-lg hover:scale-[0.98] transition-transform duration-300"
+              type="submit"
+            >
+              Create Account
+            </button>
+
+            <!-- Divider -->
+            <div class="relative flex items-center py-4">
+              <div class="flex-grow border-t border-outline/10"></div>
+              <span
+                class="flex-shrink mx-4 text-xs font-bold text-outline uppercase tracking-widest"
+                >Or Sign up with</span
+              >
+              <div class="flex-grow border-t border-outline/10"></div>
+            </div>
+
+            <!-- Social -->
+            <div class="grid grid-cols-2 gap-4">
+              <button
+                type="button"
+                class="flex items-center justify-center gap-3 py-3.5 border border-outline-variant/30 rounded-xl hover:bg-surface-container-low transition-all duration-200 group"
+              >
+                <svg
+                  class="w-5 h-5 group-hover:scale-110 transition-transform"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                    fill="#4285F4"
+                  />
+                  <path
+                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                    fill="#34A853"
+                  />
+                  <path
+                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                    fill="#FBBC05"
+                  />
+                  <path
+                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                    fill="#EA4335"
+                  />
+                </svg>
+                <span class="text-sm font-semibold text-on-surface-variant"
+                  >Google</span
+                >
+              </button>
+              <button
+                type="button"
+                class="flex items-center justify-center gap-3 py-3.5 border border-outline-variant/30 rounded-xl hover:bg-surface-container-low transition-all duration-200 group"
+              >
+                <svg
+                  class="w-5 h-5 fill-[#1877F2] group-hover:scale-110 transition-transform"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  />
+                </svg>
+                <span class="text-sm font-semibold text-on-surface-variant"
+                  >Facebook</span
+                >
+              </button>
+            </div>
+
+            <p class="text-center text-secondary text-sm font-medium mt-8">
+              Already have an account?
+              <a
+                class="text-primary font-bold hover:underline ml-1"
+                href="sign_in"
+                >Sign In</a
+              >
+            </p>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="w-full mt-auto bg-[#f7f2ea] grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20"
+    >
+      <div class="col-span-1">
+        <div class="text-xl font-bold text-[#00556f] mb-6">Sikka</div>
+        <p class="text-[#685d46] text-sm leading-relaxed">
+          Experience the timeless grandeur of the Nile.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-bold text-[#00556f] mb-6">Explore</h4>
+        <ul class="space-y-4 text-sm">
+          <li>
+            <a class="text-[#685d46] hover:text-[#00556f]" href="#">About Us</a>
+          </li>
+          <li>
+            <a class="text-[#685d46] hover:text-[#00556f]" href="#"
+              >Cultural Heritage</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-[#00556f] mb-6">Support</h4>
+        <ul class="space-y-4 text-sm">
+          <li>
+            <a class="text-[#685d46] hover:text-[#00556f]" href="#">Contact</a>
+          </li>
+          <li>
+            <a class="text-[#685d46] hover:text-[#00556f]" href="#">Privacy</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-[#00556f] mb-6">Newsletter</h4>
+        <p class="text-sm text-[#685d46] mb-4">
+          Curated stories delivered to your inbox.
+        </p>
+        <div class="flex">
+          <input
+            class="bg-surface-container-low border-none rounded-l-lg px-4 py-2 text-sm w-full"
+            placeholder="Email"
+            type="text"
+          />
+          <button
+            class="bg-[#00556f] text-white px-4 py-2 rounded-r-lg text-sm"
+          >
+            Join
+          </button>
+        </div>
+      </div>
+      <div
+        class="col-span-full pt-12 border-t border-[#685d46]/10 text-center text-[#685d46] text-xs"
+      >
+        © 2024 Egypt Discovery. All rights reserved.
+      </div>
+    </footer>
+  </body>
+</html>

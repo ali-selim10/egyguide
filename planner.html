@@ -1,0 +1,699 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffe08e",
+              "on-surface": "#1b1c1a",
+              "primary-container": "#1c6e8c",
+              outline: "#70787e",
+              background: "#fbf9f5",
+              "error-container": "#ffdad6",
+              "tertiary-container": "#cea72c",
+              "primary-fixed-dim": "#89d0f1",
+              "surface-tint": "#0c6684",
+              "on-background": "#1b1c1a",
+              "secondary-fixed-dim": "#d3c5a8",
+              "on-primary-fixed": "#001f2a",
+              "secondary-fixed": "#f0e1c3",
+              primary: "#00556f",
+              "outline-variant": "#bfc8cd",
+              "surface-container": "#efeeea",
+              "inverse-surface": "#30312e",
+              secondary: "#685d46",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#6e634c",
+              tertiary: "#755b00",
+              "surface-dim": "#dbdad6",
+              error: "#ba1a1a",
+              "surface-bright": "#fbf9f5",
+              "primary-fixed": "#bfe9ff",
+              "on-secondary-fixed-variant": "#4f4630",
+              "inverse-primary": "#89d0f1",
+              "surface-variant": "#e4e2de",
+              "on-secondary": "#ffffff",
+              "on-primary": "#ffffff",
+              "on-surface-variant": "#40484d",
+              "on-tertiary-container": "#503d00",
+              "on-primary-fixed-variant": "#004d65",
+              "inverse-on-surface": "#f2f0ed",
+              "on-primary-container": "#c5ebff",
+              "on-error": "#ffffff",
+              "on-tertiary-fixed-variant": "#584400",
+              "surface-container-high": "#eae8e4",
+              "secondary-container": "#f0e1c3",
+              surface: "#fbf9f5",
+              "surface-container-low": "#f5f3ef",
+              "on-secondary-fixed": "#221b08",
+              "on-error-container": "#93000a",
+              "surface-container-highest": "#e4e2de",
+              "on-tertiary-fixed": "#241a00",
+              "tertiary-fixed-dim": "#ecc246",
+              "surface-container-lowest": "#ffffff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .editorial-text-shadow {
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-white"
+  >
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 w-full z-50 bg-[#fbf9f5]/70 dark:bg-slate-950/70 backdrop-blur-md shadow-[0_20px_40px_rgba(27,28,26,0.05)]"
+    >
+      <nav
+        class="fixed top-0 w-full z-50 bg-[#fbf9f5]/70 dark:bg-slate-950/70 backdrop-blur-md shadow-[0_20px_40px_rgba(27,28,26,0.05)]"
+      >
+        <div
+          class="flex justify-between items-center px-8 py-6 max-w-full mx-auto"
+        >
+          <div
+            class="text-2xl font-bold tracking-tighter text-[#00556f] dark:text-[#1C6E8C]"
+          >
+            <a href="/index">Sikka</a>
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+              href="/index"
+              >Home</a
+            >
+            <a
+              class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+              href="/explore"
+              >Explore</a
+            >
+            <a
+              class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+              href="/booking"
+              >Booking</a
+            >
+            <a
+              class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+              href="/attractions"
+              >Attractions</a
+            >
+            <a
+              class="text-[#00556f] dark:text-white font-bold border-b-2 border-[#755b00] pb-1 transition-all duration-300"
+              href="/planner"
+              >Plan Your Day</a
+            >
+          </div>
+          <div class="flex items-center space-x-6">
+            <div class="relative hidden lg:block">
+              <span
+                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm"
+                data-icon="search"
+                >search</span
+              >
+              <input
+                class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all"
+                placeholder="Search destinations..."
+                type="text"
+              />
+            </div>
+
+            <div id="auth-btn"></div>
+            <script>
+              fetch("/api/me")
+                .then((r) => {
+                  if (r.ok) {
+                    document.getElementById("auth-btn").innerHTML =
+                      `<a href="/signout" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign Out</a>`;
+                  } else {
+                    document.getElementById("auth-btn").innerHTML =
+                      `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+                  }
+                })
+                .catch(() => {
+                  document.getElementById("auth-btn").innerHTML =
+                    `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+                });
+            </script>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="pt-24 min-h-screen">
+      <!-- Hero Selection Section -->
+      <section class="px-8 pt-12 pb-20 max-w-7xl mx-auto">
+        <div
+          class="flex flex-col md:flex-row justify-between items-end gap-8 mb-12"
+        >
+          <div class="max-w-2xl">
+            <span
+              class="text-tertiary font-semibold tracking-widest uppercase text-xs mb-4 block"
+              >Curated Journeys</span
+            >
+            <h1
+              class="text-5xl md:text-6xl font-headline font-extrabold tracking-tight text-on-surface leading-tight"
+            >
+              Where would you like to wander?
+            </h1>
+          </div>
+          <div class="flex gap-2 p-1 bg-surface-container-low rounded-xl">
+            <button
+              class="px-6 py-2 rounded-lg bg-surface-container-lowest shadow-sm text-primary font-bold text-sm transition-all"
+            >
+              Giza
+            </button>
+            <button
+              class="px-6 py-2 rounded-lg text-secondary font-medium text-sm hover:bg-surface-variant/30 transition-all"
+            >
+              Cairo
+            </button>
+            <button
+              class="px-6 py-2 rounded-lg text-secondary font-medium text-sm hover:bg-surface-variant/30 transition-all"
+            >
+              Luxor
+            </button>
+            <button
+              class="px-6 py-2 rounded-lg text-secondary font-medium text-sm hover:bg-surface-variant/30 transition-all"
+            >
+              Alexandria
+            </button>
+          </div>
+        </div>
+        <!-- Asymmetric Grid for Location Highlight -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+          <div
+            class="md:col-span-8 relative rounded-3xl overflow-hidden aspect-[16/9] group"
+          >
+            <img
+              alt="Giza Necropolis"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              data-alt="dramatic wide angle shot of the Great Pyramids of Giza at sunset with golden orange sky and sharp desert landscape textures"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuARtLkHZBTF27ok3_IPAGi27fTCdI-_A_iKtzS93GujzXpQ7O_EMRQaNF_fqKdjte22Nx0UyWPnHfATIrDGSQy33WQ6YJOUn6kVZqqVn6keUsrYCHic5N1_bzHK27AfKctjAFGms-uC1W5_Ge5qB7QzNVBEM9MXUNKZnH7Irb2PZwLfrALPdta-Jq9NTjQe6rItW_KnYk1QoQBbm6aHuTlRAPxkCgOdFk9w7xIq5yiJOIQbxUL4p1LIZAPkL0sohjozkFiW_nxNahM"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent"
+            ></div>
+            <div class="absolute bottom-10 left-10 text-white">
+              <h2 class="text-4xl font-headline font-bold mb-2">
+                The Giza Plateau
+              </h2>
+              <p class="text-white/80 max-w-md font-body">
+                Home to the only surviving wonder of the ancient world. A day
+                where eternity meets the horizon.
+              </p>
+            </div>
+            <div class="absolute top-8 right-8">
+              <div
+                class="bg-surface-variant/20 backdrop-blur-md border border-white/20 p-4 rounded-2xl flex items-center gap-4"
+              >
+                <span
+                  class="material-symbols-outlined text-tertiary-fixed"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >wb_sunny</span
+                >
+                <div class="text-white">
+                  <p class="text-[10px] uppercase tracking-tighter opacity-70">
+                    Current Weather
+                  </p>
+                  <p class="text-sm font-bold">28°C Clear Sky</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="md:col-span-4 h-full flex flex-col gap-6">
+            <div
+              class="bg-surface-container-low p-8 rounded-3xl h-full flex flex-col justify-between"
+            >
+              <div>
+                <span
+                  class="material-symbols-outlined text-primary mb-4 text-3xl"
+                  >auto_awesome</span
+                >
+                <h3
+                  class="text-xl font-headline font-bold text-on-surface mb-4"
+                >
+                  Curator's Note
+                </h3>
+                <p class="text-secondary leading-relaxed text-sm">
+                  Giza is best experienced early. Start at the Great Pyramid
+                  before the crowds, then follow the ridge to the Sphinx as the
+                  sun climbs.
+                </p>
+              </div>
+              <div class="mt-8 pt-8 border-t border-outline-variant/30">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-full overflow-hidden border-2 border-white"
+                  >
+                    <img
+                      alt="Curator"
+                      class="w-full h-full object-cover"
+                      data-alt="professional portrait of a travel curator woman with a warm smile in an editorial style"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi6eVatE9yP1KUVVY-Tsd4o53Ud5qQVZLxt29lH-X-sNR0xWZXpbGX9xEwyQKHExSwaof-6rvddHD-MVl17gp5x57mVXgMPnrTyQco4cFZbY-rbExF4z8h7xdtq6mXfh9uvj1HyTCUHSy0WnGDzSNoO_Dm8XjK-kP4nIh6ug5iAAQnzeOaddm1dQdnz8fdFzsW-MIExfBt2f83gYZ9PS0S8hbzTfkjTmHzU6RfoZhfgeRkwkM-SNIq063b04FX3gTvrTqD-IeyL9I"
+                    />
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-on-surface">
+                      Amira Mansour
+                    </p>
+                    <p class="text-[10px] text-secondary">Lead Local Curator</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Itinerary Timeline -->
+      <section class="bg-surface-container-low py-24">
+        <div class="max-w-7xl mx-auto px-8">
+          <div class="mb-16">
+            <h2 class="text-3xl font-headline font-bold text-on-surface">
+              Your Essential Day in Giza
+            </h2>
+            <p class="text-secondary mt-2">
+              A meticulously timed journey through the sands of time.
+            </p>
+          </div>
+          <div class="relative">
+            <!-- Vertical Line (Visible on Desktop) -->
+            <div
+              class="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-outline-variant/50 -translate-x-1/2"
+            ></div>
+            <div class="space-y-24">
+              <!-- Step 1 -->
+              <div
+                class="relative flex flex-col md:flex-row items-center gap-12 group"
+              >
+                <div class="flex-1 md:text-right">
+                  <div
+                    class="inline-block px-4 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-xs font-bold mb-4"
+                  >
+                    08:00 AM
+                  </div>
+                  <h4
+                    class="text-2xl font-headline font-bold text-on-surface mb-2"
+                  >
+                    Sunrise at the Great Pyramid
+                  </h4>
+                  <p class="text-secondary text-sm max-w-md md:ml-auto">
+                    Be the first to enter Khufu’s sanctuary. Experience the
+                    silence that has lasted for four millennia before the midday
+                    heat arrive.
+                  </p>
+                </div>
+                <div
+                  class="relative z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white ring-8 ring-surface-container-low"
+                >
+                  <span class="material-symbols-outlined text-xl"
+                    >brightness_high</span
+                  >
+                </div>
+                <div class="flex-1">
+                  <div
+                    class="rounded-2xl overflow-hidden aspect-video shadow-xl"
+                  >
+                    <img
+                      alt="Great Pyramid Detail"
+                      class="w-full h-full object-cover"
+                      data-alt="close up architectural detail of the huge stone blocks of the great pyramid with golden morning sunlight catching the edges"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoqsco_F7mBNB07fCDIBmCxO2oHUs9D9ec76-BoRMGt2WEdokC4L68kNiWd4qjHtSBN05BKPYAxVz93wp7yyfdi8ogoj6yf_FGtWQ2VLkoQZJ6mAmCsURAtVN5UMC7U_ZSDNGthbM8SkC678iGogcmgyd2eOYIzTL3rc_zN1zXQcuhqu3feF1ftzNDrG11Xcvw6MtC5DkSXHu_-jj3b0LbgfhhkCpEzNn3TyCRdHdjN3uUfpXa6IXqcLkbfSy-R38S8UkwATT4Xn0"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- Step 2 -->
+              <div
+                class="relative flex flex-col md:flex-row-reverse items-center gap-12 group"
+              >
+                <div class="flex-1 text-left">
+                  <div
+                    class="inline-block px-4 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant text-xs font-bold mb-4"
+                  >
+                    11:30 AM
+                  </div>
+                  <h4
+                    class="text-2xl font-headline font-bold text-on-surface mb-2"
+                  >
+                    The Silent Guardian
+                  </h4>
+                  <p class="text-secondary text-sm max-w-md">
+                    Descend to the Great Sphinx. Walk the causeway where priests
+                    once performed rituals, and look directly into the eyes of
+                    the lion.
+                  </p>
+                </div>
+                <div
+                  class="relative z-10 w-12 h-12 rounded-full bg-tertiary flex items-center justify-center text-white ring-8 ring-surface-container-low"
+                >
+                  <span
+                    class="material-symbols-outlined text-xl"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >visibility</span
+                  >
+                </div>
+                <div class="flex-1">
+                  <div
+                    class="rounded-2xl overflow-hidden aspect-video shadow-xl"
+                  >
+                    <img
+                      alt="The Sphinx"
+                      class="w-full h-full object-cover"
+                      data-alt="side profile of the sphinx with the pyramids in the soft focus background during mid-morning with bright clear lighting"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnf_TFw7lDHhLvPfuTANc3H4XjkZZ_rP0DcvOq2aFN_lzNDPM_A781fT7NklIC88tcnZ2uCwiYFl6Iu7KQKidd68zuqVnLbVtsVRJuubqUUGmKS6jaGETe1OhLBHkmEYrieybovaB5bogTM8161rXBbSPrMKIX3foaHdXl4Fw8mNknVQod-jEioXBz9PfPUcMky6hzQ8WLeuV6RgpIH0HammChgUW-hmjb9L4mXpawMGrqsdweJ0YfArSqiGKA48AI48Oyx0mOjR8"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- Step 3 -->
+              <div
+                class="relative flex flex-col md:flex-row items-center gap-12 group"
+              >
+                <div class="flex-1 md:text-right">
+                  <div
+                    class="inline-block px-4 py-1 rounded-full bg-surface-container-highest text-on-surface-variant text-xs font-bold mb-4"
+                  >
+                    02:00 PM
+                  </div>
+                  <h4
+                    class="text-2xl font-headline font-bold text-on-surface mb-2"
+                  >
+                    Authentic Mansouri Lunch
+                  </h4>
+                  <p class="text-secondary text-sm max-w-md md:ml-auto">
+                    Retreat from the sun to a hidden terrace overlooking the
+                    plateau. Enjoy traditional Koshary and mint tea with
+                    panoramic views.
+                  </p>
+                </div>
+                <div
+                  class="relative z-10 w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white ring-8 ring-surface-container-low"
+                >
+                  <span class="material-symbols-outlined text-xl"
+                    >restaurant</span
+                  >
+                </div>
+                <div class="flex-1">
+                  <div
+                    class="rounded-2xl overflow-hidden aspect-video shadow-xl"
+                  >
+                    <img
+                      alt="Egyptian Lunch"
+                      class="w-full h-full object-cover"
+                      data-alt="top down view of traditional egyptian meal on a rustic wooden table including koshary and fresh mint tea in ornate glasses"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc04lm9vSEKFvLMfI-HMI4AysBWcsrGqVNelERig_cIahXzEgrEvtZErY0s3OJKs3-R43qBR56b4b_WEn6jPUH7Jww0tWqrjPrec-BoUzn1NGOR9U0t16FliZv6ZZtq-un56PKCB9Y5AGNbk997YukjwAstEbi2G3LGuv_LIXioQuQ5Pph1gb0DWsnEYNe2aI2IOeOEhavQYHKduZM-EF9Z0mj8k3C_Yp3ceZskBN3qU__lsVjvGbG5740DOvbGK5KpFiBoqKqwfg"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Recommended Activities Bento -->
+      <section class="py-24 px-8 max-w-7xl mx-auto">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center mb-16 gap-6"
+        >
+          <div>
+            <h2 class="text-3xl font-headline font-bold text-on-surface">
+              Complementary Experiences
+            </h2>
+            <p class="text-secondary mt-2">
+              Add these to your afternoon for a deeper dive.
+            </p>
+          </div>
+          <button
+            class="flex items-center gap-2 text-primary font-bold hover:underline"
+          >
+            View all Giza attractions
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 h-auto md:h-[600px]"
+        >
+          <div
+            class="md:col-span-2 md:row-span-2 relative rounded-3xl overflow-hidden group cursor-pointer"
+          >
+            <img
+              alt="Camel Ride"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              data-alt="a majestic camel with colorful woven saddle standing in the desert with dunes and a distant pyramid at golden hour"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjom8xUBxgo1tK7cTzfw4SiVzpV461D3inbCLNPkkfBsAwIspo-wnvFlXsrJwVmAAlzrUduE972Sljmc_I0vB1CtbGEr_PbApRji6MbBRxQvtocg6xC1m4RcnhZQend-oR9RJfZ36aLYKWiSM6NZVzz6vTZEA0bkiyphUFlxKGoolwPg3FF044nWZ45ThxFXI3b0YYpV4X4Jvne1_TKaL6Nk-JBiu5FODETV_LjVrinmNQksb1dfsgKsySSYIzLfIX5Z7b6yHpyH0"
+            />
+            <div
+              class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all"
+            ></div>
+            <div class="absolute bottom-8 left-8 text-white">
+              <span
+                class="bg-tertiary px-3 py-1 rounded-full text-[10px] font-bold uppercase mb-3 inline-block"
+                >Best Seller</span
+              >
+              <h3 class="text-2xl font-headline font-bold">
+                Sunset Camel Trek
+              </h3>
+              <p class="text-sm opacity-80">90 minutes • From $45</p>
+            </div>
+          </div>
+          <div
+            class="md:col-span-2 relative rounded-3xl overflow-hidden group cursor-pointer"
+          >
+            <img
+              alt="Sound &amp; Light"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              data-alt="dramatic night time photo of the pyramids lit up by colorful lights during the light and sound show"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKE1yragPgT2RVWSn3YUCk69kJnxNl_7sJn0gIh1YN1rocWAQwLs06PlKhY_2tCNb4GYZ-qTa8LyZ6RrMZON0biTpLHo1yuL3SqYBVxvW3PA_8urWZlKJ8phhNvA84Rh3WvdkicUy6xnV2AEIPUdZMSHP3OcHP9TNTfWBgAeTW5BWmM-UBNw0UipbFJBf5RLwy-mMEboxndEyidkOvsfVwAON6P3-OACld_K-Y4u_MJ1WH4YXn08z4sjnNFiKsg0A4qHxm8Gwx3Uk"
+            />
+            <div
+              class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all"
+            ></div>
+            <div class="absolute bottom-6 left-6 text-white">
+              <h3 class="text-xl font-headline font-bold">
+                Sound &amp; Light Show
+              </h3>
+              <p class="text-sm opacity-80">Narrated history at dusk</p>
+            </div>
+          </div>
+          <div
+            class="md:col-span-1 relative rounded-3xl overflow-hidden group cursor-pointer"
+          >
+            <img
+              alt="Papyrus Workshop"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              data-alt="close up of ancient egyptian papyrus painting with intricate hieroglyphics and colorful gods"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr27T3k_JkRo2KTlfnhaufWy5IF5_FVy12-vh6FHW2vPNeX33bqTgHxGE1SNBRhyH1HnzI4BkYsUj5pRCDH0ALdzYZLE6Amj5DkgOc4bbx95jJeNXbyo6zOgwAn_VKbAljbj3O7XyUONDb2QcmRnOnHFAPQzf65i78jLj3S1KaTVUCWHbBvpLhNwp_qcQjnVoBSiAVE46kGqwxkt2O6A-VPznmT3socGcIPf7_0pSEDtDCI5kkZSblpBm29VF91MLayvb1StHcBAg"
+            />
+            <div
+              class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all"
+            ></div>
+            <div class="absolute bottom-6 left-6 text-white">
+              <h4 class="text-lg font-headline font-bold">Artisans of Giza</h4>
+            </div>
+          </div>
+          <div
+            class="md:col-span-1 relative rounded-3xl overflow-hidden group cursor-pointer"
+          >
+            <img
+              alt="Luxury Stay"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              data-alt="aerial drone view of a luxury hotel pool with blue water overlooking the limestone pyramids"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYtKJEzrt90Uvd9BOtNGz7M5G6t8kv0qEXA7g3jGOxL0Djqmh-AfIq4KlWLvS75NnE4RSGgiD_qNv0EuwxpxZpIA2L-jbTfJkEi9bCRADLu4s6yLdeW_W-QxVV-Fl0MhG7Orlj2lemOoIzn-gg7tMZYUHK9-cJ7e7ooI3U6PUXcwoR2bhXZgE6ccsnIitET9l43pcOtKTUIUzMQ2G5a5qJwej8qSTo3F77xAhhJ9I6tf12UofEmiYRfozj9aEaGzSAii9avS7OS7k"
+            />
+            <div
+              class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all"
+            ></div>
+            <div class="absolute bottom-6 left-6 text-white">
+              <h4 class="text-lg font-headline font-bold">Plateau Views</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full mt-auto bg-[#f7f2ea] dark:bg-slate-900">
+      <div
+        class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 w-full max-w-7xl mx-auto"
+      >
+        <div class="space-y-6">
+          <div class="text-xl font-bold text-[#00556f] dark:text-[#1C6E8C]">
+            Egypt Discovery
+          </div>
+          <p class="text-secondary text-sm leading-relaxed">
+            Curating the timeless beauty of the Nile for the modern explorer.
+            From ancient whispers to contemporary comforts.
+          </p>
+          <div class="flex gap-4">
+            <span
+              class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70"
+              >social_leaderboard</span
+            >
+            <span
+              class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70"
+              >language</span
+            >
+            <span
+              class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70"
+              >share</span
+            >
+          </div>
+        </div>
+        <div>
+          <h4 class="font-headline font-bold text-on-surface mb-6">Discover</h4>
+          <ul class="space-y-4">
+            <li>
+              <a
+                class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+                href="#"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+                href="#"
+                >Sustainability</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+                href="#"
+                >Cultural Heritage</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-headline font-bold text-on-surface mb-6">Support</h4>
+          <ul class="space-y-4">
+            <li>
+              <a
+                class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+                href="#"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+                href="#"
+                >Privacy</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+                href="#"
+                >FAQ</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-error font-medium hover:opacity-70 hover:translate-x-1 transition-transform duration-200 block text-sm"
+                href="#"
+                >Report Fraud</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="space-y-6">
+          <h4 class="font-headline font-bold text-on-surface">
+            Weekly Curator
+          </h4>
+          <p class="text-sm text-secondary">
+            Get exclusive itineraries and cultural deep-dives in your inbox.
+          </p>
+          <div class="flex gap-2">
+            <input
+              class="bg-surface-container-lowest border-none rounded-lg px-4 py-2 text-sm focus:ring-1 focus:ring-primary w-full"
+              placeholder="Email address"
+              type="email"
+            />
+            <button
+              class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold"
+            >
+              Join
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="px-12 py-8 border-t border-outline-variant/30 text-center">
+        <p class="text-[#685d46] dark:text-slate-300 text-xs">
+          © 2024 Egypt Discovery. All rights reserved. Crafted for the Modern
+          Curator.
+        </p>
+      </div>
+    </footer>
+    <!-- FAB for Contextual Action -->
+    <div class="fixed bottom-8 right-8 flex flex-col items-end gap-3 z-50">
+      <a
+        class="bg-error text-on-error w-16 h-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all group relative"
+        href="/report-fraud"
+      >
+        <span
+          class="material-symbols-outlined"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >report</span
+        >
+        <span
+          class="absolute right-full mr-4 px-3 py-1 bg-on-surface text-surface text-xs font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none"
+          >Report Fraud</span
+        >
+      </a>
+      <button
+        class="bg-primary-container text-on-primary-container flex items-center gap-3 px-6 py-4 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all"
+      >
+        <span
+          class="material-symbols-outlined"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >calendar_today</span
+        >
+        <span class="font-bold">Book This Plan</span>
+      </button>
+    </div>
+  </body>
+</html>

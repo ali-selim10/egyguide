@@ -1,0 +1,572 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#cea72c",
+              "inverse-on-surface": "#f1f1ee",
+              "on-primary-container": "#c5ebff",
+              "surface-variant": "#e3e2e0",
+              "on-tertiary-container": "#503d00",
+              "secondary-fixed-dim": "#d3c5a8",
+              "on-primary-fixed": "#001f2a",
+              "surface-container-high": "#e9e8e5",
+              "surface-tint": "#0c6684",
+              "on-background": "#1a1c1a",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed-variant": "#4f4630",
+              "on-secondary-fixed": "#221b08",
+              "tertiary-fixed-dim": "#ecc246",
+              tertiary: "#755b00",
+              "surface-container": "#efeeeb",
+              "surface-container-low": "#f4f3f1",
+              "surface-dim": "#dbdad7",
+              background: "#faf9f6",
+              error: "#ba1a1a",
+              "surface-container-highest": "#e3e2e0",
+              "on-tertiary": "#ffffff",
+              surface: "#faf9f6",
+              outline: "#70787e",
+              "outline-variant": "#bfc8cd",
+              "on-surface-variant": "#40484d",
+              "error-container": "#ffdad6",
+              "secondary-container": "#f0e1c3",
+              "on-secondary-container": "#6e634c",
+              "inverse-surface": "#2f312f",
+              "on-tertiary-fixed": "#241a00",
+              "inverse-primary": "#89d0f1",
+              "on-tertiary-fixed-variant": "#584400",
+              "tertiary-fixed": "#ffe08e",
+              "on-surface": "#1a1c1a",
+              "on-primary": "#ffffff",
+              "surface-bright": "#faf9f6",
+              "on-error-container": "#93000a",
+              "primary-container": "#1c6e8c",
+              "on-error": "#ffffff",
+              primary: "#00556f",
+              secondary: "#685d46",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#bfe9ff",
+              "primary-fixed-dim": "#89d0f1",
+              "on-primary-fixed-variant": "#004d65",
+              "secondary-fixed": "#f0e1c3",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Epilogue"],
+              body: ["Manrope"],
+              label: ["Manrope"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Manrope", sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Epilogue", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .editorial-gradient {
+        background: linear-gradient(135deg, #00556f 0%, #1c6e8c 100%);
+      }
+      .asymmetric-card {
+        border-top-left-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-surface selection:bg-primary-fixed">
+    <!-- Top Navigation -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-[#fbf9f5]/70 dark:bg-slate-950/70 backdrop-blur-md shadow-[0_20px_40px_rgba(27,28,26,0.05)]"
+    >
+      <div
+        class="flex justify-between items-center px-8 py-6 max-w-full mx-auto"
+      >
+        <div
+          class="text-2xl font-bold tracking-tighter text-[#00556f] dark:text-[#1C6E8C]"
+        >
+          <a href="/index">Sikka</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/index"
+            >Home</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/explore"
+            >Explore</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/booking"
+            >Booking</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/attractions"
+            >Attractions</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/planner"
+            >Plan Your Day</a
+          >
+        </div>
+        <div class="flex items-center space-x-6">
+          <div class="relative hidden lg:block">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm"
+              data-icon="search"
+              >search</span
+            >
+            <input
+              class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all"
+              placeholder="Search destinations..."
+              type="text"
+            />
+          </div>
+
+          <div id="auth-btn"></div>
+          <script>
+            fetch("/api/me")
+              .then((r) => {
+                if (r.ok) {
+                  document.getElementById("auth-btn").innerHTML =
+                    `<a href="/signout" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign Out</a>`;
+                } else {
+                  document.getElementById("auth-btn").innerHTML =
+                    `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+                }
+              })
+              .catch(() => {
+                document.getElementById("auth-btn").innerHTML =
+                  `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+              });
+          </script>
+        </div>
+      </div>
+    </nav>
+    <main class="pt-24 pb-12 px-6 max-w-7xl mx-auto space-y-16">
+      <!-- Welcome & Search -->
+      <section
+        class="flex flex-col md:flex-row md:items-end justify-between gap-8"
+      >
+        <div class="space-y-2">
+          <p class="text-secondary font-bold tracking-widest uppercase text-xs">
+            AHLAN WA SAHLAN
+          </p>
+          <h1
+            class="text-4xl md:text-5xl font-extrabold text-primary tracking-tight"
+          >
+            Welcome back,
+          </h1>
+          <p class="text-on-surface-variant text-lg">
+            Your Egyptian journey continues where you left off.
+          </p>
+        </div>
+        <div class="w-full md:max-w-md">
+          <div
+            class="relative flex items-center bg-surface-container-low rounded-xl p-1 shadow-sm border border-outline-variant/10"
+          >
+            <span
+              class="material-symbols-outlined absolute left-4 text-on-surface-variant"
+              data-icon="search"
+              >search</span
+            >
+            <input
+              class="w-full bg-transparent border-none focus:ring-0 pl-12 pr-4 py-3 text-on-surface placeholder:text-outline"
+              placeholder="Search temples, cafes, or hidden gems..."
+              type="text"
+            />
+          </div>
+        </div>
+      </section>
+      <!-- Quick Access Grid -->
+      <section class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <button
+          class="flex flex-col items-center justify-center p-6 bg-surface-container-lowest rounded-xl hover:bg-secondary-container transition-all duration-300 group shadow-[0_8px_32px_-4px_rgba(26,28,26,0.06)]"
+        >
+          <div
+            class="w-12 h-12 flex items-center justify-center rounded-full bg-primary-fixed group-hover:bg-primary transition-colors mb-3"
+          >
+            <span
+              class="material-symbols-outlined text-primary group-hover:text-on-primary"
+              data-icon="event_note"
+              >event_note</span
+            >
+          </div>
+          <span
+            class="font-bold text-on-surface-variant group-hover:text-primary transition-colors"
+            >Trip Planner</span
+          >
+        </button>
+        <button
+          class="flex flex-col items-center justify-center p-6 bg-surface-container-lowest rounded-xl hover:bg-secondary-container transition-all duration-300 group shadow-[0_8px_32px_-4px_rgba(26,28,26,0.06)]"
+        >
+          <div
+            class="w-12 h-12 flex items-center justify-center rounded-full bg-secondary-fixed group-hover:bg-secondary transition-colors mb-3"
+          >
+            <span
+              class="material-symbols-outlined text-on-secondary-container group-hover:text-on-secondary"
+              data-icon="translate"
+              >translate</span
+            >
+          </div>
+          <span
+            class="font-bold text-on-surface-variant group-hover:text-secondary transition-colors"
+            >Phrases</span
+          >
+        </button>
+        <button
+          class="flex flex-col items-center justify-center p-6 bg-surface-container-lowest rounded-xl hover:bg-secondary-container transition-all duration-300 group shadow-[0_8px_32px_-4px_rgba(26,28,26,0.06)]"
+        >
+          <div
+            class="w-12 h-12 flex items-center justify-center rounded-full bg-error-container group-hover:bg-error transition-colors mb-3"
+          >
+            <span
+              class="material-symbols-outlined text-error group-hover:text-on-error"
+              data-icon="emergency"
+              >emergency</span
+            >
+          </div>
+          <span
+            class="font-bold text-on-surface-variant group-hover:text-error transition-colors"
+            >Emergency</span
+          >
+        </button>
+        <button
+          class="flex flex-col items-center justify-center p-6 bg-surface-container-lowest rounded-xl hover:bg-secondary-container transition-all duration-300 group shadow-[0_8px_32px_-4px_rgba(26,28,26,0.06)]"
+        >
+          <div
+            class="w-12 h-12 flex items-center justify-center rounded-full bg-tertiary-fixed group-hover:bg-tertiary transition-colors mb-3"
+          >
+            <span
+              class="material-symbols-outlined text-on-tertiary-fixed group-hover:text-on-tertiary"
+              data-icon="report"
+              >report</span
+            >
+          </div>
+          <span
+            class="font-bold text-on-surface-variant group-hover:text-tertiary transition-colors"
+            >Fraud Report</span
+          >
+        </button>
+      </section>
+      <!-- Discovery Filters -->
+      <section class="space-y-6">
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl font-bold text-primary">Discover Egypt</h2>
+          <button
+            class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all"
+          >
+            View Maps
+            <span class="material-symbols-outlined" data-icon="arrow_forward"
+              >arrow_forward</span
+            >
+          </button>
+        </div>
+        <div class="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+          <button
+            class="px-6 py-2.5 rounded-full bg-primary text-on-primary font-semibold whitespace-nowrap"
+          >
+            All Destinations
+          </button>
+          <button
+            class="px-6 py-2.5 rounded-full bg-secondary-fixed-dim text-on-secondary-fixed-variant font-semibold whitespace-nowrap hover:bg-secondary-container transition-all"
+          >
+            Historical
+          </button>
+          <button
+            class="px-6 py-2.5 rounded-full bg-secondary-fixed-dim text-on-secondary-fixed-variant font-semibold whitespace-nowrap hover:bg-secondary-container transition-all"
+          >
+            Beaches
+          </button>
+          <button
+            class="px-6 py-2.5 rounded-full bg-secondary-fixed-dim text-on-secondary-fixed-variant font-semibold whitespace-nowrap hover:bg-secondary-container transition-all"
+          >
+            Nile Cruises
+          </button>
+          <button
+            class="px-6 py-2.5 rounded-full bg-secondary-fixed-dim text-on-secondary-fixed-variant font-semibold whitespace-nowrap hover:bg-secondary-container transition-all"
+          >
+            Local Food
+          </button>
+          <button
+            class="px-6 py-2.5 rounded-full bg-secondary-fixed-dim text-on-secondary-fixed-variant font-semibold whitespace-nowrap hover:bg-secondary-container transition-all"
+          >
+            Adventure
+          </button>
+        </div>
+        <!-- Attractions Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[280px]">
+          <!-- Main Feature -->
+          <div
+            class="md:col-span-8 md:row-span-2 relative rounded-2xl overflow-hidden group"
+          >
+            <img
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              data-alt="majestic wide shot of the Great Pyramids of Giza at sunset with golden warm lighting and orange clouds"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQnW-cCMW9Uq9N_SOrFvASQJYgoGaV4f1-Y4YoKOwCoux5soX11r7jYweOhaFFXA28Z61OAFxtejhCKeGClMFvn-mnQhi7dX2zWfUNOAnK-qlfWfaMvD6bzvBpYp3ON-hnDsZB_5-FsnAnzZl120koYZinuxRDve2yNiZTvLUA_uEkDtif8K83oOPW6I0N-LNVlvHpoU-2ab7loDEZ0hDf82qqExrGsYxooBzdEEjfyPMNqvXnMsstNyVRYLCcSuCXztch8xWjkbkH"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent"
+            ></div>
+            <div class="absolute bottom-0 left-0 p-8 space-y-2">
+              <div
+                class="flex items-center gap-2 text-tertiary font-bold tracking-widest text-xs"
+              >
+                <span
+                  class="material-symbols-outlined text-sm"
+                  data-icon="star"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >star</span
+                >
+                RECOMMENDED
+              </div>
+              <h3 class="text-3xl font-bold text-surface-bright">
+                The Great Pyramids of Giza
+              </h3>
+              <p class="text-surface-variant max-w-md line-clamp-2">
+                Witness the only surviving wonder of the ancient world. Best
+                visited between 8 AM and 10 AM for optimal light.
+              </p>
+              <div class="pt-4 flex gap-4">
+                <button
+                  class="bg-surface-bright/20 backdrop-blur-md text-surface-bright px-6 py-2 rounded-xl border border-white/30 hover:bg-white/40 transition-all font-bold"
+                >
+                  Explore Guide
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Secondary 1 -->
+          <div class="md:col-span-4 relative rounded-2xl overflow-hidden group">
+            <img
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              data-alt="luxury traditional felucca sailboat on the turquoise waters of the Nile at Aswan, lush green riverbanks in background"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlN7lzfUh6rtOuIGSYUXDr2Pqo-r_inK0hkCMyPUBGb83XyjKhlAJyV7ekwUOr00tKk3o_Yh_1Z17vs9XJbRRN0OBXdFYeXGqdoIZREC7PgoWBcFiEvkCDbQ_ty9ca2K1MSZ3IzQAddJfAS-12_poNkqiJtT4sN9Ceh63jf-2ljiK5IXXYHQqRwrMDOQN3dULDqMbWxbppBzEzJxdX1JUEipSfhCBuX9UzmDvfjleVx9Yc9mBJ-w1zPE6o_-M-UPuCVCq_kgbD2Xrp"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-on-surface/60 to-transparent"
+            ></div>
+            <div class="absolute bottom-4 left-6">
+              <h4 class="text-xl font-bold text-surface-bright">
+                Aswan Felucca Ride
+              </h4>
+              <p class="text-sm text-surface-variant">
+                Sailing the timeless Nile
+              </p>
+            </div>
+          </div>
+          <!-- Secondary 2 -->
+          <div class="md:col-span-4 relative rounded-2xl overflow-hidden group">
+            <img
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              data-alt="architectural interior of the Temple of Karnak in Luxor with tall sandstone columns and ancient hieroglyphics in warm sunlight"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2nrePASU1CriADDbfH7WNkOHJzhPg2tPy48McHtXPWRNDrB22u6HBWQ0S_I_UEY0NyiJlTuRme9_l-p-acc6cdqzIjNh9VurCpZGRYBodJBCjtQqBmYmzbJ_FCzgKpm_UArmzfxVlVh1HOXXmmFUBzBtbUwhf_5qOw-gFF7SXAZB-c5SimD4NZH5GMoV5wsiwuVUUnKCDjMpyUaQG3IL1EbzGoPpfnLBYCW1YqpdUJ2V8RRHuZUWAiTg_wVdzQSOj_k6crwtfnPy-"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-on-surface/60 to-transparent"
+            ></div>
+            <div class="absolute bottom-4 left-6">
+              <h4 class="text-xl font-bold text-surface-bright">
+                Luxor Temple
+              </h4>
+              <p class="text-sm text-surface-variant">
+                The World's Greatest Open-Air Museum
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Story Inset Section -->
+      <section
+        class="bg-surface-container-low rounded-3xl p-8 md:p-12 flex flex-col md:flex-row gap-12 items-center"
+      >
+        <div class="flex-1 space-y-6">
+          <div
+            class="inline-block px-4 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-bold text-xs"
+          >
+            DID YOU KNOW?
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-primary leading-tight">
+            The Library of Alexandria once held the world's wisdom.
+          </h2>
+          <p class="text-on-secondary-container leading-relaxed text-lg italic">
+            "Egypt is not a country we live in, but a country that lives within
+            us."
+          </p>
+          <div
+            class="asymmetric-card bg-secondary-container p-6 border-l-4 border-tertiary"
+          >
+            <p class="text-on-secondary-container font-medium">
+              Visiting Alexandria next week? The Bibliotheca Alexandrina is a
+              modern tribute worth every minute of your time.
+            </p>
+          </div>
+          <button
+            class="text-primary font-bold underline decoration-tertiary decoration-2 underline-offset-4"
+          >
+            Learn more about Egyptian History
+          </button>
+        </div>
+        <div
+          class="w-full md:w-1/3 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl rotate-2"
+        >
+          <img
+            class="w-full h-full object-cover"
+            data-alt="detailed view of ancient colorful egyptian hieroglyphics on stone wall with dramatic directional lighting and deep shadows"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOKfXnJ4xP93Bz75B8xVSiLRJcfdG7cvbyuJT6wPqTRnBTFDze6DCsAWT0VFZEPVLxkhPAVIOvyOHOaf5DUMVCupdCvSZRoen7r3Han6oTqJVfichEMnGrMYoDworfuqvDwjerOxm3xvhCfJeDA_t3T5lZLz-zwUJg8juVr_dJyUYj1v_lkBfCtuWeLBpX8uYf06pkLV6hZMN9iAGfV1mYzV8KW8GA65Hp1dQ_i0KOQ1GgnoovuGSdPnMT8pGnsSZ_AMHzkzCy4A94"
+          />
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full mt-auto bg-[#f7f2ea] dark:bg-slate-900">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 w-full">
+        <div class="col-span-1 md:col-span-1">
+          <div
+            class="text-xl font-bold text-[#00556f] dark:text-[#1C6E8C] mb-6"
+          >
+            Egypt Discovery
+          </div>
+          <p class="text-[#685d46] dark:text-slate-300 text-sm leading-relaxed">
+            Crafting timeless experiences in the land of eternity. From the
+            Nile's edge to the desert's heart.
+          </p>
+        </div>
+        <div class="flex flex-col space-y-4">
+          <h4 class="font-headline font-bold text-on-surface">Explore</h4>
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >About Us</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Sustainability</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Cultural Heritage</a
+          >
+        </div>
+        <div class="flex flex-col space-y-4">
+          <h4 class="font-headline font-bold text-on-surface">Legal</h4>
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Privacy Policy</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Terms of Service</a
+          >
+          <a
+            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            href="#"
+            >Cookie Policy</a
+          >
+        </div>
+        <div class="flex flex-col space-y-4">
+          <h4 class="font-headline font-bold text-on-surface">Connect</h4>
+          <div class="flex space-x-4">
+            <span
+              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
+              data-icon="public"
+              >public</span
+            >
+            <span
+              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
+              data-icon="mail"
+              >mail</span
+            >
+            <span
+              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
+              data-icon="chat"
+              >chat</span
+            >
+          </div>
+          <p class="text-xs text-[#685d46] mt-4">
+            © 2024 Egypt Discovery. All rights reserved. Crafted for the Modern
+            Curator.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- Bottom Nav for Mobile -->
+    <nav
+      class="md:hidden fixed bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-lg border-t border-outline-variant/10 px-6 py-3 flex justify-between items-center z-50"
+    >
+      <button class="flex flex-col items-center gap-1 text-primary">
+        <span
+          class="material-symbols-outlined"
+          data-icon="explore"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >explore</span
+        >
+        <span class="text-[10px] font-bold">Discover</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-on-surface-variant">
+        <span class="material-symbols-outlined" data-icon="calendar_today"
+          >calendar_today</span
+        >
+        <span class="text-[10px] font-medium">Planner</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-on-surface-variant">
+        <span class="material-symbols-outlined" data-icon="security"
+          >security</span
+        >
+        <span class="text-[10px] font-medium">Safety</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-on-surface-variant">
+        <span class="material-symbols-outlined" data-icon="person">person</span>
+        <span class="text-[10px] font-medium">Profile</span>
+      </button>
+    </nav>
+  </body>
+</html>

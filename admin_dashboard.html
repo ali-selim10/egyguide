@@ -1,0 +1,695 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              tertiary: "#755b00",
+              "on-tertiary-container": "#503d00",
+              "secondary-fixed": "#f0e1c3",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e4e2de",
+              "on-surface-variant": "#40484d",
+              "on-error": "#ffffff",
+              "inverse-surface": "#30312e",
+              "on-primary-container": "#c5ebff",
+              "inverse-primary": "#89d0f1",
+              "tertiary-fixed-dim": "#ecc246",
+              "on-background": "#1b1c1a",
+              surface: "#fbf9f5",
+              "surface-container": "#efeeea",
+              secondary: "#685d46",
+              "surface-tint": "#0c6684",
+              "primary-fixed": "#bfe9ff",
+              "on-primary": "#ffffff",
+              "secondary-container": "#f0e1c3",
+              "inverse-on-surface": "#f2f0ed",
+              "on-surface": "#1b1c1a",
+              "on-secondary-container": "#6e634c",
+              background: "#fbf9f5",
+              "surface-container-high": "#eae8e4",
+              "primary-container": "#1c6e8c",
+              "on-secondary-fixed-variant": "#4f4630",
+              "tertiary-container": "#cea72c",
+              "on-secondary-fixed": "#221b08",
+              "on-primary-fixed": "#001f2a",
+              "surface-container-low": "#f5f3ef",
+              error: "#ba1a1a",
+              "surface-bright": "#fbf9f5",
+              "secondary-fixed-dim": "#d3c5a8",
+              primary: "#00556f",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed-variant": "#004d65",
+              "tertiary-fixed": "#ffe08e",
+              outline: "#70787e",
+              "primary-fixed-dim": "#89d0f1",
+              "surface-dim": "#dbdad6",
+              "outline-variant": "#bfc8cd",
+              "surface-container-highest": "#e4e2de",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed": "#241a00",
+              "on-tertiary-fixed-variant": "#584400",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      .headline {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .glass-panel {
+        background: rgba(251, 249, 245, 0.7);
+        backdrop-filter: blur(12px);
+      }
+      .premium-shadow {
+        box-shadow: 0 20px 40px rgba(27, 28, 26, 0.05);
+      }
+    </style>
+  </head>
+  <body class="bg-surface text-on-surface">
+    <!-- SideNavBar -->
+    <aside
+      class="flex flex-col h-full py-6 px-4 h-screen w-64 fixed left-0 top-0 border-r-0 bg-slate-50 dark:bg-slate-900 z-50"
+    >
+      <div class="mb-10 px-2">
+        <h1
+          class="text-xl font-bold tracking-tight text-cyan-900 dark:text-cyan-100 uppercase"
+        >
+          Nile Admin
+        </h1>
+        <p class="text-xs text-slate-500 font-medium">Management Console</p>
+      </div>
+      <nav class="flex-1 space-y-2">
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-cyan-900 dark:hover:text-cyan-100 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors duration-200 active:scale-90 transition-transform"
+          href="admin_dashboard.html"
+        >
+          <span class="material-symbols-outlined" data-icon="dashboard"
+            >dashboard</span
+          >
+          <span class="text-sm">Overview</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-cyan-900 dark:hover:text-cyan-100 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors duration-200 active:scale-90 transition-transform"
+          href="admin_attractions.html"
+        >
+          <span class="material-symbols-outlined" data-icon="location_on"
+            >location_on</span
+          >
+          <span class="text-sm">Attractions</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-cyan-900 dark:hover:text-cyan-100 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors duration-200 active:scale-90 transition-transform"
+          href="admin_fraud_report.html"
+        >
+          <span class="material-symbols-outlined" data-icon="report_problem"
+            >report_problem</span
+          >
+          <span class="text-sm">Fraud Reports</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-cyan-700 dark:text-cyan-300 font-semibold border-r-4 border-cyan-700 dark:border-cyan-400 bg-cyan-50/50 dark:bg-cyan-900/20 transition-all duration-200"
+        >
+          <span class="material-symbols-outlined" data-icon="payments"
+            >payments</span
+          >
+          <span class="text-sm">User Plans</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-cyan-900 dark:hover:text-cyan-100 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors duration-200 active:scale-90 transition-transform"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="settings"
+            >settings</span
+          >
+          <span class="text-sm">Settings</span>
+        </a>
+      </nav>
+      <div class="mt-auto px-2">
+        <button
+          class="w-full bg-primary-container text-on-primary-container py-3 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+        >
+          <span class="material-symbols-outlined text-sm" data-icon="add"
+            >add</span
+          >
+          New Report
+        </button>
+        <div
+          class="mt-6 flex items-center gap-3 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          <div
+            class="w-10 h-10 rounded-full bg-cyan-700 flex items-center justify-center text-white font-bold text-sm"
+            id="admin-avatar"
+          >
+            ?
+          </div>
+          <div>
+            <p
+              class="text-sm font-bold text-slate-900 dark:text-slate-100"
+              id="admin-name"
+            >
+              Loading...
+            </p>
+            <p class="text-[10px] text-slate-500 uppercase tracking-widest">
+              Administrator
+            </p>
+          </div>
+        </div>
+        <script>
+          fetch("/api/me")
+            .then((r) => r.json())
+            .then((data) => {
+              if (data.full_name) {
+                document.getElementById("admin-name").textContent =
+                  data.full_name;
+                document.getElementById("admin-avatar").textContent =
+                  data.full_name.charAt(0).toUpperCase();
+              }
+            })
+            .catch(() => {
+              document.getElementById("admin-name").textContent = "Admin";
+              document.getElementById("admin-avatar").textContent = "A";
+            });
+        </script>
+        <a
+          href="signout"
+          class="mt-3 w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 font-semibold text-sm transition-all duration-200"
+        >
+          <span class="material-symbols-outlined text-sm">logout</span>
+          Sign Out
+        </a>
+      </div>
+    </aside>
+    <!-- Main Content Canvas -->
+    <main class="ml-64 min-h-screen bg-background">
+      <!-- TopAppBar -->
+      <header
+        class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 flex justify-between items-center h-16 px-8 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md shadow-sm dark:shadow-none"
+      >
+        <div class="flex items-center gap-4 flex-1">
+          <div class="relative w-full max-w-md group">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg"
+              data-icon="search"
+              >search</span
+            >
+            <input
+              class="w-full bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-cyan-500/20 focus:bg-surface-container-lowest transition-all"
+              placeholder="Search experiences, users, or logs..."
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            class="p-2 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors relative"
+          >
+            <span class="material-symbols-outlined" data-icon="notifications"
+              >notifications</span
+            >
+            <span
+              class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-white"
+            ></span>
+          </button>
+          <button
+            class="p-2 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors"
+          >
+            <span class="material-symbols-outlined" data-icon="help_outline"
+              >help_outline</span
+            >
+          </button>
+          <div class="h-8 w-px bg-slate-200 mx-2"></div>
+          <h2
+            class="text-sm font-bold text-cyan-900 dark:text-cyan-400 Plus Jakarta Sans Title-LG"
+          >
+            Dashboard Overview
+          </h2>
+        </div>
+      </header>
+      <!-- Content Area -->
+      <div class="pt-24 pb-12 px-8 max-w-7xl mx-auto">
+        <!-- Hero Stats Bento Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div
+            class="md:col-span-1 p-6 rounded-2xl bg-surface-container-lowest premium-shadow flex flex-col justify-between border-l-4 border-primary"
+          >
+            <div>
+              <p
+                class="text-xs font-bold text-secondary uppercase tracking-widest mb-1"
+              >
+                Total Explorers
+              </p>
+              <h3 class="text-3xl font-extrabold text-on-surface">12,482</h3>
+            </div>
+            <div
+              class="mt-4 flex items-center text-xs text-primary font-medium"
+            >
+              <span
+                class="material-symbols-outlined text-sm mr-1"
+                data-icon="trending_up"
+                >trending_up</span
+              >
+              <span>+12% this month</span>
+            </div>
+          </div>
+          <div
+            class="md:col-span-1 p-6 rounded-2xl bg-surface-container-lowest premium-shadow flex flex-col justify-between border-l-4 border-primary_container"
+          >
+            <div>
+              <p
+                class="text-xs font-bold text-secondary uppercase tracking-widest mb-1"
+              >
+                Active Plans
+              </p>
+              <h3 class="text-3xl font-extrabold text-on-surface">856</h3>
+            </div>
+            <div
+              class="mt-4 flex items-center text-xs text-primary_container font-medium"
+            >
+              <span
+                class="material-symbols-outlined text-sm mr-1"
+                data-icon="confirmation_number"
+                >confirmation_number</span
+              >
+              <span>42 pending renewal</span>
+            </div>
+          </div>
+          <div
+            class="md:col-span-1 p-6 rounded-2xl bg-surface-container-lowest premium-shadow flex flex-col justify-between border-l-4 border-error"
+          >
+            <div>
+              <p
+                class="text-xs font-bold text-secondary uppercase tracking-widest mb-1"
+              >
+                Fraud Reports
+              </p>
+              <h3 class="text-3xl font-extrabold text-error">14</h3>
+            </div>
+            <div class="mt-4 flex items-center text-xs text-error font-medium">
+              <span
+                class="material-symbols-outlined text-sm mr-1"
+                data-icon="warning"
+                >warning</span
+              >
+              <span class="font-bold underline">Needs urgent review</span>
+            </div>
+          </div>
+          <div
+            class="md:col-span-1 p-6 rounded-2xl bg-tertiary-fixed text-on-tertiary-fixed-variant premium-shadow flex flex-col justify-between"
+          >
+            <div>
+              <p
+                class="text-xs font-bold uppercase tracking-widest mb-1 opacity-80"
+              >
+                Prestige Revenue
+              </p>
+              <h3 class="text-3xl font-extrabold">$48.2k</h3>
+            </div>
+            <div class="mt-4 flex items-center text-xs font-bold">
+              <span
+                class="material-symbols-outlined text-sm mr-1"
+                data-icon="star"
+                data-weight="fill"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >star</span
+              >
+              <span>Top 1% performing month</span>
+            </div>
+          </div>
+        </section>
+        <!-- Main Insights Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Activity Chart Section -->
+          <div class="lg:col-span-2 space-y-6">
+            <div
+              class="p-8 rounded-2xl bg-surface-container-lowest premium-shadow"
+            >
+              <div class="flex justify-between items-end mb-8">
+                <div>
+                  <h2
+                    class="text-xl font-bold text-on-surface tracking-tight mb-1"
+                  >
+                    User Engagement
+                  </h2>
+                  <p class="text-sm text-secondary">
+                    Active sessions over the last 30 days
+                  </p>
+                </div>
+                <div class="flex gap-2">
+                  <span
+                    class="px-3 py-1 bg-surface-container-low text-[10px] font-bold rounded-full text-secondary uppercase tracking-tighter"
+                    >Day</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary text-[10px] font-bold rounded-full text-on-primary uppercase tracking-tighter"
+                    >Week</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-surface-container-low text-[10px] font-bold rounded-full text-secondary uppercase tracking-tighter"
+                    >Month</span
+                  >
+                </div>
+              </div>
+              <!-- Simulated Chart -->
+              <div class="h-64 flex items-end justify-between gap-2 px-2">
+                <div
+                  class="w-full bg-primary/10 rounded-t-lg h-24 relative group"
+                >
+                  <div
+                    class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"
+                  ></div>
+                </div>
+                <div class="w-full bg-primary/10 rounded-t-lg h-32"></div>
+                <div class="w-full bg-primary/10 rounded-t-lg h-44"></div>
+                <div class="w-full bg-primary/10 rounded-t-lg h-36"></div>
+                <div class="w-full bg-primary/10 rounded-t-lg h-52"></div>
+                <div class="w-full bg-primary rounded-t-lg h-60 relative">
+                  <div
+                    class="absolute -top-10 left-1/2 -translate-x-1/2 bg-on-surface text-white text-[10px] px-2 py-1 rounded shadow-lg whitespace-nowrap"
+                  >
+                    Peak: 1,240
+                  </div>
+                </div>
+                <div class="w-full bg-primary/10 rounded-t-lg h-48"></div>
+                <div class="w-full bg-primary/10 rounded-t-lg h-32"></div>
+                <div class="w-full bg-primary/10 rounded-t-lg h-28"></div>
+                <div class="w-full bg-primary/10 rounded-t-lg h-40"></div>
+                <div class="w-full bg-primary/10 rounded-t-lg h-36"></div>
+                <div class="w-full bg-primary/10 rounded-t-lg h-44"></div>
+              </div>
+              <div
+                class="flex justify-between mt-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest px-2"
+              >
+                <span>01 Oct</span>
+                <span>08 Oct</span>
+                <span>15 Oct</span>
+                <span>22 Oct</span>
+                <span>30 Oct</span>
+              </div>
+            </div>
+            <!-- Top Attractions List (Asymmetric Editorial Style) -->
+            <div>
+              <h2 class="text-xl font-bold text-on-surface tracking-tight mb-6">
+                Trending Experiences
+              </h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div
+                  class="group relative rounded-2xl overflow-hidden aspect-[4/3] premium-shadow"
+                >
+                  <img
+                    alt="Luxor Temple"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    data-alt="dramatic wide angle shot of the Luxor Temple colonnade at twilight with warm orange lighting against a deep blue sky"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoRFsec61e6o_WWax7YczqnXTYbcpGxZEU6E9BG590WOQxvKXTwQ4BomJcVpUuvaTqgXQGPeoKljJ0zi0EJyFl3uOPx7vgmIecAWwsEXo1LR3d8P2FsBZLJYKVbkd9yZYqcXF3AJXtt6UU1fl3A0bCI-E4wZkatYZe79DQQC8CJnpiQ_mwwniCNafWqp4JYcZb9CxvSNSxdl8wR-FtgyVmWMc4pS55kHHBWAf5l6xLyr70VDss06vVbt7atU-9AqlC2s9bkQIWyxI"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"
+                  ></div>
+                  <div class="absolute bottom-0 p-6 w-full">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span
+                        class="px-2 py-1 bg-tertiary text-[10px] font-bold text-white rounded uppercase"
+                        >Trending</span
+                      >
+                      <span class="text-white/80 text-xs flex items-center">
+                        <span
+                          class="material-symbols-outlined text-xs mr-1"
+                          data-icon="star"
+                          data-weight="fill"
+                          style="font-variation-settings: &quot;FILL&quot; 1"
+                          >star</span
+                        >
+                        4.9 (2.1k reviews)
+                      </span>
+                    </div>
+                    <h3 class="text-white text-xl font-bold">
+                      Midnight Luxor Colonnade
+                    </h3>
+                    <p class="text-white/60 text-sm italic">
+                      92% capacity this week
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="group relative rounded-2xl overflow-hidden aspect-[4/3] premium-shadow"
+                >
+                  <img
+                    alt="Nile Cruise"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    data-alt="luxury traditional egyptian dahabiya boat sailing on the calm nile river with palm trees on the horizon at sunset"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtTioPkRx2_MtR6U7V75nPb9JfvY4h5lWrSKowN4cnDIi6pamlIi4-o4aFauQzjcvFGN0WkBoZRmxjpYZ9d1QdOWz8GDj4DSRHJMJg9zHUhdfGBvcLFgqcWyCyRlGcvOO2NZELBLVXNw7nnnTK1u3WsGMd7wB3s8P_vBWSsUsNXBECguSEqAORq0A1qvw-Iqf2dbUNqbsndFKydmsWFJVmreXkCDFKUxcjefy03yZUAx3zcVdp7b_xpAgtBlqbd2YSwOnFXHC2eqI"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"
+                  ></div>
+                  <div class="absolute bottom-0 p-6 w-full">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span
+                        class="px-2 py-1 bg-primary text-[10px] font-bold text-white rounded uppercase"
+                        >Exclusive</span
+                      >
+                      <span class="text-white/80 text-xs flex items-center">
+                        <span
+                          class="material-symbols-outlined text-xs mr-1"
+                          data-icon="star"
+                          data-weight="fill"
+                          style="font-variation-settings: &quot;FILL&quot; 1"
+                          >star</span
+                        >
+                        5.0 (480 reviews)
+                      </span>
+                    </div>
+                    <h3 class="text-white text-xl font-bold">
+                      The Royal Dahabiya Journey
+                    </h3>
+                    <p class="text-white/60 text-sm italic">
+                      +14% booking increase
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Right Column: Quick Actions & Reports -->
+          <div class="space-y-8">
+            <!-- Quick Actions -->
+            <div
+              class="p-8 rounded-2xl bg-surface-container-high/50 premium-shadow border border-white/40"
+            >
+              <h2 class="text-lg font-bold text-on-surface tracking-tight mb-6">
+                Management Pulse
+              </h2>
+              <div class="space-y-4">
+                <button
+                  class="w-full group flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-primary transition-all duration-300"
+                >
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white/20 group-hover:text-white transition-colors"
+                    >
+                      <span
+                        class="material-symbols-outlined"
+                        data-icon="verified_user"
+                        >verified_user</span
+                      >
+                    </div>
+                    <div class="text-left">
+                      <p class="text-sm font-bold group-hover:text-white">
+                        Verify New Users
+                      </p>
+                      <p
+                        class="text-[10px] text-secondary group-hover:text-white/60 uppercase font-medium"
+                      >
+                        24 Pending
+                      </p>
+                    </div>
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-secondary group-hover:text-white text-lg group-hover:translate-x-1 transition-transform"
+                    data-icon="chevron_right"
+                    >chevron_right</span
+                  >
+                </button>
+                <button
+                  class="w-full group flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-primary_container transition-all duration-300"
+                >
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-primary_container/10 flex items-center justify-center text-primary_container group-hover:bg-white/20 group-hover:text-white transition-colors"
+                    >
+                      <span
+                        class="material-symbols-outlined"
+                        data-icon="add_location_alt"
+                        >add_location_alt</span
+                      >
+                    </div>
+                    <div class="text-left">
+                      <p class="text-sm font-bold group-hover:text-white">
+                        Add Attraction
+                      </p>
+                      <p
+                        class="text-[10px] text-secondary group-hover:text-white/60 uppercase font-medium"
+                      >
+                        New Experience
+                      </p>
+                    </div>
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-secondary group-hover:text-white text-lg group-hover:translate-x-1 transition-transform"
+                    data-icon="chevron_right"
+                    >chevron_right</span
+                  >
+                </button>
+                <button
+                  class="w-full group flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-tertiary transition-all duration-300"
+                >
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary group-hover:bg-white/20 group-hover:text-white transition-colors"
+                    >
+                      <span
+                        class="material-symbols-outlined"
+                        data-icon="auto_awesome"
+                        >auto_awesome</span
+                      >
+                    </div>
+                    <div class="text-left">
+                      <p class="text-sm font-bold group-hover:text-white">
+                        Optimize Content
+                      </p>
+                      <p
+                        class="text-[10px] text-secondary group-hover:text-white/60 uppercase font-medium"
+                      >
+                        AI Insights
+                      </p>
+                    </div>
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-secondary group-hover:text-white text-lg group-hover:translate-x-1 transition-transform"
+                    data-icon="chevron_right"
+                    >chevron_right</span
+                  >
+                </button>
+              </div>
+            </div>
+            <!-- Pending Fraud Reports -->
+            <div
+              class="p-8 rounded-2xl bg-surface-container-lowest premium-shadow border border-error/10"
+            >
+              <div class="flex justify-between items-center mb-6">
+                <h2 class="text-lg font-bold text-on-surface tracking-tight">
+                  Recent Incidents
+                </h2>
+                <span
+                  class="px-2 py-1 bg-error/10 text-error text-[10px] font-bold rounded"
+                  >High Priority</span
+                >
+              </div>
+              <div class="space-y-6">
+                <div class="flex gap-4">
+                  <div
+                    class="flex-shrink-0 w-2 h-2 rounded-full bg-error mt-1.5"
+                  ></div>
+                  <div>
+                    <p class="text-sm font-bold text-on-surface">
+                      Suspicious Transaction: ID-4829
+                    </p>
+                    <p class="text-xs text-secondary mb-1">
+                      User: Omar Farouk • $1,200.00
+                    </p>
+                    <p class="text-[10px] font-medium text-slate-400 uppercase">
+                      12 minutes ago
+                    </p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <div
+                    class="flex-shrink-0 w-2 h-2 rounded-full bg-error/40 mt-1.5"
+                  ></div>
+                  <div>
+                    <p class="text-sm font-bold text-on-surface">
+                      Review Flagged: Giza Pyramids
+                    </p>
+                    <p class="text-xs text-secondary mb-1">
+                      Potential bot-generated content
+                    </p>
+                    <p class="text-[10px] font-medium text-slate-400 uppercase">
+                      2 hours ago
+                    </p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <div
+                    class="flex-shrink-0 w-2 h-2 rounded-full bg-error/40 mt-1.5"
+                  ></div>
+                  <div>
+                    <p class="text-sm font-bold text-on-surface">
+                      Unauthorized Login Attempt
+                    </p>
+                    <p class="text-xs text-secondary mb-1">
+                      IP: 192.168.1.45 (Luxembourg)
+                    </p>
+                    <p class="text-[10px] font-medium text-slate-400 uppercase">
+                      4 hours ago
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="w-full mt-8 py-3 text-xs font-bold text-primary uppercase tracking-widest border border-primary/20 rounded-xl hover:bg-primary hover:text-white transition-all"
+              >
+                View All Incidents
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

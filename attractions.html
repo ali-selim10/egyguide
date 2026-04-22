@@ -1,0 +1,637 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              outline: "#70787e",
+              "primary-fixed": "#bfe9ff",
+              "surface-tint": "#0c6684",
+              error: "#ba1a1a",
+              "on-tertiary-fixed-variant": "#584400",
+              "on-secondary-fixed-variant": "#4f4630",
+              "inverse-primary": "#89d0f1",
+              primary: "#00556f",
+              "on-error": "#ffffff",
+              "on-secondary-fixed": "#221b08",
+              "on-background": "#1b1c1a",
+              "surface-container-low": "#f5f3ef",
+              "on-primary-fixed": "#001f2a",
+              "inverse-surface": "#30312e",
+              "outline-variant": "#bfc8cd",
+              "tertiary-fixed": "#ffe08e",
+              "on-tertiary-fixed": "#241a00",
+              "surface-dim": "#dbdad6",
+              "on-secondary": "#ffffff",
+              "primary-container": "#1c6e8c",
+              "on-tertiary": "#ffffff",
+              secondary: "#685d46",
+              "on-primary-container": "#c5ebff",
+              "tertiary-container": "#cea72c",
+              "inverse-on-surface": "#f2f0ed",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#503d00",
+              "secondary-fixed": "#f0e1c3",
+              "secondary-fixed-dim": "#d3c5a8",
+              "on-surface": "#1b1c1a",
+              "surface-container": "#efeeea",
+              "surface-bright": "#fbf9f5",
+              "on-surface-variant": "#40484d",
+              "surface-variant": "#e4e2de",
+              "on-error-container": "#93000a",
+              tertiary: "#755b00",
+              "on-secondary-container": "#6e634c",
+              "secondary-container": "#f0e1c3",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#eae8e4",
+              background: "#fbf9f5",
+              surface: "#fbf9f5",
+              "surface-container-highest": "#e4e2de",
+              "primary-fixed-dim": "#89d0f1",
+              "tertiary-fixed-dim": "#ecc246",
+              "on-primary-fixed-variant": "#004d65",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      .font-headline {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .glass-nav {
+        background-color: rgba(251, 249, 245, 0.7);
+        backdrop-filter: blur(12px);
+      }
+      @keyframes pulse-custom {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(186, 26, 26, 0.4);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 0 0 10px rgba(186, 26, 26, 0);
+        }
+      }
+      .sos-pulse {
+        animation: pulse-custom 2s infinite;
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-surface selection:bg-primary/20">
+    <!-- TopNavBar -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-[#fbf9f5]/70 dark:bg-slate-950/70 backdrop-blur-md shadow-[0_20px_40px_rgba(27,28,26,0.05)]"
+    >
+      <div
+        class="flex justify-between items-center px-8 py-6 max-w-full mx-auto"
+      >
+        <div
+          class="text-2xl font-bold tracking-tighter text-[#00556f] dark:text-[#1C6E8C]"
+        >
+          <a href="/index">Sikka</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/index"
+            >Home</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/explore"
+            >Explore</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/booking"
+            >Booking</a
+          >
+          <a
+            class="text-[#00556f] dark:text-white font-bold border-b-2 border-[#755b00] pb-1 transition-all duration-300"
+            href="/attractions"
+            >Attractions</a
+          >
+          <a
+            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            href="/planner"
+            >Plan Your Day</a
+          >
+        </div>
+        <div class="flex items-center space-x-6">
+          <div class="relative hidden lg:block">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm"
+              data-icon="search"
+              >search</span
+            >
+            <input
+              class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all"
+              placeholder="Search destinations..."
+              type="text"
+            />
+          </div>
+
+          <div id="auth-btn"></div>
+          <script>
+            fetch("/api/me")
+              .then((r) => {
+                if (r.ok) {
+                  document.getElementById("auth-btn").innerHTML =
+                    `<a href="/signout" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign Out</a>`;
+                } else {
+                  document.getElementById("auth-btn").innerHTML =
+                    `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+                }
+              })
+              .catch(() => {
+                document.getElementById("auth-btn").innerHTML =
+                  `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+              });
+          </script>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-32 pb-20">
+      <!-- Hero Section / Title -->
+      <header class="px-8 md:px-12 mb-16 max-w-7xl mx-auto">
+        <h1
+          class="text-5xl md:text-7xl font-headline font-extrabold text-primary tracking-tighter mb-4 leading-none"
+        >
+          Timeless <span class="text-tertiary">Treasures.</span>
+        </h1>
+        <p class="text-lg text-secondary max-w-2xl font-body leading-relaxed">
+          Explore the architectural marvels that have defined civilizations for
+          millennia. From the golden dunes of Giza to the sacred valleys of
+          Luxor.
+        </p>
+      </header>
+      <!-- Filters Section -->
+      <section class="px-8 md:px-12 mb-12 max-w-7xl mx-auto">
+        <div class="flex flex-wrap items-center gap-4">
+          <button
+            class="filter-btn bg-primary text-on-primary px-6 py-2 rounded-full text-sm font-semibold transition-all"
+            data-region="all"
+          >
+            All Landmarks
+          </button>
+          <button
+            class="filter-btn bg-surface-variant text-on-surface-variant hover:bg-secondary-container px-6 py-2 rounded-full text-sm font-medium transition-all"
+            data-region="upper-egypt"
+          >
+            Upper Egypt
+          </button>
+          <button
+            class="filter-btn bg-surface-variant text-on-surface-variant hover:bg-secondary-container px-6 py-2 rounded-full text-sm font-medium transition-all"
+            data-region="lower-egypt"
+          >
+            Lower Egypt
+          </button>
+          <button
+            class="filter-btn bg-surface-variant text-on-surface-variant hover:bg-secondary-container px-6 py-2 rounded-full text-sm font-medium transition-all"
+            data-region="red-sea"
+          >
+            Red Sea
+          </button>
+          <div class="ml-auto flex items-center space-x-2 text-secondary">
+            <span class="material-symbols-outlined">filter_list</span>
+            <span class="text-sm font-medium">Sort by: Popularity</span>
+          </div>
+        </div>
+      </section>
+      <!-- Attractions Grid -->
+      <section class="px-8 md:px-12 max-w-7xl mx-auto">
+        <div
+          id="attractions-grid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <div class="col-span-3 py-16 text-center text-secondary">
+            Loading attractions...
+          </div>
+        </div>
+      </section>
+
+      <script>
+        // ── Load attractions dynamically from Supabase via Flask ───────────────────
+        (function () {
+          var grid = document.getElementById("attractions-grid");
+          var filterBtns = document.querySelectorAll(".filter-btn");
+          var allAttractions = [];
+
+          function buildActivities(str) {
+            if (!str) return "";
+            return str
+              .split(",")
+              .map(function (a) {
+                return (
+                  '<li class="flex items-start gap-2 text-sm text-secondary"><span class="material-symbols-outlined text-tertiary text-sm mt-0.5">check_circle</span>' +
+                  a.trim() +
+                  "</li>"
+                );
+              })
+              .join("");
+          }
+
+          function buildTags(str) {
+            if (!str) return "";
+            return str
+              .split(",")
+              .map(function (t) {
+                return (
+                  '<span class="px-3 py-1 bg-surface-container rounded-full text-xs font-medium text-secondary">' +
+                  t.trim() +
+                  "</span>"
+                );
+              })
+              .join("");
+          }
+
+          function buildCard(a) {
+            var key = "db-" + a.attraction_id;
+            var imgSrc =
+              a.image_url ||
+              "https://via.placeholder.com/400x300?text=" +
+                encodeURIComponent(a.name);
+            return `
+    <div class="attraction-card group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col" data-region="${a.region || "all"}">
+      <div class="aspect-[4/3] overflow-hidden">
+        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="${imgSrc}" alt="${a.name}" onerror="this.src='https://via.placeholder.com/400x300?text=${encodeURIComponent(a.name)}'"/>
+      </div>
+      <div class="p-6 flex flex-col flex-grow">
+        <span class="text-xs font-bold uppercase tracking-widest text-tertiary mb-2 block">${a.category || (a.region || "").replace("-", " ")}</span>
+        <div class="flex justify-between items-start mb-2">
+          <h3 class="text-xl font-headline font-bold text-on-surface leading-tight">${a.name}</h3>
+          <span class="text-lg font-bold text-primary ml-2 whitespace-nowrap">${a.entry_fee || ""}</span>
+        </div>
+        <div class="flex items-center text-secondary mb-3">
+          <span class="material-symbols-outlined text-sm mr-1">location_on</span>
+          <span class="text-sm">${a.location || ""}</span>
+        </div>
+        <p class="text-sm text-secondary mb-4 line-clamp-2 flex-grow">${a.description || ""}</p>
+        <button id="btn-${key}" data-open="View Details" class="inline-flex items-center justify-center bg-primary-container text-on-primary-container px-6 py-2.5 rounded-xl font-bold text-sm transition-all hover:shadow-md cursor-pointer w-full mt-auto">
+          View Details <span class="material-symbols-outlined ml-2 text-base">expand_more</span>
+        </button>
+        <div id="panel-${key}" class="hidden overflow-hidden transition-all duration-500">
+          <div class="mt-4 p-6 bg-surface-container-low rounded-2xl border border-outline-variant/20 space-y-4">
+            <div><div class="flex items-center gap-2 mb-1"><span class="material-symbols-outlined text-primary text-sm">location_on</span><span class="text-xs font-bold uppercase tracking-widest text-secondary">Location</span></div><p class="text-sm text-on-surface">${a.location || ""}</p></div>
+            ${a.history ? `<div><div class="flex items-center gap-2 mb-1"><span class="material-symbols-outlined text-primary text-sm">history_edu</span><span class="text-xs font-bold uppercase tracking-widest text-secondary">History</span></div><p class="text-sm text-on-surface leading-relaxed">${a.history}</p></div>` : ""}
+            ${a.best_time ? `<div><div class="flex items-center gap-2 mb-1"><span class="material-symbols-outlined text-primary text-sm">wb_sunny</span><span class="text-xs font-bold uppercase tracking-widest text-secondary">Best Time</span></div><p class="text-sm text-on-surface">${a.best_time}</p></div>` : ""}
+            ${a.activities ? `<div><div class="flex items-center gap-2 mb-2"><span class="material-symbols-outlined text-primary text-sm">hiking</span><span class="text-xs font-bold uppercase tracking-widest text-secondary">Activities</span></div><ul class="space-y-1">${buildActivities(a.activities)}</ul></div>` : ""}
+            ${a.what_to_bring ? `<div><div class="flex items-center gap-2 mb-2"><span class="material-symbols-outlined text-primary text-sm">backpack</span><span class="text-xs font-bold uppercase tracking-widest text-secondary">What to Bring</span></div><div class="flex flex-wrap gap-2">${buildTags(a.what_to_bring)}</div></div>` : ""}
+          </div>
+        </div>
+      </div>
+    </div>`;
+          }
+
+          function attachPanelListeners() {
+            document
+              .querySelectorAll('[id^="btn-db-"]')
+              .forEach(function (btn) {
+                btn.addEventListener("click", function (e) {
+                  e.preventDefault();
+                  var key = btn.id.replace("btn-", "");
+                  var panel = document.getElementById("panel-" + key);
+                  var isHidden = panel.classList.contains("hidden");
+                  document
+                    .querySelectorAll('[id^="panel-"]')
+                    .forEach(function (p) {
+                      p.classList.add("hidden");
+                    });
+                  document
+                    .querySelectorAll('[id^="btn-"]')
+                    .forEach(function (b) {
+                      if (b.dataset.open) b.textContent = b.dataset.open;
+                    });
+                  if (isHidden) {
+                    panel.classList.remove("hidden");
+                    btn.textContent = "Close Details";
+                    panel.scrollIntoView({
+                      behavior: "smooth",
+                      block: "nearest",
+                    });
+                  }
+                });
+              });
+          }
+
+          function renderCards(region) {
+            var filtered =
+              region === "all"
+                ? allAttractions
+                : allAttractions.filter(function (a) {
+                    return a.region === region;
+                  });
+            if (!filtered.length) {
+              grid.innerHTML =
+                '<div class="col-span-3 py-16 text-center text-secondary">No attractions found for this region.</div>';
+              return;
+            }
+            grid.innerHTML = filtered.map(buildCard).join("");
+            attachPanelListeners();
+          }
+
+          // Filter buttons
+          filterBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              filterBtns.forEach(function (b) {
+                b.classList.remove("bg-primary", "text-on-primary");
+                b.classList.add(
+                  "bg-surface-variant",
+                  "text-on-surface-variant",
+                );
+              });
+              btn.classList.add("bg-primary", "text-on-primary");
+              btn.classList.remove(
+                "bg-surface-variant",
+                "text-on-surface-variant",
+              );
+              renderCards(btn.dataset.region);
+            });
+          });
+
+          // Load from API
+          grid.innerHTML =
+            '<div class="col-span-3 py-16 text-center text-secondary">Loading attractions...</div>';
+          fetch("/api/attractions")
+            .then(function (r) {
+              return r.json();
+            })
+            .then(function (data) {
+              allAttractions = data;
+              if (!data.length) {
+                grid.innerHTML =
+                  '<div class="col-span-3 py-16 text-center text-secondary">No attractions available yet.</div>';
+                return;
+              }
+              renderCards("all");
+            })
+            .catch(function () {
+              grid.innerHTML =
+                '<div class="col-span-3 py-16 text-center text-red-400">Failed to load attractions.</div>';
+            });
+        })();
+      </script>
+
+      <!-- Newsletter / CTA -->
+      <!-- Newsletter / CTA -->
+      <section class="mt-24 px-8 md:px-12 max-w-7xl mx-auto">
+        <div
+          class="bg-primary rounded-3xl p-12 text-center text-on-primary relative overflow-hidden"
+        >
+          <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <div
+              class="absolute top-0 right-0 w-64 h-64 border-[40px] border-white rounded-full -translate-y-1/2 translate-x-1/2"
+            ></div>
+          </div>
+          <h2 class="text-4xl font-headline font-bold mb-4 relative z-10">
+            Don't Miss a Hidden Gem
+          </h2>
+          <p
+            class="text-on-primary-container max-w-xl mx-auto mb-8 relative z-10"
+          >
+            Subscribe to our curator's newsletter for exclusive access to
+            heritage sites and private tours across the Nile.
+          </p>
+          <div
+            class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto relative z-10"
+          >
+            <input
+              class="flex-grow px-6 py-4 rounded-xl text-on-surface bg-surface focus:ring-2 focus:ring-tertiary border-none outline-none"
+              placeholder="Your email address"
+              type="email"
+            />
+            <button
+              class="bg-tertiary text-on-tertiary px-8 py-4 rounded-xl font-bold transition-all hover:bg-tertiary-container"
+            >
+              Join the List
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full mt-auto bg-[#f7f2ea] dark:bg-slate-900">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 w-full">
+        <div class="space-y-6">
+          <span class="text-xl font-bold text-[#00556f] dark:text-[#1C6E8C]"
+            >Egypt Discovery</span
+          >
+          <p class="text-[#685d46] dark:text-slate-300 text-sm leading-relaxed">
+            Curating the world's most profound historical experiences with
+            modern elegance and respect for heritage.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-headline font-bold text-[#00556f] mb-6">
+            The Experience
+          </h4>
+          <ul class="space-y-4">
+            <li>
+              <a
+                class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+                href="#"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+                href="#"
+                >Sustainability</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+                href="#"
+                >Cultural Heritage</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-headline font-bold text-[#00556f] mb-6">Support</h4>
+          <ul class="space-y-4">
+            <li>
+              <a
+                class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+                href="report-fraud.html"
+                >Report Fraud</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+                href="#"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+                href="#"
+                >Privacy</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200 block text-sm"
+                href="#"
+                >FAQ</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="space-y-6">
+          <h4 class="font-headline font-bold text-[#00556f] mb-6">
+            Follow the Journey
+          </h4>
+          <div class="flex space-x-4">
+            <div
+              class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary cursor-pointer hover:bg-primary hover:text-white transition-all"
+            >
+              <span class="material-symbols-outlined text-xl">share</span>
+            </div>
+            <div
+              class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary cursor-pointer hover:bg-primary hover:text-white transition-all"
+            >
+              <span class="material-symbols-outlined text-xl"
+                >travel_explore</span
+              >
+            </div>
+            <div
+              class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary cursor-pointer hover:bg-primary hover:text-white transition-all"
+            >
+              <span class="material-symbols-outlined text-xl">public</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="px-12 pb-12">
+        <div class="pt-12 border-t border-outline-variant/30 text-center">
+          <p class="text-[#685d46] text-xs opacity-70">
+            © 2024 Egypt Discovery. All rights reserved. Crafted for the Modern
+            Curator.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <div class="fixed bottom-8 right-8 flex flex-col gap-4 z-40">
+      <a
+        class="bg-error text-on-error w-16 h-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all group relative"
+        href="/report-fraud"
+      >
+        <span
+          class="material-symbols-outlined text-3xl"
+          data-icon="report"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >report</span
+        >
+        <span
+          class="absolute right-full mr-4 bg-on-surface text-white px-4 py-2 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 whitespace-nowrap transition-all"
+          >Report Fraud / SOS</span
+        >
+      </a>
+      <button
+        class="bg-tertiary text-on-tertiary w-16 h-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all group relative"
+      >
+        <span
+          class="material-symbols-outlined text-3xl"
+          data-icon="chat_bubble"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >chat_bubble</span
+        >
+        <span
+          class="absolute right-full mr-4 bg-on-surface text-white px-4 py-2 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 whitespace-nowrap transition-all"
+          >AI Travel Assistant</span
+        >
+      </button>
+    </div>
+
+    <script>
+      // ── Attraction filters ──────────────────────────────────────────────────
+      (function () {
+        var filterBtns = document.querySelectorAll(".filter-btn");
+        var cards = document.querySelectorAll(".attraction-card");
+
+        filterBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var region = btn.dataset.region;
+
+            // Update active button style
+            filterBtns.forEach(function (b) {
+              b.classList.remove("bg-primary", "text-on-primary");
+              b.classList.add("bg-surface-variant", "text-on-surface-variant");
+            });
+            btn.classList.add("bg-primary", "text-on-primary");
+            btn.classList.remove(
+              "bg-surface-variant",
+              "text-on-surface-variant",
+            );
+
+            // Show/hide cards
+            cards.forEach(function (card) {
+              if (region === "all" || card.dataset.region === region) {
+                card.style.display = "";
+                card.style.opacity = "1";
+              } else {
+                card.style.display = "none";
+              }
+            });
+
+            // Close all open panels when filtering
+            document.querySelectorAll('[id^="panel-"]').forEach(function (p) {
+              p.classList.add("hidden");
+            });
+            document.querySelectorAll('[id^="btn-"]').forEach(function (b) {
+              if (b.dataset.open) b.textContent = b.dataset.open;
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
