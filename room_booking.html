@@ -1,21 +1,16 @@
 <!doctype html>
-
 <html class="light" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Deluxe Nile View Room - The Modern Curator</title>
+    <title>Deluxe Nile View Room - EgyGuide</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800&family=Manrope:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       rel="stylesheet"
     />
     <script id="tailwind-config">
@@ -102,46 +97,115 @@
         border-top-left-radius: 2rem;
         border-bottom-right-radius: 2rem;
       }
+
+      /* Date input styling */
+      input[type="date"] {
+        -webkit-appearance: none;
+        appearance: none;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-family: "Manrope", sans-serif;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #1a1c1a;
+        cursor: pointer;
+        width: 100%;
+      }
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      /* Confirmation Modal */
+      #confirm-modal {
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
+      }
+      #confirm-modal.hidden {
+        display: none;
+      }
+
+      @keyframes checkmark-draw {
+        from {
+          stroke-dashoffset: 60;
+        }
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      .checkmark-path {
+        stroke-dasharray: 60;
+        stroke-dashoffset: 60;
+        animation: checkmark-draw 0.6s ease-out 0.3s forwards;
+      }
+
+      @keyframes slide-up {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .modal-card {
+        animation: slide-up 0.4s ease-out forwards;
+      }
+
+      /* Loading spinner */
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .spinner {
+        animation: spin 0.8s linear infinite;
+      }
     </style>
   </head>
   <body
     class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed"
   >
-    <!-- TopNavBar -->
+    <!-- ── Top Navigation ──────────────────────────────────────────────────── -->
     <nav
-      class="fixed top-0 w-full z-50 bg-[#fbf9f5]/70 dark:bg-slate-950/70 backdrop-blur-md shadow-[0_20px_40px_rgba(27,28,26,0.05)]"
+      class="fixed top-0 w-full z-50 bg-[#fbf9f5]/70 backdrop-blur-md shadow-[0_20px_40px_rgba(27,28,26,0.05)]"
     >
       <div
         class="flex justify-between items-center px-8 py-6 max-w-full mx-auto"
       >
-        <div
-          class="text-2xl font-bold tracking-tighter text-[#00556f] dark:text-[#1C6E8C]"
-        >
-          <a href="/index">Sikka</a>
+        <div class="text-2xl font-bold tracking-tighter text-[#00556f]">
+          <a href="/index">EgyGuide</a>
         </div>
         <div class="hidden md:flex items-center space-x-8">
           <a
-            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            class="text-[#685d46] font-medium hover:text-[#00556f] transition-all duration-300"
             href="/index"
             >Home</a
           >
           <a
-            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            class="text-[#685d46] font-medium hover:text-[#00556f] transition-all duration-300"
             href="/explore"
             >Explore</a
           >
           <a
-            class="text-[#00556f] dark:text-white font-bold border-b-2 border-[#755b00] pb-1 transition-all duration-300"
+            class="text-[#00556f] font-bold border-b-2 border-[#755b00] pb-1"
             href="/booking"
             >Booking</a
           >
           <a
-            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            class="text-[#685d46] font-medium hover:text-[#00556f] transition-all duration-300"
             href="/attractions"
             >Attractions</a
           >
           <a
-            class="text-[#685d46] dark:text-slate-400 font-medium hover:text-[#00556f] transition-all duration-300"
+            class="text-[#685d46] font-medium hover:text-[#00556f] transition-all duration-300"
             href="/planner"
             >Plan Your Day</a
           >
@@ -150,7 +214,6 @@
           <div class="relative hidden lg:block">
             <span
               class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm"
-              data-icon="search"
               >search</span
             >
             <input
@@ -159,32 +222,33 @@
               type="text"
             />
           </div>
-
           <div id="auth-btn"></div>
           <script>
             fetch("/api/me")
               .then((r) => {
                 if (r.ok) {
                   document.getElementById("auth-btn").innerHTML =
-                    `<a href="/signout" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign Out</a>`;
+                    `<a href="/signout" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300">Sign Out</a>`;
                 } else {
                   document.getElementById("auth-btn").innerHTML =
-                    `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+                    `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300">Sign In</a>`;
                 }
               })
               .catch(() => {
                 document.getElementById("auth-btn").innerHTML =
-                  `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+                  `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300">Sign In</a>`;
               });
           </script>
         </div>
       </div>
     </nav>
+
+    <!-- ── Main Content ────────────────────────────────────────────────────── -->
     <main class="max-w-7xl mx-auto px-6 pt-32 pb-24">
-      <!-- Breadcrumb & Title -->
+      <!-- Breadcrumb -->
       <div class="mb-12">
         <nav
-          class="flex items-center gap-2 text-label-md text-secondary uppercase tracking-[0.1em] mb-4"
+          class="flex items-center gap-2 text-secondary uppercase tracking-[0.1em] text-xs mb-4"
         >
           <span>Luxor</span>
           <span class="material-symbols-outlined text-[10px]"
@@ -202,34 +266,36 @@
           Deluxe Nile <span class="text-primary">View Room</span>
         </h1>
       </div>
+
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        <!-- Left Column: Gallery & Details -->
+        <!-- ── Left: Gallery & Details ─────────────────────────────────────── -->
         <div class="lg:col-span-8 space-y-16">
-          <!-- Editorial Image Gallery -->
+          <!-- Gallery -->
           <section class="grid grid-cols-2 gap-4">
             <div class="col-span-2 overflow-hidden rounded-xl h-[500px]">
               <img
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                data-alt="luxurious hotel room with modern egyptian decor overlooking the nile river at sunset with warm golden lighting"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXtMF2vKvjezPdqVSXboIqXYUKb2mVVTr4i61IPhUqCyOxoyiphOR33WpcaKCNuJZg_CTqKMlxsIXdemX--du9C_-RJWzi8dxnUUY0i-bQGarnIR-4u4hwx6McGmCsny0skThbJQuj7FEi3IPuRC_rZOiiEJT8Vksai7aUZPYzM0GX_EwxHxPRhl4DkVwEJHYpjl2cGeHX3HZDlbBBX_d1ExjeSHvPkSZ4E-R141mCVI7v8x57lBc0XF3uGCdcUw3EiU_QCnlnDo5M"
+                alt="Deluxe Nile View Room"
               />
             </div>
             <div class="rounded-xl overflow-hidden h-[300px]">
               <img
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                data-alt="high-end bathroom featuring sand-colored marble tiles and a rainfall shower with warm accent lighting"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBQa44_-z2ayzmJ0TAbaSoV5jVrRQjl-F4Xs_ZiJ8Gy9UREdtwvcOh173aIAtZdB_x6MKQDsH4CLvOXEq5-VNBEGkotgyQSVLNaPM3Ro-WMxtwJ8B4K56BchZva4zZyWsbvPIYYEKyS-rKWx1rPxankkDwiwmlAxQzZhATZBX3VVhsaJSxwPsXPKkwWD-kRm3KGq6PosrJsWLJEn4pgO3l7burSx-D5oRe9djvI1mJDIeW0QUdqsDTXdGGxmRFLiN1U4XpFrKPRA9_"
+                alt="Bathroom"
               />
             </div>
             <div class="rounded-xl overflow-hidden h-[300px]">
               <img
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                data-alt="private balcony with wrought iron railing overlooking the ancient temples of luxor across the river nile"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNNpLfFnP7UTDXq_TM2LRkkuMHoMsI9LrWwFgneWxjGWjuyIUfkERwWAXdCoFY_lkkc2ppfThjia3Oq_ckoGHYk7SUoJnXKV8lTtJp_2-rw6dYEw7eP6jh8orckLtSPqm0shYqz9-xyjuz6pB9kLJ4b4_VGY3qIyHHhXZRKNl1_LOoyXuCqhKEStrKCukYr_S4frB3R4py18U3kVVCq3j3oBQH-g2Bf0mj5ZGhgFCRp-Qp0goOUrd66Fqef5-JJyb5mfb9eljl13Rt"
+                alt="Balcony view"
               />
             </div>
           </section>
-          <!-- Amenities Grid -->
+
+          <!-- Amenities -->
           <section>
             <h2 class="text-2xl font-headline font-bold mb-8 text-on-surface">
               Curated Comforts
@@ -241,9 +307,7 @@
                 <span class="material-symbols-outlined text-primary text-3xl"
                   >wifi</span
                 >
-                <p class="text-sm font-semibold text-on-surface">
-                  High-Speed WiFi
-                </p>
+                <p class="text-sm font-semibold">High-Speed WiFi</p>
               </div>
               <div
                 class="p-6 bg-surface-container-low rounded-xl text-center space-y-3"
@@ -251,9 +315,7 @@
                 <span class="material-symbols-outlined text-primary text-3xl"
                   >ac_unit</span
                 >
-                <p class="text-sm font-semibold text-on-surface">
-                  Climate Control
-                </p>
+                <p class="text-sm font-semibold">Climate Control</p>
               </div>
               <div
                 class="p-6 bg-surface-container-low rounded-xl text-center space-y-3"
@@ -261,9 +323,7 @@
                 <span class="material-symbols-outlined text-primary text-3xl"
                   >restaurant_menu</span
                 >
-                <p class="text-sm font-semibold text-on-surface">
-                  Artisan Breakfast
-                </p>
+                <p class="text-sm font-semibold">Artisan Breakfast</p>
               </div>
               <div
                 class="p-6 bg-surface-container-low rounded-xl text-center space-y-3"
@@ -271,25 +331,24 @@
                 <span class="material-symbols-outlined text-primary text-3xl"
                   >deck</span
                 >
-                <p class="text-sm font-semibold text-on-surface">
-                  Nile View Deck
-                </p>
+                <p class="text-sm font-semibold">Nile View Deck</p>
               </div>
             </div>
           </section>
-          <!-- Description & Story Inset -->
+
+          <!-- Description -->
           <section class="grid grid-cols-1 md:grid-cols-5 gap-8">
             <div class="md:col-span-3">
               <h3 class="text-xl font-headline font-bold mb-4">
                 A Sanctuary of Modern Heritage
               </h3>
-              <p class="text-body text-secondary leading-relaxed mb-6">
+              <p class="text-secondary leading-relaxed mb-6">
                 Experience the timeless beauty of Luxor from our most
                 prestigious suite. The Deluxe Nile View Room blends mid-century
                 modern furniture with artisanal Egyptian textiles, creating a
                 space that feels both grounded and ethereal.
               </p>
-              <p class="text-body text-secondary leading-relaxed">
+              <p class="text-secondary leading-relaxed">
                 Wake up to the soft call of the river and the silhouette of the
                 Valley of the Kings. Every detail, from the hand-woven linen to
                 the locally sourced stone finishes, has been curated to honor
@@ -325,12 +384,14 @@
             </div>
           </section>
         </div>
-        <!-- Right Column: Booking Summary -->
+
+        <!-- ── Right: Booking Summary ──────────────────────────────────────── -->
         <div class="lg:col-span-4">
           <div class="sticky top-32 space-y-6">
             <div
               class="bg-surface-container-lowest rounded-xl p-8 editorial-shadow border border-surface-variant/20"
             >
+              <!-- Price & Rating -->
               <div class="flex justify-between items-end mb-8">
                 <div>
                   <span class="text-3xl font-headline font-bold text-primary"
@@ -347,34 +408,61 @@
                   <span class="text-sm font-bold">4.9</span>
                 </div>
               </div>
-              <!-- Date Pickers -->
+
+              <!-- ── Date Pickers ─────────────────────────────────────────── -->
               <div
                 class="grid grid-cols-2 border border-outline-variant/30 rounded-xl mb-6 overflow-hidden"
               >
                 <div
-                  class="p-4 border-r border-outline-variant/30 hover:bg-surface-container-low transition-colors cursor-pointer"
+                  class="p-4 border-r border-outline-variant/30 hover:bg-surface-container-low transition-colors relative"
                 >
                   <label
                     class="block text-[10px] uppercase tracking-widest text-secondary font-bold mb-1"
+                    for="check-in"
                     >Check-in</label
                   >
-                  <span class="text-sm font-semibold">Oct 24, 2024</span>
+                  <input
+                    type="date"
+                    id="check-in"
+                    name="check_in"
+                    class="text-sm font-semibold text-on-surface"
+                    min=""
+                  />
                 </div>
                 <div
-                  class="p-4 hover:bg-surface-container-low transition-colors cursor-pointer"
+                  class="p-4 hover:bg-surface-container-low transition-colors relative"
                 >
                   <label
                     class="block text-[10px] uppercase tracking-widest text-secondary font-bold mb-1"
+                    for="check-out"
                     >Check-out</label
                   >
-                  <span class="text-sm font-semibold">Oct 29, 2024</span>
+                  <input
+                    type="date"
+                    id="check-out"
+                    name="check_out"
+                    class="text-sm font-semibold text-on-surface"
+                    min=""
+                  />
                 </div>
               </div>
-              <!-- Price Breakdown -->
+
+              <!-- Date error -->
+              <p
+                id="date-error"
+                class="hidden text-xs text-error font-semibold mb-4 flex items-center gap-1"
+              >
+                <span class="material-symbols-outlined text-sm">error</span>
+                <span id="date-error-msg"></span>
+              </p>
+
+              <!-- ── Price Breakdown ─────────────────────────────────────── -->
               <div class="space-y-4 mb-8">
                 <div class="flex justify-between text-sm">
-                  <span class="text-secondary">$120 x 5 nights</span>
-                  <span class="font-semibold">$600</span>
+                  <span class="text-secondary" id="nights-label"
+                    >$120 × — nights</span
+                  >
+                  <span class="font-semibold" id="nights-cost">—</span>
                 </div>
                 <div class="flex justify-between text-sm">
                   <span class="text-secondary">Heritage Conservation Fee</span>
@@ -388,16 +476,21 @@
                   class="pt-4 border-t border-outline-variant/30 flex justify-between"
                 >
                   <span class="font-headline font-bold">Total</span>
-                  <span class="font-headline font-bold text-xl text-primary"
-                    >$645</span
+                  <span
+                    class="font-headline font-bold text-xl text-primary"
+                    id="total-cost"
+                    >—</span
                   >
                 </div>
               </div>
-              <!-- Action Button -->
+
+              <!-- ── Confirm Button ──────────────────────────────────────── -->
               <button
-                class="w-full bg-primary text-on-primary py-4 rounded-xl font-headline font-bold tracking-tight text-lg hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/10"
+                id="confirm-btn"
+                class="w-full bg-primary text-on-primary py-4 rounded-xl font-headline font-bold tracking-tight text-lg hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/10 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100 flex items-center justify-center gap-2"
+                disabled
               >
-                Confirm Booking
+                <span id="confirm-btn-text">Select dates to continue</span>
               </button>
               <p
                 class="text-center text-[10px] text-secondary uppercase tracking-widest mt-4"
@@ -405,6 +498,7 @@
                 No payment required until check-in
               </p>
             </div>
+
             <!-- Trust Badge -->
             <div
               class="bg-surface-container-high rounded-xl p-6 flex items-start gap-4"
@@ -424,34 +518,133 @@
         </div>
       </div>
     </main>
-    <!-- Footer -->
-    <footer class="w-full mt-auto bg-[#f7f2ea] dark:bg-slate-900">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 w-full">
-        <div class="col-span-1 md:col-span-1">
+
+    <!-- ── Booking Confirmation Modal ─────────────────────────────────────── -->
+    <div
+      id="confirm-modal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center p-6"
+    >
+      <!-- Backdrop -->
+      <div
+        class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm"
+        id="modal-backdrop"
+      ></div>
+
+      <!-- Card -->
+      <div
+        class="modal-card relative bg-surface-container-lowest rounded-2xl shadow-2xl max-w-md w-full p-10 z-10 border border-surface-variant/30"
+      >
+        <!-- Success icon -->
+        <div class="flex justify-center mb-6">
           <div
-            class="text-xl font-bold text-[#00556f] dark:text-[#1C6E8C] mb-6"
+            class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center"
           >
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle
+                cx="24"
+                cy="24"
+                r="22"
+                stroke="#00556f"
+                stroke-width="2.5"
+                fill="none"
+                opacity="0.2"
+              />
+              <path
+                class="checkmark-path"
+                d="M13 24 L21 32 L35 17"
+                stroke="#00556f"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <h2
+          class="text-2xl font-headline font-bold text-center text-on-surface mb-2"
+        >
+          Booking Confirmed!
+        </h2>
+        <p class="text-center text-secondary text-sm mb-8" id="modal-subtitle">
+          A confirmation has been sent to your email.
+        </p>
+
+        <!-- Booking Details -->
+        <div class="bg-surface-container-low rounded-xl p-6 space-y-3 mb-8">
+          <div class="flex justify-between text-sm">
+            <span class="text-secondary font-medium">Room</span>
+            <span class="font-bold text-on-surface">Deluxe Nile View</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-secondary font-medium">Check-in</span>
+            <span class="font-bold text-on-surface" id="modal-checkin">—</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-secondary font-medium">Check-out</span>
+            <span class="font-bold text-on-surface" id="modal-checkout">—</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-secondary font-medium">Nights</span>
+            <span class="font-bold text-on-surface" id="modal-nights">—</span>
+          </div>
+          <div
+            class="pt-3 border-t border-outline-variant/30 flex justify-between"
+          >
+            <span class="font-bold text-sm">Total Paid</span>
+            <span class="font-headline font-bold text-primary" id="modal-total"
+              >—</span
+            >
+          </div>
+        </div>
+
+        <!-- Email notice -->
+        <div
+          class="flex items-center gap-3 bg-primary/5 rounded-xl p-4 mb-8 border border-primary/10"
+        >
+          <span class="material-symbols-outlined text-primary text-xl"
+            >mark_email_read</span
+          >
+          <p class="text-xs text-secondary leading-relaxed">
+            We've sent a full booking summary to
+            <strong id="modal-email" class="text-on-surface">your email</strong
+            >. Check your inbox (and spam folder, just in case).
+          </p>
+        </div>
+
+        <button
+          onclick="
+            document.getElementById('confirm-modal').classList.add('hidden');
+            window.location.href = '/user_dashboard';
+          "
+          class="w-full bg-primary text-on-primary py-3.5 rounded-xl font-bold hover:scale-[1.02] active:scale-95 transition-all"
+        >
+          View My Bookings
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Footer ──────────────────────────────────────────────────────────── -->
+    <footer class="w-full mt-auto bg-[#f7f2ea]">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 w-full">
+        <div class="col-span-1">
+          <div class="text-xl font-bold text-[#00556f] mb-6">
             Egypt Discovery
           </div>
-          <p class="text-[#685d46] dark:text-slate-300 text-sm leading-relaxed">
-            Crafting timeless experiences in the land of eternity. From the
-            Nile's edge to the desert's heart.
+          <p class="text-[#685d46] text-sm leading-relaxed">
+            Crafting timeless experiences in the land of eternity.
           </p>
         </div>
         <div class="flex flex-col space-y-4">
           <h4 class="font-headline font-bold text-on-surface">Explore</h4>
           <a
-            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            class="text-[#685d46] hover:text-[#00556f] transition-colors"
             href="#"
             >About Us</a
           >
           <a
-            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
-            href="#"
-            >Sustainability</a
-          >
-          <a
-            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            class="text-[#685d46] hover:text-[#00556f] transition-colors"
             href="#"
             >Cultural Heritage</a
           >
@@ -459,46 +652,203 @@
         <div class="flex flex-col space-y-4">
           <h4 class="font-headline font-bold text-on-surface">Legal</h4>
           <a
-            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            class="text-[#685d46] hover:text-[#00556f] transition-colors"
             href="#"
             >Privacy Policy</a
           >
           <a
-            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
+            class="text-[#685d46] hover:text-[#00556f] transition-colors"
             href="#"
             >Terms of Service</a
-          >
-          <a
-            class="text-[#685d46] hover:text-[#00556f] hover:translate-x-1 transition-transform duration-200"
-            href="#"
-            >Cookie Policy</a
           >
         </div>
         <div class="flex flex-col space-y-4">
           <h4 class="font-headline font-bold text-on-surface">Connect</h4>
-          <div class="flex space-x-4">
-            <span
-              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
-              data-icon="public"
-              >public</span
-            >
-            <span
-              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
-              data-icon="mail"
-              >mail</span
-            >
-            <span
-              class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer"
-              data-icon="chat"
-              >chat</span
-            >
-          </div>
           <p class="text-xs text-[#685d46] mt-4">
-            © 2024 Egypt Discovery. All rights reserved. Crafted for the Modern
-            Curator.
+            © 2024 Egypt Discovery. All rights reserved.
           </p>
         </div>
       </div>
     </footer>
+
+    <!-- ── Booking Logic ────────────────────────────────────────────────────── -->
+    <script>
+      const PRICE_PER_NIGHT = 120;
+      const CONSERVATION_FEE = 45;
+
+      const checkinInput = document.getElementById("check-in");
+      const checkoutInput = document.getElementById("check-out");
+      const nightsLabel = document.getElementById("nights-label");
+      const nightsCost = document.getElementById("nights-cost");
+      const totalCost = document.getElementById("total-cost");
+      const confirmBtn = document.getElementById("confirm-btn");
+      const confirmBtnTxt = document.getElementById("confirm-btn-text");
+      const dateError = document.getElementById("date-error");
+      const dateErrorMsg = document.getElementById("date-error-msg");
+
+      // Set min date = today
+      const today = new Date().toISOString().split("T")[0];
+      checkinInput.min = today;
+      checkoutInput.min = today;
+
+      function formatDate(dateStr) {
+        if (!dateStr) return "—";
+        const d = new Date(dateStr + "T12:00:00");
+        return d.toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        });
+      }
+
+      function showError(msg) {
+        dateErrorMsg.textContent = msg;
+        dateError.classList.remove("hidden");
+      }
+      function hideError() {
+        dateError.classList.add("hidden");
+      }
+
+      function recalculate() {
+        const cin = checkinInput.value;
+        const cout = checkoutInput.value;
+
+        if (!cin || !cout) {
+          nightsLabel.textContent = "$120 × — nights";
+          nightsCost.textContent = "—";
+          totalCost.textContent = "—";
+          confirmBtn.disabled = true;
+          confirmBtnTxt.textContent = "Select dates to continue";
+          hideError();
+          return;
+        }
+
+        const d1 = new Date(cin);
+        const d2 = new Date(cout);
+        const nights = Math.round((d2 - d1) / (1000 * 60 * 60 * 24));
+
+        if (nights <= 0) {
+          showError("Check-out must be after check-in.");
+          nightsLabel.textContent = "$120 × — nights";
+          nightsCost.textContent = "—";
+          totalCost.textContent = "—";
+          confirmBtn.disabled = true;
+          confirmBtnTxt.textContent = "Fix dates to continue";
+          return;
+        }
+
+        if (nights > 30) {
+          showError(
+            "Maximum stay is 30 nights. Please contact us for longer stays.",
+          );
+          confirmBtn.disabled = true;
+          confirmBtnTxt.textContent = "Fix dates to continue";
+          return;
+        }
+
+        hideError();
+        const roomCost = PRICE_PER_NIGHT * nights;
+        const total = roomCost + CONSERVATION_FEE;
+
+        nightsLabel.textContent = `$${PRICE_PER_NIGHT} × ${nights} night${nights > 1 ? "s" : ""}`;
+        nightsCost.textContent = `$${roomCost}`;
+        totalCost.textContent = `$${total}`;
+
+        confirmBtn.disabled = false;
+        confirmBtnTxt.textContent = "Confirm Booking";
+      }
+
+      checkinInput.addEventListener("change", () => {
+        // If checkout is before checkin, reset it
+        if (checkoutInput.value && checkoutInput.value <= checkinInput.value) {
+          checkoutInput.value = "";
+        }
+        checkoutInput.min = checkinInput.value || today;
+        recalculate();
+      });
+      checkoutInput.addEventListener("change", recalculate);
+
+      // ── Confirm Booking ─────────────────────────────────────────────────
+      confirmBtn.addEventListener("click", async () => {
+        const cin = checkinInput.value;
+        const cout = checkoutInput.value;
+        if (!cin || !cout) return;
+
+        // Check if logged in
+        let userInfo;
+        try {
+          const meRes = await fetch("/api/me");
+          if (!meRes.ok) {
+            window.location.href =
+              "/sign_in?error=Please sign in to complete your booking.";
+            return;
+          }
+          userInfo = await meRes.json();
+        } catch {
+          window.location.href = "/sign_in";
+          return;
+        }
+
+        // Show loading state
+        confirmBtn.disabled = true;
+        confirmBtnTxt.innerHTML = `<svg class="spinner w-5 h-5 border-2 border-white/30 border-t-white rounded-full" viewBox="0 0 24 24"></svg> Processing…`;
+
+        try {
+          const res = await fetch("/api/book", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              room_name: "Deluxe Nile View Room",
+              hotel_name: "Luxor Heritage Escapes",
+              check_in: cin,
+              check_out: cout,
+              price_per_night: PRICE_PER_NIGHT,
+            }),
+          });
+
+          const data = await res.json();
+
+          if (!res.ok) {
+            throw new Error(data.error || "Booking failed.");
+          }
+
+          // Populate modal
+          const nights = Math.round(
+            (new Date(cout) - new Date(cin)) / (1000 * 60 * 60 * 24),
+          );
+          const total = PRICE_PER_NIGHT * nights + CONSERVATION_FEE;
+
+          document.getElementById("modal-checkin").textContent =
+            formatDate(cin);
+          document.getElementById("modal-checkout").textContent =
+            formatDate(cout);
+          document.getElementById("modal-nights").textContent =
+            `${nights} night${nights > 1 ? "s" : ""}`;
+          document.getElementById("modal-total").textContent = `$${total}`;
+          document.getElementById("modal-email").textContent =
+            userInfo.email || "your email";
+          document.getElementById("modal-subtitle").textContent =
+            `A confirmation has been sent to ${userInfo.email || "your email"}.`;
+
+          // Show modal
+          document.getElementById("confirm-modal").classList.remove("hidden");
+
+          confirmBtnTxt.textContent = "Booking Confirmed ✓";
+          confirmBtn.classList.remove("bg-primary");
+          confirmBtn.classList.add("bg-green-600");
+        } catch (err) {
+          alert("❌ " + err.message);
+          confirmBtn.disabled = false;
+          confirmBtnTxt.textContent = "Confirm Booking";
+        }
+      });
+
+      // Close modal on backdrop click
+      document
+        .getElementById("modal-backdrop")
+        .addEventListener("click", () => {
+          document.getElementById("confirm-modal").classList.add("hidden");
+        });
+    </script>
   </body>
 </html>

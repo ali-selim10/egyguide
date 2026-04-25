@@ -118,7 +118,7 @@
         <div
           class="text-2xl font-bold tracking-tighter text-[#00556f] dark:text-[#1C6E8C]"
         >
-          <a href="/index">Sikka</a>
+          <a href="/index">EgyGuide</a>
         </div>
         <div class="hidden md:flex items-center space-x-8">
           <a
@@ -196,7 +196,15 @@
       <section class="mb-12 overflow-x-auto no-scrollbar">
         <div class="flex space-x-4 pb-4">
           <button
-            class="flex items-center px-6 py-3 rounded-full bg-primary text-on-primary shadow-sm whitespace-nowrap transition-all"
+            data-filter="all"
+            class="booking-filter flex items-center px-6 py-3 rounded-full bg-primary text-on-primary shadow-sm whitespace-nowrap transition-all"
+          >
+            <span class="material-symbols-outlined mr-2">apps</span>
+            <span class="font-medium">All</span>
+          </button>
+          <button
+            data-filter="hotel"
+            class="booking-filter flex items-center px-6 py-3 rounded-full bg-surface-container-highest text-secondary hover:bg-surface-variant transition-all whitespace-nowrap"
           >
             <span class="material-symbols-outlined mr-2" data-icon="hotel"
               >hotel</span
@@ -204,7 +212,8 @@
             <span class="font-medium">Hotels</span>
           </button>
           <button
-            class="flex items-center px-6 py-3 rounded-full bg-surface-container-highest text-secondary hover:bg-surface-variant transition-all whitespace-nowrap"
+            data-filter="resort"
+            class="booking-filter flex items-center px-6 py-3 rounded-full bg-surface-container-highest text-secondary hover:bg-surface-variant transition-all whitespace-nowrap"
           >
             <span
               class="material-symbols-outlined mr-2"
@@ -214,7 +223,8 @@
             <span class="font-medium">Resorts</span>
           </button>
           <button
-            class="flex items-center px-6 py-3 rounded-full bg-surface-container-highest text-secondary hover:bg-surface-variant transition-all whitespace-nowrap"
+            data-filter="restaurant"
+            class="booking-filter flex items-center px-6 py-3 rounded-full bg-surface-container-highest text-secondary hover:bg-surface-variant transition-all whitespace-nowrap"
           >
             <span class="material-symbols-outlined mr-2" data-icon="restaurant"
               >restaurant</span
@@ -222,7 +232,8 @@
             <span class="font-medium">Restaurants</span>
           </button>
           <button
-            class="flex items-center px-6 py-3 rounded-full bg-surface-container-highest text-secondary hover:bg-surface-variant transition-all whitespace-nowrap"
+            data-filter="monument"
+            class="booking-filter flex items-center px-6 py-3 rounded-full bg-surface-container-highest text-secondary hover:bg-surface-variant transition-all whitespace-nowrap"
           >
             <span
               class="material-symbols-outlined mr-2"
@@ -234,7 +245,7 @@
         </div>
       </section>
       <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        <div class="group cursor-pointer">
+        <div class="booking-card group cursor-pointer" data-category="hotel">
           <div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -256,7 +267,7 @@
           </div>
           <div class="flex justify-between items-start mb-2">
             <h3 class="font-headline text-xl font-bold text-secondary">
-              Old Winter Palace Luxor
+              Old Winter Palace
             </h3>
             <p class="text-primary font-bold text-lg">
               EGP 12,400
@@ -280,7 +291,7 @@
             Book Now
           </button>
         </div>
-        <div class="group cursor-pointer">
+        <div class="booking-card group cursor-pointer" data-category="resort">
           <div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -325,7 +336,10 @@
             Book Now
           </button>
         </div>
-        <div class="group cursor-pointer">
+        <div
+          class="booking-card group cursor-pointer"
+          data-category="restaurant"
+        >
           <div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -362,7 +376,7 @@
               data-icon="location_on"
               >location_on</span
             >
-            <span class="text-sm">Old Winter Palace, Luxor</span>
+            <span class="text-sm">Old Winter Palace</span>
           </div>
           <button
             class="w-full editorial-gradient text-on-primary py-4 rounded-lg font-bold tracking-wide hover:opacity-90 transition-all active:scale-[0.98]"
@@ -370,7 +384,7 @@
             Book Now
           </button>
         </div>
-        <div class="group cursor-pointer">
+        <div class="booking-card group cursor-pointer" data-category="monument">
           <div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -415,7 +429,7 @@
             Book Now
           </button>
         </div>
-        <div class="group cursor-pointer">
+        <div class="booking-card group cursor-pointer" data-category="resort">
           <div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -460,7 +474,7 @@
             Book Now
           </button>
         </div>
-        <div class="group cursor-pointer">
+        <div class="booking-card group cursor-pointer" data-category="monument">
           <div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -632,5 +646,45 @@
         >
       </button>
     </div>
+    <script>
+      (function () {
+        var btns = document.querySelectorAll(".booking-filter");
+        var cards = document.querySelectorAll(".booking-card");
+
+        var ACTIVE = ["bg-primary", "text-on-primary", "shadow-sm"];
+        var INACTIVE = ["bg-surface-container-highest", "text-secondary"];
+
+        btns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var filter = btn.dataset.filter;
+
+            // Update button styles
+            btns.forEach(function (b) {
+              ACTIVE.forEach(function (c) {
+                b.classList.remove(c);
+              });
+              INACTIVE.forEach(function (c) {
+                b.classList.add(c);
+              });
+            });
+            INACTIVE.forEach(function (c) {
+              btn.classList.remove(c);
+            });
+            ACTIVE.forEach(function (c) {
+              btn.classList.add(c);
+            });
+
+            // Show / hide cards
+            cards.forEach(function (card) {
+              if (filter === "all" || card.dataset.category === filter) {
+                card.style.display = "";
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
