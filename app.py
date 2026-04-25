@@ -12,6 +12,161 @@ SUPABASE_URL = "https://wfmijhnvzhndjwjpidiw.supabase.co"
 SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndmbWlqaG52emhuZGp3anBpZGl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0NDU1NTUsImV4cCI6MjA4OTAyMTU1NX0.wAWgUlP5drEYy1CmTvjI-86JeHmA8PSrWL2osFpxc1A"
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
+# ── Email (Flask-Mail via Gmail SMTP) ─────────────────────────────────────────
+# Set these environment variables on your server / .env file:
+#   MAIL_USERNAME  = your Gmail address  (e.g. EgyGuide.egypt@gmail.com)
+#   MAIL_PASSWORD  = Gmail App Password  (NOT your regular password)
+#
+# How to get a Gmail App Password:
+#   1. Enable 2-Step Verification on your Google account
+#   2. Go to  myaccount.google.com/apppasswords
+#   3. Create an App Password for "Mail" → copy the 16-char password
+#   4. Set it as  MAIL_PASSWORD  environment variable
+#
+# Install Flask-Mail:  pip install Flask-Mail
+
+from flask_mail import Mail, Message
+
+app.config["MAIL_SERVER"]   = "smtp.gmail.com"
+app.config["MAIL_PORT"]     = 587
+app.config["MAIL_USE_TLS"]  = True
+app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME", "")   # your Gmail
+app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD", "")   # Gmail App Password
+app.config["MAIL_DEFAULT_SENDER"] = os.environ.get("MAIL_USERNAME", "noreply@EgyGuide.eg")
+
+mail = Mail(app)
+
+
+def read_html(path):
+    with open(path, encoding="utf-8") as f:
+        return f.read()
+
+
+# ── Email helper ──────────────────────────────────────────────────────────────
+def send_booking_email(to_email, full_name, booking):
+    """Send a beautiful HTML booking confirmation email."""
+    check_in  = booking["check_in"]
+    check_out = booking["check_out"]
+    nights    = booking["nights"]
+    total     = booking["total"]
+    room      = booking["room_name"]
+    hotel     = booking["hotel_name"]
+    ref       = booking.get("booking_id", "SKK-" + str(booking.get("id", ""))[:6].upper())
+
+    html_body = f"""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {{ margin:0; padding:0; background:#f5f3ef; font-family:'Helvetica Neue',Arial,sans-serif; }}
+    .wrapper {{ max-width:600px; margin:40px auto; background:#ffffff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.08); }}
+    .header {{ background:linear-gradient(135deg,#00556f 0%,#1c6e8c 100%); padding:48px 40px 40px; text-align:center; }}
+    .header h1 {{ color:#ffffff; font-size:28px; font-weight:800; margin:0 0 4px; letter-spacing:-0.5px; }}
+    .header p {{ color:rgba(255,255,255,0.8); font-size:14px; margin:0; }}
+    .check-icon {{ width:56px; height:56px; background:rgba(255,255,255,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; }}
+    .body {{ padding:40px; }}
+    .greeting {{ font-size:18px; font-weight:700; color:#1a1c1a; margin-bottom:8px; }}
+    .subtext {{ font-size:14px; color:#685d46; margin-bottom:32px; line-height:1.6; }}
+    .card {{ background:#f5f3ef; border-radius:12px; padding:28px; margin-bottom:28px; }}
+    .card-title {{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:#685d46; margin-bottom:16px; }}
+    .row {{ display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #e4e2de; }}
+    .row:last-child {{ border-bottom:none; }}
+    .row-label {{ font-size:13px; color:#685d46; }}
+    .row-value {{ font-size:13px; font-weight:700; color:#1a1c1a; }}
+    .total-row {{ padding-top:16px; margin-top:8px; border-top:2px solid #00556f; }}
+    .total-label {{ font-size:15px; font-weight:800; color:#1a1c1a; }}
+    .total-value {{ font-size:20px; font-weight:800; color:#00556f; }}
+    .ref-badge {{ text-align:center; margin-bottom:28px; }}
+    .ref-badge span {{ background:#00556f; color:#ffffff; font-size:12px; font-weight:700; padding:6px 16px; border-radius:999px; letter-spacing:0.06em; }}
+    .footer {{ background:#f5f3ef; padding:28px 40px; text-align:center; border-top:1px solid #e4e2de; }}
+    .footer p {{ font-size:12px; color:#685d46; margin:0 0 4px; }}
+    .footer a {{ color:#00556f; text-decoration:none; }}
+    .divider {{ height:1px; background:#e4e2de; margin:0; }}
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <div class="check-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M6 14 L12 20 L22 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h1>Booking Confirmed!</h1>
+      <p>Your Egyptian adventure is officially reserved.</p>
+    </div>
+    <div class="body">
+      <div class="ref-badge">
+        <span>Ref: {ref}</span>
+      </div>
+      <p class="greeting">Hello, {full_name}! 👋</p>
+      <p class="subtext">
+        We're thrilled to confirm your stay at <strong>{hotel}</strong>.
+        Everything is set — all you need to do is pack your bags and get ready
+        to experience the magic of Egypt.
+      </p>
+      <div class="card">
+        <p class="card-title">Reservation Details</p>
+        <div class="row">
+          <span class="row-label">Hotel</span>
+          <span class="row-value">{hotel}</span>
+        </div>
+        <div class="row">
+          <span class="row-label">Room</span>
+          <span class="row-value">{room}</span>
+        </div>
+        <div class="row">
+          <span class="row-label">Check-in</span>
+          <span class="row-value">{check_in}</span>
+        </div>
+        <div class="row">
+          <span class="row-label">Check-out</span>
+          <span class="row-value">{check_out}</span>
+        </div>
+        <div class="row">
+          <span class="row-label">Duration</span>
+          <span class="row-value">{nights} night{"s" if nights != 1 else ""}</span>
+        </div>
+      </div>
+      <div class="card">
+        <p class="card-title">Payment Summary</p>
+        <div class="row">
+          <span class="row-label">${booking["price_per_night"]} × {nights} night{"s" if nights != 1 else ""}</span>
+          <span class="row-value">${booking["room_cost"]}</span>
+        </div>
+        <div class="row">
+          <span class="row-label">Heritage Conservation Fee</span>
+          <span class="row-value">$45</span>
+        </div>
+        <div class="row total-row">
+          <span class="total-label">Total</span>
+          <span class="total-value">${total}</span>
+        </div>
+      </div>
+      <p style="font-size:13px;color:#685d46;line-height:1.7;margin:0;">
+        Payment is collected at check-in. Please bring a valid ID and this
+        confirmation email. For changes or cancellations, contact us at
+        <a href="mailto:support@EgyGuide.eg" style="color:#00556f;">support@EgyGuide.eg</a>
+        at least 48 hours before check-in.
+      </p>
+    </div>
+    <div class="footer">
+      <p><strong style="color:#00556f;">EgyGuide</strong> — Egypt Discovery</p>
+      <p>© 2024 Egypt Discovery. All rights reserved.</p>
+      <p style="margin-top:8px;"><a href="#">Unsubscribe</a> · <a href="#">Privacy Policy</a></p>
+    </div>
+  </div>
+</body>
+</html>
+"""
+
+    msg = Message(
+        subject=f"✅ Booking Confirmed — {hotel} ({check_in} → {check_out})",
+        recipients=[to_email],
+        html=html_body
+    )
+    mail.send(msg)
 
 
 # ── Static page routes ────────────────────────────────────────────────────────
@@ -405,159 +560,3 @@ def api_delete_attraction(attraction_id):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-# ── Email (Flask-Mail via Gmail SMTP) ─────────────────────────────────────────
-# Set these environment variables on your server / .env file:
-#   MAIL_USERNAME  = your Gmail address  (e.g. EgyGuide.egypt@gmail.com)
-#   MAIL_PASSWORD  = Gmail App Password  (NOT your regular password)
-#
-# How to get a Gmail App Password:
-#   1. Enable 2-Step Verification on your Google account
-#   2. Go to  myaccount.google.com/apppasswords
-#   3. Create an App Password for "Mail" → copy the 16-char password
-#   4. Set it as  MAIL_PASSWORD  environment variable
-#
-# Install Flask-Mail:  pip install Flask-Mail
-
-from flask_mail import Mail, Message
-
-app.config["MAIL_SERVER"]   = "smtp.gmail.com"
-app.config["MAIL_PORT"]     = 587
-app.config["MAIL_USE_TLS"]  = True
-app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME", "")   # your Gmail
-app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD", "")   # Gmail App Password
-app.config["MAIL_DEFAULT_SENDER"] = os.environ.get("MAIL_USERNAME", "noreply@EgyGuide.eg")
-
-mail = Mail(app)
-
-
-def read_html(path):
-    with open(path, encoding="utf-8") as f:
-        return f.read()
-
-
-# ── Email helper ──────────────────────────────────────────────────────────────
-def send_booking_email(to_email, full_name, booking):
-    """Send a beautiful HTML booking confirmation email."""
-    check_in  = booking["check_in"]
-    check_out = booking["check_out"]
-    nights    = booking["nights"]
-    total     = booking["total"]
-    room      = booking["room_name"]
-    hotel     = booking["hotel_name"]
-    ref       = booking.get("booking_id", "SKK-" + str(booking.get("id", ""))[:6].upper())
-
-    html_body = f"""
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <style>
-    body {{ margin:0; padding:0; background:#f5f3ef; font-family:'Helvetica Neue',Arial,sans-serif; }}
-    .wrapper {{ max-width:600px; margin:40px auto; background:#ffffff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.08); }}
-    .header {{ background:linear-gradient(135deg,#00556f 0%,#1c6e8c 100%); padding:48px 40px 40px; text-align:center; }}
-    .header h1 {{ color:#ffffff; font-size:28px; font-weight:800; margin:0 0 4px; letter-spacing:-0.5px; }}
-    .header p {{ color:rgba(255,255,255,0.8); font-size:14px; margin:0; }}
-    .check-icon {{ width:56px; height:56px; background:rgba(255,255,255,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; }}
-    .body {{ padding:40px; }}
-    .greeting {{ font-size:18px; font-weight:700; color:#1a1c1a; margin-bottom:8px; }}
-    .subtext {{ font-size:14px; color:#685d46; margin-bottom:32px; line-height:1.6; }}
-    .card {{ background:#f5f3ef; border-radius:12px; padding:28px; margin-bottom:28px; }}
-    .card-title {{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:#685d46; margin-bottom:16px; }}
-    .row {{ display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #e4e2de; }}
-    .row:last-child {{ border-bottom:none; }}
-    .row-label {{ font-size:13px; color:#685d46; }}
-    .row-value {{ font-size:13px; font-weight:700; color:#1a1c1a; }}
-    .total-row {{ padding-top:16px; margin-top:8px; border-top:2px solid #00556f; }}
-    .total-label {{ font-size:15px; font-weight:800; color:#1a1c1a; }}
-    .total-value {{ font-size:20px; font-weight:800; color:#00556f; }}
-    .ref-badge {{ text-align:center; margin-bottom:28px; }}
-    .ref-badge span {{ background:#00556f; color:#ffffff; font-size:12px; font-weight:700; padding:6px 16px; border-radius:999px; letter-spacing:0.06em; }}
-    .footer {{ background:#f5f3ef; padding:28px 40px; text-align:center; border-top:1px solid #e4e2de; }}
-    .footer p {{ font-size:12px; color:#685d46; margin:0 0 4px; }}
-    .footer a {{ color:#00556f; text-decoration:none; }}
-    .divider {{ height:1px; background:#e4e2de; margin:0; }}
-  </style>
-</head>
-<body>
-  <div class="wrapper">
-    <div class="header">
-      <div class="check-icon">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <path d="M6 14 L12 20 L22 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <h1>Booking Confirmed!</h1>
-      <p>Your Egyptian adventure is officially reserved.</p>
-    </div>
-    <div class="body">
-      <div class="ref-badge">
-        <span>Ref: {ref}</span>
-      </div>
-      <p class="greeting">Hello, {full_name}! 👋</p>
-      <p class="subtext">
-        We're thrilled to confirm your stay at <strong>{hotel}</strong>.
-        Everything is set — all you need to do is pack your bags and get ready
-        to experience the magic of Egypt.
-      </p>
-      <div class="card">
-        <p class="card-title">Reservation Details</p>
-        <div class="row">
-          <span class="row-label">Hotel</span>
-          <span class="row-value">{hotel}</span>
-        </div>
-        <div class="row">
-          <span class="row-label">Room</span>
-          <span class="row-value">{room}</span>
-        </div>
-        <div class="row">
-          <span class="row-label">Check-in</span>
-          <span class="row-value">{check_in}</span>
-        </div>
-        <div class="row">
-          <span class="row-label">Check-out</span>
-          <span class="row-value">{check_out}</span>
-        </div>
-        <div class="row">
-          <span class="row-label">Duration</span>
-          <span class="row-value">{nights} night{"s" if nights != 1 else ""}</span>
-        </div>
-      </div>
-      <div class="card">
-        <p class="card-title">Payment Summary</p>
-        <div class="row">
-          <span class="row-label">${booking["price_per_night"]} × {nights} night{"s" if nights != 1 else ""}</span>
-          <span class="row-value">${booking["room_cost"]}</span>
-        </div>
-        <div class="row">
-          <span class="row-label">Heritage Conservation Fee</span>
-          <span class="row-value">$45</span>
-        </div>
-        <div class="row total-row">
-          <span class="total-label">Total</span>
-          <span class="total-value">${total}</span>
-        </div>
-      </div>
-      <p style="font-size:13px;color:#685d46;line-height:1.7;margin:0;">
-        Payment is collected at check-in. Please bring a valid ID and this
-        confirmation email. For changes or cancellations, contact us at
-        <a href="mailto:support@EgyGuide.eg" style="color:#00556f;">support@EgyGuide.eg</a>
-        at least 48 hours before check-in.
-      </p>
-    </div>
-    <div class="footer">
-      <p><strong style="color:#00556f;">EgyGuide</strong> — Egypt Discovery</p>
-      <p>© 2024 Egypt Discovery. All rights reserved.</p>
-      <p style="margin-top:8px;"><a href="#">Unsubscribe</a> · <a href="#">Privacy Policy</a></p>
-    </div>
-  </div>
-</body>
-</html>
-"""
-
-    msg = Message(
-        subject=f"✅ Booking Confirmed — {hotel} ({check_in} → {check_out})",
-        recipients=[to_email],
-        html=html_body
-    )
-    mail.send(msg)
