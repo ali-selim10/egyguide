@@ -164,18 +164,24 @@
           <div id="auth-btn"></div>
           <script>
             fetch("/api/me")
-              .then((r) => {
-                if (r.ok) {
+              .then((r) => (r.ok ? r.json() : null))
+              .then((data) => {
+                if (data && data.full_name) {
+                  const initial = data.full_name.charAt(0).toUpperCase();
                   document.getElementById("auth-btn").innerHTML =
-                    `<a href="/signout" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign Out</a>`;
+                    `<a href="/user_dashboard" class="flex items-center gap-2 group" title="My Profile">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-container text-white flex items-center justify-center font-bold text-sm shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
+              ${initial}
+            </div>
+          </a>`;
                 } else {
                   document.getElementById("auth-btn").innerHTML =
-                    `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+                    `<a href="/signin-page" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
                 }
               })
               .catch(() => {
                 document.getElementById("auth-btn").innerHTML =
-                  `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+                  `<a href="/signin-page" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
               });
           </script>
         </div>

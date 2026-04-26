@@ -170,18 +170,24 @@
           <div id="auth-btn"></div>
           <script>
             fetch("/api/me")
-              .then((r) => {
-                if (r.ok) {
+              .then((r) => (r.ok ? r.json() : null))
+              .then((data) => {
+                if (data && data.full_name) {
+                  const initial = data.full_name.charAt(0).toUpperCase();
                   document.getElementById("auth-btn").innerHTML =
-                    `<a href="/signout" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign Out</a>`;
+                    `<a href="/user_dashboard" class="flex items-center gap-2 group" title="My Profile">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-container text-white flex items-center justify-center font-bold text-sm shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
+              ${initial}
+            </div>
+          </a>`;
                 } else {
                   document.getElementById("auth-btn").innerHTML =
-                    `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+                    `<a href="/signin-page" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
                 }
               })
               .catch(() => {
                 document.getElementById("auth-btn").innerHTML =
-                  `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
+                  `<a href="/signin-page" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
               });
           </script>
         </div>
@@ -199,12 +205,32 @@
           <h1
             class="text-4xl md:text-5xl font-extrabold text-primary tracking-tight"
           >
-            Welcome back,
+            Welcome back, <span id="user-name-display">Traveler</span>
           </h1>
           <p class="text-on-surface-variant text-lg">
             Your Egyptian journey continues where you left off.
           </p>
+          <div class="pt-4">
+            <a
+              href="/signout"
+              class="inline-flex items-center gap-2 px-5 py-2.5 bg-red-50 hover:bg-red-100 text-red-600 font-semibold text-sm rounded-xl transition-all duration-200"
+            >
+              <span class="material-symbols-outlined text-sm">logout</span>
+              Sign Out
+            </a>
+          </div>
         </div>
+        <script>
+          fetch("/api/me")
+            .then((r) => (r.ok ? r.json() : null))
+            .then((data) => {
+              if (data && data.full_name) {
+                var el = document.getElementById("user-name-display");
+                if (el) el.textContent = data.full_name.split(" ")[0];
+              }
+            })
+            .catch(() => {});
+        </script>
         <div class="w-full md:max-w-md">
           <div
             class="relative flex items-center bg-surface-container-low rounded-xl p-1 shadow-sm border border-outline-variant/10"
@@ -223,8 +249,143 @@
         </div>
       </section>
       <!-- Quick Access Grid -->
-      <section class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-        <button
+      <!-- Emergency Modal -->
+      <div
+        id="emergency-modal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm"
+      >
+        <div
+          class="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 overflow-hidden"
+        >
+          <div class="bg-red-600 px-8 py-6 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+              <span
+                class="material-symbols-outlined text-white text-2xl"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >emergency</span
+              >
+              <h2 class="text-xl font-bold text-white">
+                Emergency Numbers — Egypt
+              </h2>
+            </div>
+            <button
+              onclick="
+                document
+                  .getElementById('emergency-modal')
+                  .classList.add('hidden');
+                document
+                  .getElementById('emergency-modal')
+                  .classList.remove('flex');
+              "
+              class="text-white/80 hover:text-white transition-colors"
+            >
+              <span class="material-symbols-outlined">close</span>
+            </button>
+          </div>
+          <div class="p-8 space-y-4">
+            <div
+              class="flex items-center justify-between p-4 bg-red-50 rounded-xl border border-red-100"
+            >
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-red-600"
+                  >local_police</span
+                >
+                <div>
+                  <p class="font-bold text-on-surface">Police</p>
+                  <p class="text-xs text-secondary">Emergency assistance</p>
+                </div>
+              </div>
+              <a
+                href="tel:122"
+                class="text-2xl font-extrabold text-red-600 hover:underline"
+                >122</a
+              >
+            </div>
+            <div
+              class="flex items-center justify-between p-4 bg-red-50 rounded-xl border border-red-100"
+            >
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-red-600"
+                  >emergency</span
+                >
+                <div>
+                  <p class="font-bold text-on-surface">Ambulance</p>
+                  <p class="text-xs text-secondary">Medical emergencies</p>
+                </div>
+              </div>
+              <a
+                href="tel:123"
+                class="text-2xl font-extrabold text-red-600 hover:underline"
+                >123</a
+              >
+            </div>
+            <div
+              class="flex items-center justify-between p-4 bg-orange-50 rounded-xl border border-orange-100"
+            >
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-orange-600"
+                  >local_fire_department</span
+                >
+                <div>
+                  <p class="font-bold text-on-surface">Fire Department</p>
+                  <p class="text-xs text-secondary">Fire & rescue</p>
+                </div>
+              </div>
+              <a
+                href="tel:180"
+                class="text-2xl font-extrabold text-orange-600 hover:underline"
+                >180</a
+              >
+            </div>
+            <div
+              class="flex items-center justify-between p-4 bg-blue-50 rounded-xl border border-blue-100"
+            >
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-blue-600"
+                  >travel</span
+                >
+                <div>
+                  <p class="font-bold text-on-surface">Tourist Police</p>
+                  <p class="text-xs text-secondary">Help for tourists</p>
+                </div>
+              </div>
+              <a
+                href="tel:126"
+                class="text-2xl font-extrabold text-blue-600 hover:underline"
+                >126</a
+              >
+            </div>
+            <div
+              class="flex items-center justify-between p-4 bg-blue-50 rounded-xl border border-blue-100"
+            >
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-blue-600"
+                  >support_agent</span
+                >
+                <div>
+                  <p class="font-bold text-on-surface">General Emergency</p>
+                  <p class="text-xs text-secondary">Pan-emergency line</p>
+                </div>
+              </div>
+              <a
+                href="tel:19199"
+                class="text-2xl font-extrabold text-blue-600 hover:underline"
+                >19199</a
+              >
+            </div>
+          </div>
+          <div class="px-8 pb-8">
+            <p class="text-xs text-center text-secondary">
+              Tap any number to call directly from your phone.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        <!-- Trip Planner -->
+        <a
+          href="/planner"
           class="flex flex-col items-center justify-center p-6 bg-surface-container-lowest rounded-xl hover:bg-secondary-container transition-all duration-300 group shadow-[0_8px_32px_-4px_rgba(26,28,26,0.06)]"
         >
           <div
@@ -240,26 +401,17 @@
             class="font-bold text-on-surface-variant group-hover:text-primary transition-colors"
             >Trip Planner</span
           >
-        </button>
+        </a>
+
+        <!-- Emergency -->
         <button
-          class="flex flex-col items-center justify-center p-6 bg-surface-container-lowest rounded-xl hover:bg-secondary-container transition-all duration-300 group shadow-[0_8px_32px_-4px_rgba(26,28,26,0.06)]"
-        >
-          <div
-            class="w-12 h-12 flex items-center justify-center rounded-full bg-secondary-fixed group-hover:bg-secondary transition-colors mb-3"
-          >
-            <span
-              class="material-symbols-outlined text-on-secondary-container group-hover:text-on-secondary"
-              data-icon="translate"
-              >translate</span
-            >
-          </div>
-          <span
-            class="font-bold text-on-surface-variant group-hover:text-secondary transition-colors"
-            >Phrases</span
-          >
-        </button>
-        <button
-          class="flex flex-col items-center justify-center p-6 bg-surface-container-lowest rounded-xl hover:bg-secondary-container transition-all duration-300 group shadow-[0_8px_32px_-4px_rgba(26,28,26,0.06)]"
+          onclick="
+            document
+              .getElementById('emergency-modal')
+              .classList.remove('hidden');
+            document.getElementById('emergency-modal').classList.add('flex');
+          "
+          class="flex flex-col items-center justify-center p-6 bg-surface-container-lowest rounded-xl hover:bg-red-50 transition-all duration-300 group shadow-[0_8px_32px_-4px_rgba(26,28,26,0.06)]"
         >
           <div
             class="w-12 h-12 flex items-center justify-center rounded-full bg-error-container group-hover:bg-error transition-colors mb-3"
@@ -275,7 +427,10 @@
             >Emergency</span
           >
         </button>
-        <button
+
+        <!-- Fraud Report -->
+        <a
+          href="/report-fraud"
           class="flex flex-col items-center justify-center p-6 bg-surface-container-lowest rounded-xl hover:bg-secondary-container transition-all duration-300 group shadow-[0_8px_32px_-4px_rgba(26,28,26,0.06)]"
         >
           <div
@@ -291,7 +446,7 @@
             class="font-bold text-on-surface-variant group-hover:text-tertiary transition-colors"
             >Fraud Report</span
           >
-        </button>
+        </a>
       </section>
       <!-- Discovery Filters -->
       <section class="space-y-6">
