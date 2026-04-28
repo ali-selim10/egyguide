@@ -167,10 +167,16 @@
           <div id="auth-btn"></div>
           <script>
             fetch("/api/me")
-              .then((r) => {
-                if (r.ok) {
+              .then((r) => (r.ok ? r.json() : null))
+              .then((data) => {
+                if (data && data.full_name) {
+                  const initial = data.full_name.charAt(0).toUpperCase();
                   document.getElementById("auth-btn").innerHTML =
-                    `<a href="/signout" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign Out</a>`;
+                    `<a href="/user_dashboard" class="flex items-center gap-2 group" title="My Profile">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-container text-white flex items-center justify-center font-bold text-sm shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
+              ${initial}
+            </div>
+          </a>`;
                 } else {
                   document.getElementById("auth-btn").innerHTML =
                     `<a href="/sign_in" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">Sign In</a>`;
@@ -227,7 +233,7 @@
         <div
           class="lg:col-span-7 bg-surface-container-low rounded-[2rem] p-8 md:p-12 shadow-sm border border-outline-variant/10"
         >
-          <form class="space-y-8">
+          <form id="fraud-form" class="space-y-8">
             <!-- Location Selection -->
             <div class="space-y-3">
               <label
@@ -248,6 +254,7 @@
                   class="w-full bg-surface-container-lowest border-none rounded-xl py-4 pl-12 pr-4 text-on-surface ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-outline/60 outline-none"
                   placeholder="Search location (e.g. Giza Pyramids, Khan el-Khalili)"
                   type="text"
+                  id="fraud-location"
                 />
               </div>
             </div>
@@ -300,6 +307,7 @@
                 class="w-full bg-surface-container-lowest border-none rounded-xl p-6 text-on-surface ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-outline/60 outline-none resize-none"
                 placeholder="Please provide as much detail as possible, including date, time, and any identifying characteristics..."
                 rows="6"
+                id="fraud-description"
               ></textarea>
             </div>
             <!-- Evidence Upload (Extra UI Polish) -->
@@ -315,6 +323,25 @@
                 Attach supporting photos (Optional)
               </p>
               <p class="text-xs text-outline">Max size 5MB per image</p>
+            </div>
+
+            <!-- Reporter Info -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="space-y-2">
+                <label class="block text-sm font-bold text-secondary tracking-wide uppercase">Your Name</label>
+                <input id="fraud-name" type="text" placeholder="Full name"
+                  class="w-full bg-surface-container-lowest border-none rounded-xl py-4 px-4 text-on-surface ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-outline/60 outline-none" />
+              </div>
+              <div class="space-y-2">
+                <label class="block text-sm font-bold text-secondary tracking-wide uppercase">Your Email</label>
+                <input id="fraud-email" type="email" placeholder="email@example.com"
+                  class="w-full bg-surface-container-lowest border-none rounded-xl py-4 px-4 text-on-surface ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-outline/60 outline-none" />
+              </div>
+            </div>
+            <div class="space-y-2">
+              <label class="block text-sm font-bold text-secondary tracking-wide uppercase">Date of Incident</label>
+              <input id="fraud-date" type="date"
+                class="w-full bg-surface-container-lowest border-none rounded-xl py-4 px-4 text-on-surface ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary/40 transition-all outline-none" />
             </div>
             <!-- Submit Button -->
             <div class="pt-4">
@@ -430,5 +457,103 @@
         <span class="text-[11px] font-medium Inter">Plan</span>
       </div>
     </div>
-  </body>
+  
+  <!-- Success Modal -->
+  <div id="fraud-success-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-6">
+    <div class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm"></div>
+    <div class="relative bg-surface-container-lowest rounded-2xl shadow-2xl max-w-md w-full p-10 z-10 text-center">
+      <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
+        <span class="material-symbols-outlined text-green-600 text-3xl" style="font-variation-settings:'FILL' 1">check_circle</span>
+      </div>
+      <h2 class="text-2xl font-bold text-on-surface mb-2">Report Submitted!</h2>
+      <p class="text-secondary text-sm mb-2">Thank you for helping keep Egypt safe for everyone.</p>
+      <p class="text-secondary text-sm mb-8">A confirmation has been sent to your email. Our team will review your report within 24-48 hours.</p>
+      <p id="fraud-ref" class="text-xs font-bold text-primary mb-6"></p>
+      <button onclick="window.location.href='/index'"
+        class="w-full bg-primary text-on-primary py-3.5 rounded-xl font-bold hover:opacity-90 transition-all">
+        Back to Home
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Category chip selection
+      var selectedType = 'Overpricing/Scam';
+      var chips = document.querySelectorAll('#fraud-form button[type="button"]');
+      chips.forEach(function(chip) {
+        chip.addEventListener('click', function() {
+          chips.forEach(function(c) {
+            c.className = 'px-6 py-3 rounded-full bg-surface-container-highest text-on-surface hover:bg-surface-variant transition-all font-medium';
+          });
+          chip.className = 'px-6 py-3 rounded-full bg-primary text-on-primary font-medium transition-all shadow-md';
+          selectedType = chip.textContent.trim();
+        });
+      });
+
+      // Pre-fill from session if logged in
+      fetch('/api/me').then(r => r.ok ? r.json() : null).then(function(data) {
+        if (data) {
+          var nameEl = document.getElementById('fraud-name');
+          var emailEl = document.getElementById('fraud-email');
+          if (nameEl && !nameEl.value) nameEl.value = data.full_name || '';
+          if (emailEl && !emailEl.value) emailEl.value = data.email || '';
+        }
+      }).catch(function(){});
+
+      // Form submission
+      var form = document.getElementById('fraud-form');
+      if (form) {
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+
+          var name  = document.getElementById('fraud-name').value.trim();
+          var email = document.getElementById('fraud-email').value.trim();
+          var desc  = document.getElementById('fraud-description').value.trim();
+          var loc   = document.getElementById('fraud-location') ? document.getElementById('fraud-location').value.trim() : '';
+          var date  = document.getElementById('fraud-date') ? document.getElementById('fraud-date').value : '';
+
+          if (!name || !email || !desc) {
+            alert('Please fill in your name, email, and description.');
+            return;
+          }
+
+          var submitBtn = form.querySelector('button[type="submit"]');
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<svg class="animate-spin w-5 h-5 border-2 border-white/30 border-t-white rounded-full"></svg> Submitting...';
+
+          try {
+            var res = await fetch('/api/fraud-report', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                reporter_name:  name,
+                reporter_email: email,
+                fraud_type:     selectedType,
+                location:       loc,
+                incident_date:  date || null,
+                description:    desc
+              })
+            });
+            var data = await res.json();
+            if (data.success) {
+              var refEl = document.getElementById('fraud-ref');
+              if (refEl) refEl.textContent = 'Reference: FRD-' + (data.report_id || '—');
+              document.getElementById('fraud-success-modal').classList.remove('hidden');
+            } else {
+              alert(data.error || 'Something went wrong. Please try again.');
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = 'Submit Report <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">send</span>';
+            }
+          } catch(err) {
+            alert('Network error. Please try again.');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Submit Report <span class="material-symbols-outlined">send</span>';
+          }
+        });
+      }
+    })();
+  </script>
+
+</body>
 </html>
