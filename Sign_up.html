@@ -5,8 +5,14 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Create Account - EgyGuide</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
     <script>
       tailwind.config = {
         darkMode: "class",
@@ -34,39 +40,101 @@
       };
     </script>
     <style>
-      .material-symbols-outlined { font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24; }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
 
       @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(18px); }
-        to   { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
       @keyframes shimmer {
-        0% { background-position: -200% center; }
-        100% { background-position: 200% center; }
+        0% {
+          background-position: -200% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
       }
       @keyframes pulseDot {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.55; transform: scale(1.3); }
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.55;
+          transform: scale(1.3);
+        }
       }
-      @keyframes spin { to { transform: rotate(360deg); } }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
       @keyframes scaleIn {
-        from { transform: scale(0.85); opacity: 0; }
-        to   { transform: scale(1);    opacity: 1; }
+        from {
+          transform: scale(0.85);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
       }
 
-      .fade-up { animation: fadeUp 0.5s cubic-bezier(0.22,1,0.36,1) both; }
-      .d1 { animation-delay: 0.06s; } .d2 { animation-delay: 0.12s; }
-      .d3 { animation-delay: 0.18s; } .d4 { animation-delay: 0.24s; }
-      .d5 { animation-delay: 0.30s; } .d6 { animation-delay: 0.36s; }
-      .d7 { animation-delay: 0.42s; }
+      .fade-up {
+        animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .d1 {
+        animation-delay: 0.06s;
+      }
+      .d2 {
+        animation-delay: 0.12s;
+      }
+      .d3 {
+        animation-delay: 0.18s;
+      }
+      .d4 {
+        animation-delay: 0.24s;
+      }
+      .d5 {
+        animation-delay: 0.3s;
+      }
+      .d6 {
+        animation-delay: 0.36s;
+      }
+      .d7 {
+        animation-delay: 0.42s;
+      }
 
-      .field-wrap { position: relative; }
+      .field-wrap {
+        position: relative;
+      }
       .field-icon {
-        position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%);
-        color: #bfc8cd; pointer-events: none; transition: color 0.2s; font-size: 1.15rem;
+        position: absolute;
+        left: 0.85rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #bfc8cd;
+        pointer-events: none;
+        transition: color 0.2s;
+        font-size: 1.15rem;
         line-height: 1;
       }
-      .field-wrap:focus-within .field-icon { color: #00556f; }
+      .field-wrap:focus-within .field-icon {
+        color: #00556f;
+      }
 
       .field-input {
         width: 100% !important;
@@ -81,126 +149,252 @@
         outline: none !important;
         box-shadow: none !important;
       }
-      .field-input::placeholder { color: #bfc8cd !important; }
+      .field-input::placeholder {
+        color: #bfc8cd !important;
+      }
       .field-input:focus {
         background: #fff !important;
-        border-color: rgba(0,85,111,0.35) !important;
-        box-shadow: 0 0 0 4px rgba(0,85,111,0.07) !important;
+        border-color: rgba(0, 85, 111, 0.35) !important;
+        box-shadow: 0 0 0 4px rgba(0, 85, 111, 0.07) !important;
       }
-      .field-input.invalid { border-color: rgba(186,26,26,0.4) !important; box-shadow: 0 0 0 3px rgba(186,26,26,0.07) !important; }
-      .field-input.valid   { border-color: rgba(0,150,100,0.35) !important; }
-      .field-input.pr-btn  { padding-right: 3rem !important; }
+      .field-input.invalid {
+        border-color: rgba(186, 26, 26, 0.4) !important;
+        box-shadow: 0 0 0 3px rgba(186, 26, 26, 0.07) !important;
+      }
+      .field-input.valid {
+        border-color: rgba(0, 150, 100, 0.35) !important;
+      }
+      .field-input.pr-btn {
+        padding-right: 3rem !important;
+      }
 
       .eye-btn {
-        position: absolute; right: 0.85rem; top: 50%; transform: translateY(-50%);
-        background: none; border: none; cursor: pointer; color: #bfc8cd;
-        padding: 0.2rem; transition: color 0.2s;
+        position: absolute;
+        right: 0.85rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #bfc8cd;
+        padding: 0.2rem;
+        transition: color 0.2s;
       }
-      .eye-btn:hover { color: #00556f; }
+      .eye-btn:hover {
+        color: #00556f;
+      }
 
       /* Password strength */
-      .strength-bar { display: flex; gap: 4px; margin-top: 0.5rem; }
-      .strength-seg {
-        height: 3px; flex: 1; border-radius: 999px;
-        background: #e4e2de; transition: background 0.3s;
+      .strength-bar {
+        display: flex;
+        gap: 4px;
+        margin-top: 0.5rem;
       }
-      .strength-label { font-size: 0.7rem; color: #70787e; margin-top: 0.3rem; }
+      .strength-seg {
+        height: 3px;
+        flex: 1;
+        border-radius: 999px;
+        background: #e4e2de;
+        transition: background 0.3s;
+      }
+      .strength-label {
+        font-size: 0.7rem;
+        color: #70787e;
+        margin-top: 0.3rem;
+      }
 
       .btn-cta {
-        width: 100%; padding: 0.95rem;
+        width: 100%;
+        padding: 0.95rem;
         background: linear-gradient(135deg, #00556f 0%, #1c6e8c 100%);
-        color: white; font-weight: 700; font-family: Plus Jakarta Sans, sans-serif;
-        font-size: 0.925rem; border-radius: 0.75rem; border: none; cursor: pointer;
-        position: relative; overflow: hidden; transition: transform 0.18s, opacity 0.18s;
+        color: white;
+        font-weight: 700;
+        font-family:
+          Plus Jakarta Sans,
+          sans-serif;
+        font-size: 0.925rem;
+        border-radius: 0.75rem;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.18s,
+          opacity 0.18s;
       }
       .btn-cta::after {
-        content: ''; position: absolute; inset: 0;
-        background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
-        background-size: 200% 100%; animation: shimmer 2.8s infinite linear;
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          105deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.15) 50%,
+          transparent 70%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 2.8s infinite linear;
       }
-      .btn-cta:hover { transform: scale(0.985); opacity: 0.91; }
-      .btn-cta:active { transform: scale(0.97); }
-      .btn-cta.loading .btn-label { display: none; }
+      .btn-cta:hover {
+        transform: scale(0.985);
+        opacity: 0.91;
+      }
+      .btn-cta:active {
+        transform: scale(0.97);
+      }
+      .btn-cta.loading .btn-label {
+        display: none;
+      }
       .btn-cta .spinner {
-        display: none; width: 18px; height: 18px;
-        border: 2px solid rgba(255,255,255,0.35); border-top-color: white;
-        border-radius: 50%; animation: spin 0.7s linear infinite; margin: auto;
+        display: none;
+        width: 18px;
+        height: 18px;
+        border: 2px solid rgba(255, 255, 255, 0.35);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+        margin: auto;
       }
-      .btn-cta.loading .spinner { display: block; }
+      .btn-cta.loading .spinner {
+        display: block;
+      }
 
       .social-btn {
-        display: flex; align-items: center; justify-content: center; gap: 0.55rem;
-        padding: 0.78rem; border-radius: 0.75rem;
-        border: 1.5px solid rgba(191,200,205,0.5);
-        background: transparent; font-size: 0.83rem; font-weight: 600;
-        color: #40484d; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        padding: 0.78rem;
+        border-radius: 0.75rem;
+        border: 1.5px solid rgba(191, 200, 205, 0.5);
+        background: transparent;
+        font-size: 0.83rem;
+        font-weight: 600;
+        color: #40484d;
+        font-family: Inter, sans-serif;
+        cursor: pointer;
+        transition: all 0.2s;
       }
-      .social-btn:hover { background: #f5f3ef; border-color: rgba(0,85,111,0.2); transform: translateY(-1px); }
+      .social-btn:hover {
+        background: #f5f3ef;
+        border-color: rgba(0, 85, 111, 0.2);
+        transform: translateY(-1px);
+      }
 
-      .live-dot { width: 7px; height: 7px; border-radius: 50%; background: #ffe08e; display: inline-block; animation: pulseDot 1.9s ease-in-out infinite; }
+      .live-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #ffe08e;
+        display: inline-block;
+        animation: pulseDot 1.9s ease-in-out infinite;
+      }
       .glass-badge {
-        position: absolute; top: 1.75rem; left: 1.75rem;
-        background: rgba(255,255,255,0.12); backdrop-filter: blur(14px);
-        border: 1px solid rgba(255,255,255,0.2); border-radius: 999px;
-        padding: 0.45rem 1rem; color: white;
-        font-size: 0.72rem; font-weight: 600; font-family: Plus Jakarta Sans, sans-serif;
-        letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.4rem;
+        position: absolute;
+        top: 1.75rem;
+        left: 1.75rem;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 999px;
+        padding: 0.45rem 1rem;
+        color: white;
+        font-size: 0.72rem;
+        font-weight: 600;
+        font-family:
+          Plus Jakarta Sans,
+          sans-serif;
+        letter-spacing: 0.05em;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
       }
 
       .feature-pill {
-        display: inline-flex; align-items: center; gap: 0.4rem;
-        background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
-        border: 1px solid rgba(255,255,255,0.15); border-radius: 0.6rem;
-        padding: 0.5rem 0.85rem; color: white; font-size: 0.75rem;
-        font-weight: 500; font-family: Inter, sans-serif;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 0.6rem;
+        padding: 0.5rem 0.85rem;
+        color: white;
+        font-size: 0.75rem;
+        font-weight: 500;
+        font-family: Inter, sans-serif;
       }
     </style>
   </head>
-  <body class="bg-background font-body text-on-surface min-h-screen flex flex-col">
-
+  <body
+    class="bg-background font-body text-on-surface min-h-screen flex flex-col"
+  >
     <!-- Nav -->
-    <nav class="fixed top-0 w-full z-50 bg-[#fbf9f5]/70 backdrop-blur-md shadow-[0_16px_40px_rgba(27,28,26,0.05)]">
+    <nav
+      class="fixed top-0 w-full z-50 bg-[#fbf9f5]/70 backdrop-blur-md shadow-[0_16px_40px_rgba(27,28,26,0.05)]"
+    >
       <div class="flex justify-between items-center px-8 py-5">
-        <a href="/index" class="text-2xl font-bold tracking-tighter text-primary font-headline">EgyGuide</a>
-        <a href="/sign_in" class="text-sm font-semibold text-secondary hover:text-primary transition-colors">
-          Already a member? <span class="text-primary underline underline-offset-2">Sign In →</span>
-        </a>
+        <a
+          href="/index"
+          class="text-2xl font-bold tracking-tighter text-primary font-headline"
+          >EgyGuide</a
+        >
       </div>
     </nav>
 
-    <main class="flex-grow flex items-center justify-center pt-24 pb-14 px-4 sm:px-6">
-      <div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 bg-white rounded-3xl overflow-hidden shadow-[0_32px_80px_rgba(27,28,26,0.12)]">
-
+    <main
+      class="flex-grow flex items-center justify-center pt-24 pb-14 px-4 sm:px-6"
+    >
+      <div
+        class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 bg-white rounded-3xl overflow-hidden shadow-[0_32px_80px_rgba(27,28,26,0.12)]"
+      >
         <!-- Image panel -->
-        <div class="relative hidden lg:block h-full min-h-[620px] overflow-hidden">
+        <div
+          class="relative hidden lg:block h-full min-h-[620px] overflow-hidden"
+        >
           <img
             class="absolute inset-0 w-full h-full object-cover"
-            style="transform: scale(1.05); transition: transform 8s ease;"
-            onmouseover="this.style.transform='scale(1)'"
-            onmouseout="this.style.transform='scale(1.05)'"
+            style="transform: scale(1.05); transition: transform 8s ease"
+            onmouseover="this.style.transform = 'scale(1)'"
+            onmouseout="this.style.transform = 'scale(1.05)'"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGXoneiHWqwynCkr_EC3gJOQzIGJjUukMh-x_-5AK2rN_Uoxljtz5nH8BR23zxDyXKBbIV0vQWL6IeNhsUmHxCfS6q0_-z5IukvdbJQJgJ812Kubad_jLo_0XHJwoNU0HjSue7VUa7syKwJbwyd1yyRC5gafMnAcAMZk7es0nYSx8-A4Eansder_q68UdPZ8PNjje-ateTUBYNvTxmpX63lHQjiYshBdSUx5dW9SZfvErbmFPh1-iKD8NJn_PTPx-JK0eZQcOsHQiy"
             alt="Egypt Discovery landscape"
           />
-          <div class="glass-badge"><span class="live-dot"></span>Join 7,200+ Explorers</div>
-          <div class="absolute inset-0 bg-gradient-to-t from-[#00556f]/90 via-[#00556f]/20 to-transparent"></div>
+          <div class="glass-badge">
+            <span class="live-dot"></span>Join 7,200+ Explorers
+          </div>
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-[#00556f]/90 via-[#00556f]/20 to-transparent"
+          ></div>
           <div class="absolute bottom-0 left-0 right-0 p-10">
-            <h1 class="font-headline text-4xl font-extrabold text-white leading-tight mb-3">
-              Begin Your<br/><span class="text-[#ffe08e]">Journey Through Time</span>
+            <h1
+              class="font-headline text-4xl font-extrabold text-white leading-tight mb-3"
+            >
+              Begin Your<br /><span class="text-[#ffe08e]"
+                >Journey Through Time</span
+              >
             </h1>
             <p class="text-white/75 text-sm leading-relaxed mb-6 max-w-xs">
-              Access curated experiences, hidden gems, and luxury hotels across the land of the Pharaohs.
+              Access curated experiences, hidden gems, and luxury hotels across
+              the land of the Pharaohs.
             </p>
             <div class="flex flex-wrap gap-2">
               <span class="feature-pill">
-                <span class="material-symbols-outlined" style="font-size:13px;">explore</span>
+                <span class="material-symbols-outlined" style="font-size: 13px"
+                  >explore</span
+                >
                 Curated Itineraries
               </span>
               <span class="feature-pill">
-                <span class="material-symbols-outlined" style="font-size:13px;">hotel</span>
+                <span class="material-symbols-outlined" style="font-size: 13px"
+                  >hotel</span
+                >
                 Luxury Stays
               </span>
               <span class="feature-pill">
-                <span class="material-symbols-outlined" style="font-size:13px;">history_edu</span>
+                <span class="material-symbols-outlined" style="font-size: 13px"
+                  >history_edu</span
+                >
                 Expert Guides
               </span>
             </div>
@@ -210,52 +404,118 @@
         <!-- Form panel -->
         <div class="p-10 md:p-12 flex flex-col justify-center overflow-y-auto">
           <div class="max-w-sm mx-auto w-full">
-
             <div class="fade-up d1 mb-7">
-              <div class="inline-flex items-center gap-1.5 bg-[#f5f3ef] rounded-full px-3.5 py-1.5 mb-4">
-                <span class="material-symbols-outlined text-primary" style="font-size:13px;">auto_awesome</span>
-                <span class="text-xs font-semibold text-secondary tracking-wide">Free to Join</span>
+              <div
+                class="inline-flex items-center gap-1.5 bg-[#f5f3ef] rounded-full px-3.5 py-1.5 mb-4"
+              >
+                <span
+                  class="material-symbols-outlined text-primary"
+                  style="font-size: 13px"
+                  >auto_awesome</span
+                >
+                <span class="text-xs font-semibold text-secondary tracking-wide"
+                  >Free to Join</span
+                >
               </div>
-              <h2 class="font-headline text-3xl font-bold text-primary mb-1">Create Account</h2>
-              <p class="text-secondary text-sm">Start curating your dream Egyptian escape.</p>
+              <h2 class="font-headline text-3xl font-bold text-primary mb-1">
+                Create Account
+              </h2>
+              <p class="text-secondary text-sm">
+                Start curating your dream Egyptian escape.
+              </p>
             </div>
 
             <!-- Error -->
             {% if error %}
-            <div class="fade-up d1 mb-5 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium flex items-center gap-2">
-              <span class="material-symbols-outlined flex-shrink-0" style="font-size:15px;">error</span>
+            <div
+              class="fade-up d1 mb-5 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium flex items-center gap-2"
+            >
+              <span
+                class="material-symbols-outlined flex-shrink-0"
+                style="font-size: 15px"
+                >error</span
+              >
               <span>{{ error }}</span>
             </div>
             {% endif %}
 
-            <form action="/signup" method="POST" id="signupForm" class="space-y-4">
-
+            <form
+              action="/signup"
+              method="POST"
+              id="signupForm"
+              class="space-y-4"
+            >
               <!-- Full Name -->
               <div class="fade-up d2">
-                <label class="block text-xs font-semibold text-secondary mb-1.5 ml-0.5">Full Name</label>
+                <label
+                  class="block text-xs font-semibold text-secondary mb-1.5 ml-0.5"
+                  >Full Name</label
+                >
                 <div class="field-wrap">
-                  <span class="material-symbols-outlined field-icon">person</span>
-                  <input class="field-input" name="full_name" type="text" placeholder="Amira Hassan" required autocomplete="name" />
+                  <span class="material-symbols-outlined field-icon"
+                    >person</span
+                  >
+                  <input
+                    class="field-input"
+                    name="full_name"
+                    type="text"
+                    placeholder="Amira Hassan"
+                    required
+                    autocomplete="name"
+                  />
                 </div>
               </div>
 
               <!-- Email -->
               <div class="fade-up d3">
-                <label class="block text-xs font-semibold text-secondary mb-1.5 ml-0.5">Email Address</label>
+                <label
+                  class="block text-xs font-semibold text-secondary mb-1.5 ml-0.5"
+                  >Email Address</label
+                >
                 <div class="field-wrap">
                   <span class="material-symbols-outlined field-icon">mail</span>
-                  <input class="field-input" id="signupEmail" name="email" type="email" placeholder="traveler@nile.com" required autocomplete="email" />
+                  <input
+                    class="field-input"
+                    id="signupEmail"
+                    name="email"
+                    type="email"
+                    placeholder="traveler@nile.com"
+                    required
+                    autocomplete="email"
+                  />
                 </div>
               </div>
 
               <!-- Password -->
               <div class="fade-up d4">
-                <label class="block text-xs font-semibold text-secondary mb-1.5 ml-0.5">Password</label>
+                <label
+                  class="block text-xs font-semibold text-secondary mb-1.5 ml-0.5"
+                  >Password</label
+                >
                 <div class="field-wrap">
                   <span class="material-symbols-outlined field-icon">lock</span>
-                  <input class="field-input pr-btn" id="pwd1" name="password" type="password" placeholder="Min. 8 characters" required minlength="8" autocomplete="new-password" oninput="checkStrength(this.value)" />
-                  <button type="button" class="eye-btn" onclick="togglePwd('pwd1','eye1')">
-                    <span class="material-symbols-outlined" id="eye1" style="font-size:17px;">visibility_off</span>
+                  <input
+                    class="field-input pr-btn"
+                    id="pwd1"
+                    name="password"
+                    type="password"
+                    placeholder="Min. 8 characters"
+                    required
+                    minlength="8"
+                    autocomplete="new-password"
+                    oninput="checkStrength(this.value)"
+                  />
+                  <button
+                    type="button"
+                    class="eye-btn"
+                    onclick="togglePwd('pwd1', 'eye1')"
+                  >
+                    <span
+                      class="material-symbols-outlined"
+                      id="eye1"
+                      style="font-size: 17px"
+                      >visibility_off</span
+                    >
                   </button>
                 </div>
                 <div class="strength-bar" id="strengthBar">
@@ -269,33 +529,85 @@
 
               <!-- Confirm Password -->
               <div class="fade-up d5">
-                <label class="block text-xs font-semibold text-secondary mb-1.5 ml-0.5">Confirm Password</label>
+                <label
+                  class="block text-xs font-semibold text-secondary mb-1.5 ml-0.5"
+                  >Confirm Password</label
+                >
                 <div class="field-wrap">
-                  <span class="material-symbols-outlined field-icon">lock_reset</span>
-                  <input class="field-input pr-btn" id="pwd2" name="confirm_password" type="password" placeholder="Re-enter password" required minlength="8" autocomplete="new-password" oninput="checkMatch()" />
-                  <button type="button" class="eye-btn" onclick="togglePwd('pwd2','eye2')">
-                    <span class="material-symbols-outlined" id="eye2" style="font-size:17px;">visibility_off</span>
+                  <span class="material-symbols-outlined field-icon"
+                    >lock_reset</span
+                  >
+                  <input
+                    class="field-input pr-btn"
+                    id="pwd2"
+                    name="confirm_password"
+                    type="password"
+                    placeholder="Re-enter password"
+                    required
+                    minlength="8"
+                    autocomplete="new-password"
+                    oninput="checkMatch()"
+                  />
+                  <button
+                    type="button"
+                    class="eye-btn"
+                    onclick="togglePwd('pwd2', 'eye2')"
+                  >
+                    <span
+                      class="material-symbols-outlined"
+                      id="eye2"
+                      style="font-size: 17px"
+                      >visibility_off</span
+                    >
                   </button>
                 </div>
-                <p class="text-xs mt-1 ml-0.5 hidden text-red-600 font-medium" id="matchMsg">Passwords don't match</p>
+                <p
+                  class="text-xs mt-1 ml-0.5 hidden text-red-600 font-medium"
+                  id="matchMsg"
+                >
+                  Passwords don't match
+                </p>
               </div>
 
               <!-- Terms -->
               <div class="fade-up d5 flex items-start gap-2.5 pt-1">
-                <input type="checkbox" id="terms" required class="w-4 h-4 mt-0.5 rounded accent-primary cursor-pointer flex-shrink-0" />
-                <label for="terms" class="text-xs text-secondary leading-relaxed cursor-pointer">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  required
+                  class="w-4 h-4 mt-0.5 rounded accent-primary cursor-pointer flex-shrink-0"
+                />
+                <label
+                  for="terms"
+                  class="text-xs text-secondary leading-relaxed cursor-pointer"
+                >
                   I agree to EgyGuide's
-                  <a href="#" class="text-primary font-semibold hover:underline underline-offset-1">Terms of Service</a>
-                  and <a href="#" class="text-primary font-semibold hover:underline underline-offset-1">Privacy Policy</a>
+                  <a
+                    href="#"
+                    class="text-primary font-semibold hover:underline underline-offset-1"
+                    >Terms of Service</a
+                  >
+                  and
+                  <a
+                    href="#"
+                    class="text-primary font-semibold hover:underline underline-offset-1"
+                    >Privacy Policy</a
+                  >
                 </label>
               </div>
 
               <!-- Submit -->
               <div class="fade-up d6 pt-1">
                 <button type="submit" class="btn-cta" id="submitBtn">
-                  <span class="btn-label flex items-center justify-center gap-2">
+                  <span
+                    class="btn-label flex items-center justify-center gap-2"
+                  >
                     Create Account
-                    <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+                    <span
+                      class="material-symbols-outlined"
+                      style="font-size: 16px"
+                      >arrow_forward</span
+                    >
                   </span>
                   <div class="spinner"></div>
                 </button>
@@ -304,26 +616,55 @@
 
             <!-- Divider -->
             <div class="fade-up d6 relative my-5">
-              <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-[#e4e2de]"></div></div>
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-[#e4e2de]"></div>
+              </div>
               <div class="relative flex justify-center text-xs">
-                <span class="px-3 bg-white text-secondary italic font-medium">or sign up with</span>
+                <span class="px-3 bg-white text-secondary italic font-medium"
+                  >or sign up with</span
+                >
               </div>
             </div>
 
             <!-- Social -->
             <div class="fade-up d7 grid grid-cols-2 gap-3">
               <button type="button" class="social-btn">
-                <svg viewBox="0 0 24 24" style="width:16px;height:16px;flex-shrink:0">
-                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                <svg
+                  viewBox="0 0 24 24"
+                  style="width: 16px; height: 16px; flex-shrink: 0"
+                >
+                  <path
+                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                    fill="#4285F4"
+                  />
+                  <path
+                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                    fill="#34A853"
+                  />
+                  <path
+                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                    fill="#FBBC05"
+                  />
+                  <path
+                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                    fill="#EA4335"
+                  />
                 </svg>
                 Google
               </button>
               <button type="button" class="social-btn">
-                <svg viewBox="0 0 24 24" style="width:16px;height:16px;flex-shrink:0;fill:#1877F2">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                <svg
+                  viewBox="0 0 24 24"
+                  style="
+                    width: 16px;
+                    height: 16px;
+                    flex-shrink: 0;
+                    fill: #1877f2;
+                  "
+                >
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  />
                 </svg>
                 Facebook
               </button>
@@ -331,7 +672,11 @@
 
             <p class="fade-up d7 mt-6 text-center text-sm text-secondary">
               Already have an account?
-              <a class="text-primary font-bold hover:underline underline-offset-2 ml-1" href="/sign_in">Sign In</a>
+              <a
+                class="text-primary font-bold hover:underline underline-offset-2 ml-1"
+                href="/sign_in"
+                >Sign In</a
+              >
             </p>
           </div>
         </div>
@@ -340,36 +685,84 @@
 
     <!-- Footer -->
     <footer class="w-full mt-auto bg-[#f7f2ea]">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-8 md:px-12 py-12 w-full">
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 gap-8 px-8 md:px-12 py-12 w-full"
+      >
         <div class="col-span-2 md:col-span-1">
-          <div class="text-xl font-bold text-primary font-headline mb-3">EgyGuide</div>
-          <p class="text-secondary text-xs leading-relaxed">Experience the timeless grandeur of the Nile.</p>
+          <div class="text-xl font-bold text-primary font-headline mb-3">
+            EgyGuide
+          </div>
+          <p class="text-secondary text-xs leading-relaxed">
+            Experience the timeless grandeur of the Nile.
+          </p>
         </div>
         <div>
-          <h4 class="font-headline font-bold text-primary mb-4 text-sm">Explore</h4>
+          <h4 class="font-headline font-bold text-primary mb-4 text-sm">
+            Explore
+          </h4>
           <ul class="space-y-3 text-sm">
-            <li><a class="text-secondary hover:text-primary transition-colors" href="#">About Us</a></li>
-            <li><a class="text-secondary hover:text-primary transition-colors" href="/attractions">Attractions</a></li>
+            <li>
+              <a
+                class="text-secondary hover:text-primary transition-colors"
+                href="#"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-secondary hover:text-primary transition-colors"
+                href="/attractions"
+                >Attractions</a
+              >
+            </li>
           </ul>
         </div>
         <div>
-          <h4 class="font-headline font-bold text-primary mb-4 text-sm">Support</h4>
+          <h4 class="font-headline font-bold text-primary mb-4 text-sm">
+            Support
+          </h4>
           <ul class="space-y-3 text-sm">
-            <li><a class="text-secondary hover:text-primary transition-colors" href="#">Contact</a></li>
-            <li><a class="text-secondary hover:text-primary transition-colors" href="#">Privacy</a></li>
+            <li>
+              <a
+                class="text-secondary hover:text-primary transition-colors"
+                href="#"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-secondary hover:text-primary transition-colors"
+                href="#"
+                >Privacy</a
+              >
+            </li>
           </ul>
         </div>
         <div>
-          <h4 class="font-headline font-bold text-primary mb-4 text-sm">Newsletter</h4>
-          <p class="text-xs text-secondary mb-3">Curated stories to your inbox.</p>
+          <h4 class="font-headline font-bold text-primary mb-4 text-sm">
+            Newsletter
+          </h4>
+          <p class="text-xs text-secondary mb-3">
+            Curated stories to your inbox.
+          </p>
           <div class="flex">
-            <input class="bg-[#f5f3ef] border-none rounded-l-lg px-3 py-2 text-sm w-full text-on-surface placeholder:text-outline-variant" placeholder="Email" type="email" />
-            <button class="bg-primary text-white px-3 py-2 rounded-r-lg text-sm font-semibold hover:opacity-90 transition-opacity">Join</button>
+            <input
+              class="bg-[#f5f3ef] border-none rounded-l-lg px-3 py-2 text-sm w-full text-on-surface placeholder:text-outline-variant"
+              placeholder="Email"
+              type="email"
+            />
+            <button
+              class="bg-primary text-white px-3 py-2 rounded-r-lg text-sm font-semibold hover:opacity-90 transition-opacity"
+            >
+              Join
+            </button>
           </div>
         </div>
       </div>
       <div class="px-12 py-5 border-t border-[#e4e2de]/50 text-center">
-        <p class="text-secondary text-xs">© 2025 Egypt Discovery. All rights reserved.</p>
+        <p class="text-secondary text-xs">
+          © 2025 Egypt Discovery. All rights reserved.
+        </p>
       </div>
     </footer>
 
@@ -377,51 +770,70 @@
       // Password visibility toggle
       function togglePwd(id, eyeId) {
         const input = document.getElementById(id);
-        const eye   = document.getElementById(eyeId);
-        const show  = input.type === 'password';
-        input.type  = show ? 'text' : 'password';
-        eye.textContent = show ? 'visibility' : 'visibility_off';
+        const eye = document.getElementById(eyeId);
+        const show = input.type === "password";
+        input.type = show ? "text" : "password";
+        eye.textContent = show ? "visibility" : "visibility_off";
       }
 
       // Password strength
       function checkStrength(val) {
-        const segs = ['s1','s2','s3','s4'].map(id => document.getElementById(id));
-        const label = document.getElementById('strengthLabel');
-        const colors = { 0:'#e4e2de', 1:'#e53e3e', 2:'#ed8936', 3:'#ecc94b', 4:'#48bb78' };
-        const labels = { 0:'', 1:'Weak', 2:'Fair', 3:'Good', 4:'Strong' };
+        const segs = ["s1", "s2", "s3", "s4"].map((id) =>
+          document.getElementById(id),
+        );
+        const label = document.getElementById("strengthLabel");
+        const colors = {
+          0: "#e4e2de",
+          1: "#e53e3e",
+          2: "#ed8936",
+          3: "#ecc94b",
+          4: "#48bb78",
+        };
+        const labels = { 0: "", 1: "Weak", 2: "Fair", 3: "Good", 4: "Strong" };
 
         let score = 0;
-        if (val.length >= 8)  score++;
+        if (val.length >= 8) score++;
         if (/[A-Z]/.test(val)) score++;
         if (/[0-9]/.test(val)) score++;
         if (/[^A-Za-z0-9]/.test(val)) score++;
 
-        segs.forEach((s, i) => { s.style.background = i < score ? colors[score] : '#e4e2de'; });
-        label.textContent = val.length ? labels[score] : '';
+        segs.forEach((s, i) => {
+          s.style.background = i < score ? colors[score] : "#e4e2de";
+        });
+        label.textContent = val.length ? labels[score] : "";
         label.style.color = colors[score];
       }
 
       // Password match check
       function checkMatch() {
-        const p1  = document.getElementById('pwd1').value;
-        const p2  = document.getElementById('pwd2');
-        const msg = document.getElementById('matchMsg');
+        const p1 = document.getElementById("pwd1").value;
+        const p2 = document.getElementById("pwd2");
+        const msg = document.getElementById("matchMsg");
         if (p2.value && p2.value !== p1) {
-          p2.classList.add('invalid'); msg.classList.remove('hidden');
+          p2.classList.add("invalid");
+          msg.classList.remove("hidden");
         } else {
-          p2.classList.remove('invalid'); msg.classList.add('hidden');
-          if (p2.value && p2.value === p1) p2.classList.add('valid');
+          p2.classList.remove("invalid");
+          msg.classList.add("hidden");
+          if (p2.value && p2.value === p1) p2.classList.add("valid");
         }
       }
 
       // Loading state
-      document.getElementById('signupForm').addEventListener('submit', function(e) {
-        const p1  = document.getElementById('pwd1').value;
-        const p2  = document.getElementById('pwd2').value;
-        if (p1 !== p2) { e.preventDefault(); document.getElementById('matchMsg').classList.remove('hidden'); return; }
-        const btn = document.getElementById('submitBtn');
-        btn.classList.add('loading'); btn.disabled = true;
-      });
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", function (e) {
+          const p1 = document.getElementById("pwd1").value;
+          const p2 = document.getElementById("pwd2").value;
+          if (p1 !== p2) {
+            e.preventDefault();
+            document.getElementById("matchMsg").classList.remove("hidden");
+            return;
+          }
+          const btn = document.getElementById("submitBtn");
+          btn.classList.add("loading");
+          btn.disabled = true;
+        });
     </script>
   </body>
 </html>
