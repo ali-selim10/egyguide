@@ -161,14 +161,7 @@
         </a>
       </nav>
       <div class="mt-auto px-2">
-        <button
-          class="w-full bg-primary-container text-on-primary-container py-3 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
-        >
-          <span class="material-symbols-outlined text-sm" data-icon="add"
-            >add</span
-          >
-          New Report
-        </button>
+
         <div
           class="mt-6 flex items-center gap-3 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
         >
@@ -274,69 +267,39 @@
             tourist destinations.
           </p>
         </header>
-        <!-- Stats Overview - Asymmetric Layout -->
+        <!-- Stats Overview - Live from DB -->
         <div class="grid grid-cols-12 gap-6 mb-10">
-          <div
-            class="col-span-12 lg:col-span-4 bg-primary-container text-on-primary-container p-6 rounded-xl shadow-lg relative overflow-hidden group"
-          >
+          <div class="col-span-12 lg:col-span-4 bg-primary-container text-on-primary-container p-6 rounded-xl shadow-lg relative overflow-hidden group">
             <div class="relative z-10">
-              <p class="text-sm font-medium opacity-80 mb-1">
-                Active SOS Alerts
-              </p>
-              <h3 class="text-4xl font-bold font-headline mb-4">12</h3>
-              <div
-                class="flex items-center gap-2 text-xs bg-white/20 w-fit px-2 py-1 rounded-full"
-              >
-                <span class="material-symbols-outlined text-xs"
-                  >trending_up</span
-                >
-                <span>4 New since last hour</span>
+              <p class="text-sm font-medium opacity-80 mb-1">Total Reports</p>
+              <h3 class="text-4xl font-bold font-headline mb-4" id="stat-total">—</h3>
+              <div class="flex items-center gap-2 text-xs bg-white/20 w-fit px-2 py-1 rounded-full">
+                <span class="material-symbols-outlined text-xs">report_problem</span>
+                <span id="stat-pending-label">Loading...</span>
               </div>
             </div>
-            <span
-              class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl opacity-10 rotate-12 transition-transform group-hover:rotate-0 duration-500"
-              data-weight="fill"
-              >warning</span
-            >
+            <span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl opacity-10 rotate-12 transition-transform group-hover:rotate-0 duration-500">warning</span>
           </div>
           <div class="col-span-12 lg:col-span-8 grid grid-cols-3 gap-6">
-            <div
-              class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10"
-            >
-              <p class="text-slate-500 text-xs font-semibold mb-2">
-                INVESTIGATING
-              </p>
-              <h4 class="text-2xl font-bold text-on-surface">28</h4>
-              <div
-                class="mt-4 h-1 w-full bg-surface-container rounded-full overflow-hidden"
-              >
-                <div class="h-full bg-cyan-600 w-2/3"></div>
+            <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+              <p class="text-slate-500 text-xs font-semibold mb-2">PENDING</p>
+              <h4 class="text-2xl font-bold text-on-surface" id="stat-pending">—</h4>
+              <div class="mt-4 h-1 w-full bg-surface-container rounded-full overflow-hidden">
+                <div class="h-full bg-error transition-all duration-700" id="bar-pending" style="width:0%"></div>
               </div>
             </div>
-            <div
-              class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10"
-            >
-              <p class="text-slate-500 text-xs font-semibold mb-2">
-                RESOLVED TODAY
-              </p>
-              <h4 class="text-2xl font-bold text-on-surface">142</h4>
-              <div
-                class="mt-4 h-1 w-full bg-surface-container rounded-full overflow-hidden"
-              >
-                <div class="h-full bg-emerald-500 w-4/5"></div>
+            <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+              <p class="text-slate-500 text-xs font-semibold mb-2">INVESTIGATING</p>
+              <h4 class="text-2xl font-bold text-on-surface" id="stat-investigating">—</h4>
+              <div class="mt-4 h-1 w-full bg-surface-container rounded-full overflow-hidden">
+                <div class="h-full bg-cyan-600 transition-all duration-700" id="bar-investigating" style="width:0%"></div>
               </div>
             </div>
-            <div
-              class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10"
-            >
-              <p class="text-slate-500 text-xs font-semibold mb-2">
-                AVG RESPONSE
-              </p>
-              <h4 class="text-2xl font-bold text-on-surface">4.2m</h4>
-              <div
-                class="mt-4 h-1 w-full bg-surface-container rounded-full overflow-hidden"
-              >
-                <div class="h-full bg-tertiary w-1/2"></div>
+            <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+              <p class="text-slate-500 text-xs font-semibold mb-2">RESOLVED</p>
+              <h4 class="text-2xl font-bold text-on-surface" id="stat-resolved">—</h4>
+              <div class="mt-4 h-1 w-full bg-surface-container rounded-full overflow-hidden">
+                <div class="h-full bg-emerald-500 transition-all duration-700" id="bar-resolved" style="width:0%"></div>
               </div>
             </div>
           </div>
@@ -346,22 +309,12 @@
           <div
             class="p-6 flex justify-between items-center border-b border-outline-variant/10 bg-white/50"
           >
-            <div class="flex gap-2">
-              <button
-                class="bg-primary text-white px-4 py-2 rounded-full text-xs font-semibold"
-              >
-                All Reports
-              </button>
-              <button
-                class="bg-surface-container-highest text-on-surface px-4 py-2 rounded-full text-xs font-semibold hover:bg-surface-variant transition-colors"
-              >
-                Safety
-              </button>
-              <button
-                class="bg-surface-container-highest text-on-surface px-4 py-2 rounded-full text-xs font-semibold hover:bg-surface-variant transition-colors"
-              >
-                Overpricing
-              </button>
+            <div class="flex gap-2 flex-wrap">
+              <button data-filter="all"         class="filter-chip bg-primary text-white px-4 py-2 rounded-full text-xs font-semibold transition-all">All Reports</button>
+              <button data-filter="safety"      class="filter-chip bg-surface-container-highest text-on-surface px-4 py-2 rounded-full text-xs font-semibold hover:bg-surface-variant transition-all">Safety</button>
+              <button data-filter="overpricing" class="filter-chip bg-surface-container-highest text-on-surface px-4 py-2 rounded-full text-xs font-semibold hover:bg-surface-variant transition-all">Overpricing</button>
+              <button data-filter="harassment"  class="filter-chip bg-surface-container-highest text-on-surface px-4 py-2 rounded-full text-xs font-semibold hover:bg-surface-variant transition-all">Harassment</button>
+              <button data-filter="scam"        class="filter-chip bg-surface-container-highest text-on-surface px-4 py-2 rounded-full text-xs font-semibold hover:bg-surface-variant transition-all">Scam</button>
             </div>
             <button
               class="flex items-center gap-2 text-primary font-semibold text-xs hover:underline"
@@ -384,172 +337,11 @@
                   <th class="px-8 py-4 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-outline-variant/5">
-                <!-- Row 1 -->
-                <tr
-                  class="hover:bg-white transition-colors group cursor-pointer"
-                >
-                  <td class="px-8 py-5">
-                    <div class="flex items-center gap-3">
-                      <div
-                        class="w-10 h-10 rounded-full bg-error/10 text-error flex items-center justify-center font-bold text-xs"
-                      >
-                        SM
-                      </div>
-                      <div>
-                        <p class="text-sm font-semibold text-on-surface">
-                          Sarah Miller
-                        </p>
-                        <p class="text-[10px] text-slate-400">ID: #SOS-9821</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-5">
-                    <div class="flex items-center gap-2 text-sm text-secondary">
-                      <span class="material-symbols-outlined text-sm"
-                        >location_on</span
-                      >
-                      Giza Plateau, Cairo
-                    </div>
-                  </td>
-                  <td class="px-6 py-5">
-                    <span
-                      class="bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight"
-                      >Overpricing</span
-                    >
-                  </td>
-                  <td class="px-6 py-5">
-                    <div class="flex items-center gap-2">
-                      <span
-                        class="w-2 h-2 rounded-full bg-error animate-pulse"
-                      ></span>
-                      <span class="text-sm font-medium text-error"
-                        >Pending</span
-                      >
-                    </div>
-                  </td>
-                  <td class="px-6 py-5">
-                    <p class="text-sm text-on-surface">Oct 24, 2023</p>
-                    <p class="text-[10px] text-slate-400">14:22 GMT+2</p>
-                  </td>
-                  <td class="px-8 py-5 text-right">
-                    <button
-                      class="bg-surface-container-highest p-2 rounded-lg text-primary opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      <span class="material-symbols-outlined text-sm"
-                        >visibility</span
-                      >
-                    </button>
-                  </td>
-                </tr>
-                <!-- Row 2 -->
-                <tr
-                  class="hover:bg-white transition-colors group cursor-pointer"
-                >
-                  <td class="px-8 py-5">
-                    <div class="flex items-center gap-3">
-                      <div
-                        class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs"
-                      >
-                        JH
-                      </div>
-                      <div>
-                        <p class="text-sm font-semibold text-on-surface">
-                          John Howell
-                        </p>
-                        <p class="text-[10px] text-slate-400">ID: #SOS-9755</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-5">
-                    <div class="flex items-center gap-2 text-sm text-secondary">
-                      <span class="material-symbols-outlined text-sm"
-                        >location_on</span
-                      >
-                      Khan el-Khalili
-                    </div>
-                  </td>
-                  <td class="px-6 py-5">
-                    <span
-                      class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight"
-                      >Safety</span
-                    >
-                  </td>
-                  <td class="px-6 py-5">
-                    <div class="flex items-center gap-2">
-                      <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
-                      <span class="text-sm font-medium text-cyan-600"
-                        >Investigating</span
-                      >
-                    </div>
-                  </td>
-                  <td class="px-6 py-5">
-                    <p class="text-sm text-on-surface">Oct 24, 2023</p>
-                    <p class="text-[10px] text-slate-400">11:05 GMT+2</p>
-                  </td>
-                  <td class="px-8 py-5 text-right">
-                    <button
-                      class="bg-surface-container-highest p-2 rounded-lg text-primary opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      <span class="material-symbols-outlined text-sm"
-                        >visibility</span
-                      >
-                    </button>
-                  </td>
-                </tr>
-                <!-- Row 3 -->
-                <tr
-                  class="hover:bg-white transition-colors group cursor-pointer"
-                >
-                  <td class="px-8 py-5">
-                    <div class="flex items-center gap-3">
-                      <div
-                        class="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center font-bold text-xs"
-                      >
-                        AL
-                      </div>
-                      <div>
-                        <p class="text-sm font-semibold text-on-surface">
-                          Anna Lee
-                        </p>
-                        <p class="text-[10px] text-slate-400">ID: #SOS-9602</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-5">
-                    <div class="flex items-center gap-2 text-sm text-secondary">
-                      <span class="material-symbols-outlined text-sm"
-                        >location_on</span
-                      >
-                      Valley of the Kings
-                    </div>
-                  </td>
-                  <td class="px-6 py-5">
-                    <span
-                      class="bg-slate-100 text-slate-500 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight"
-                      >Harassment</span
-                    >
-                  </td>
-                  <td class="px-6 py-5">
-                    <div class="flex items-center gap-2">
-                      <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                      <span class="text-sm font-medium text-emerald-600"
-                        >Resolved</span
-                      >
-                    </div>
-                  </td>
-                  <td class="px-6 py-5">
-                    <p class="text-sm text-on-surface">Oct 23, 2023</p>
-                    <p class="text-[10px] text-slate-400">16:45 GMT+2</p>
-                  </td>
-                  <td class="px-8 py-5 text-right">
-                    <button
-                      class="bg-surface-container-highest p-2 rounded-lg text-primary opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      <span class="material-symbols-outlined text-sm"
-                        >visibility</span
-                      >
-                    </button>
+              <tbody class="divide-y divide-outline-variant/5" id="reportsTableBody">
+                <tr>
+                  <td colspan="6" class="px-8 py-12 text-center text-slate-400 text-sm">
+                    <span class="material-symbols-outlined text-3xl block mb-2 opacity-30">hourglass_empty</span>
+                    Loading reports...
                   </td>
                 </tr>
               </tbody>
@@ -558,7 +350,7 @@
           <div
             class="p-4 bg-white/30 flex justify-between items-center text-xs text-slate-500 font-medium"
           >
-            <p>Showing 1-10 of 1,248 reports</p>
+            <p id="pagination-label">Loading...</p>
             <div class="flex items-center gap-1">
               <button
                 class="p-1 hover:bg-surface-container rounded transition-colors"
@@ -586,11 +378,7 @@
               <button
                 class="w-6 h-6 flex items-center justify-center hover:bg-surface-container rounded"
               >
-                125
-              </button>
-              <button
-                class="p-1 hover:bg-surface-container rounded transition-colors"
-              >
+
                 <span class="material-symbols-outlined text-lg"
                   >chevron_right</span
                 >
@@ -598,176 +386,239 @@
             </div>
           </div>
         </section>
-        <!-- Detail Side-Panel (Simulated Overlay) -->
-        <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div class="lg:col-span-2 space-y-6">
-            <div
-              class="bg-white p-8 rounded-2xl shadow-sm relative overflow-hidden"
-            >
-              <div class="absolute top-0 right-0 p-6">
-                <span
-                  class="bg-error/10 text-error px-4 py-1.5 rounded-full text-xs font-bold uppercase"
-                  >Urgent Review</span
-                >
-              </div>
-              <div class="flex items-start gap-6 mb-8">
-                <div
-                  class="w-16 h-16 rounded-2xl bg-surface-container-low flex items-center justify-center text-primary"
-                >
-                  <span class="material-symbols-outlined text-4xl"
-                    >warning</span
-                  >
-                </div>
-                <div>
-                  <p
-                    class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1"
-                  >
-                    Active Case
-                  </p>
-                  <h4 class="text-2xl font-bold font-headline text-on-surface">
-                    Aggressive Overpricing - Camel Ride
-                  </h4>
-                  <p class="text-secondary text-sm">
-                    Reported by Sarah Miller • Giza Plateau Area B
-                  </p>
-                </div>
-              </div>
-              <div class="grid grid-cols-2 gap-8 mb-8">
-                <div>
-                  <h5
-                    class="text-xs font-bold text-slate-400 uppercase mb-3 tracking-widest"
-                  >
-                    Incident Description
-                  </h5>
-                  <p class="text-sm text-on-surface leading-relaxed">
-                    User reported that the camel operator refused to let her
-                    dismount until an additional $50 was paid beyond the agreed
-                    $15 price. Bystanders intervened but the situation was
-                    highly stressful.
-                  </p>
-                </div>
-                <div>
-                  <h5
-                    class="text-xs font-bold text-slate-400 uppercase mb-3 tracking-widest"
-                  >
-                    Digital Evidence
-                  </h5>
-                  <div class="flex gap-2">
-                    <div
-                      class="w-20 h-20 rounded-lg bg-surface-container overflow-hidden group relative cursor-zoom-in"
-                    >
-                      <img
-                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
-                        data-alt="shaky handheld smartphone photo of a camel near the pyramids at dusk with a sun-bleached aesthetic"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJCnBYSzmQ_aFkF2bJG5OB7eKz-eCrmi2ZWidlAhsM2AEPEnNxbomGMqvlwdv-3djT1MJTJM2EL4WEKuKOAT3JeVXfROldFICgoOH4nojH0bI99A-gNjqYy9kHgDLrqv346y5adilZb1jZng_wuBgdvJHOrtZDirAfaQCnn4z4F-yrTSFymT6q6LnC1gqnr6WS-8UvDCRZleu2G5Qp6VCXOb-W4JghigJ7atzwsZwN36NwbotZyV1fd4EWjRd_M0RyNFqMqZwZ09g"
-                      />
-                    </div>
-                    <div
-                      class="w-20 h-20 rounded-lg bg-surface-container flex flex-col items-center justify-center text-slate-400 border-2 border-dashed border-outline-variant/30"
-                    >
-                      <span class="material-symbols-outlined text-xl">mic</span>
-                      <span class="text-[8px] font-bold">AUDIO.MP3</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="flex gap-4 pt-6 border-t border-outline-variant/10">
-                <button
-                  class="bg-primary px-6 py-3 rounded-xl text-white font-semibold text-sm hover:shadow-lg transition-all"
-                >
-                  Dispatch Local Security
-                </button>
-                <button
-                  class="bg-surface-container-highest px-6 py-3 rounded-xl text-on-surface font-semibold text-sm hover:bg-surface-variant transition-all"
-                >
-                  Flag Operator ID
-                </button>
-                <button class="ml-auto text-error font-bold text-sm px-4 py-2">
-                  Dismiss as Spam
-                </button>
-              </div>
+
+      </div>
+    </main>
+
+    <!-- Detail Modal -->
+    <div id="reportModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+      <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between p-6 border-b border-outline-variant/10">
+          <div>
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-0.5">Report Details</p>
+            <h3 class="text-xl font-bold text-on-surface font-headline" id="modal-title">—</h3>
+          </div>
+          <button onclick="closeModal()" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-slate-400">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div class="p-6 space-y-5">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-surface-container-low rounded-xl p-4">
+              <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Reporter</p>
+              <p class="text-sm font-semibold text-on-surface" id="modal-reporter">—</p>
+              <p class="text-xs text-secondary" id="modal-email">—</p>
+            </div>
+            <div class="bg-surface-container-low rounded-xl p-4">
+              <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Status</p>
+              <div id="modal-status-wrap"></div>
+            </div>
+            <div class="bg-surface-container-low rounded-xl p-4">
+              <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Fraud Type</p>
+              <p class="text-sm font-semibold text-on-surface" id="modal-type">—</p>
+            </div>
+            <div class="bg-surface-container-low rounded-xl p-4">
+              <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Location</p>
+              <p class="text-sm font-semibold text-on-surface" id="modal-location">—</p>
+            </div>
+            <div class="bg-surface-container-low rounded-xl p-4">
+              <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Incident Date</p>
+              <p class="text-sm font-semibold text-on-surface" id="modal-date">—</p>
+            </div>
+            <div class="bg-surface-container-low rounded-xl p-4">
+              <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Report ID</p>
+              <p class="text-sm font-mono font-semibold text-primary" id="modal-id">—</p>
             </div>
           </div>
-          <div class="space-y-6">
-            <div class="bg-white p-6 rounded-2xl shadow-sm">
-              <h5
-                class="text-xs font-bold text-slate-400 uppercase mb-4 tracking-widest"
-              >
-                Incident Map
-              </h5>
-              <div
-                class="aspect-square bg-surface-container rounded-xl overflow-hidden relative"
-              >
-                <img
-                  class="w-full h-full object-cover opacity-50 contrast-125"
-                  data-alt="minimalist stylized map showing gps coordinates of the giza pyramid complex with red alert markers"
-                  data-location="Cairo, Egypt"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwO1jnsWeEimbg-o5pkbAcRROTivF-exBk2-KcG3xdE0P4pzFYPBr9qahFCzZ6ZP1Ttcth7FoC290Y1wtMFFx1DD0swA1EI8qrEUS5-ndEM2MbkX8HgL_x7YuXN_AZ0QHwY2Evo5UXnPDQTKLopxe2YX9JNb7fjBvjMkhEy46IezL7VfP5rZH9oRw9UObq0fyAuPVmDo-hLOJ65ft7xWbiGiodyMsYW0CSjpldTymoE6sc5ZSu4BqivKbfZOivBWj7zg8s5K-dN1o"
-                />
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <div class="relative">
-                    <div
-                      class="w-8 h-8 bg-error rounded-full animate-ping absolute inset-0 opacity-40"
-                    ></div>
-                    <div
-                      class="w-8 h-8 bg-error rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white relative z-10"
-                    >
-                      <span class="material-symbols-outlined text-sm"
-                        >priority_high</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="mt-4 p-3 bg-surface-container-low rounded-lg">
-                <p class="text-[10px] font-bold text-slate-400 uppercase mb-1">
-                  Precise Coordinates
-                </p>
-                <p class="text-sm font-mono text-primary">
-                  29.9792° N, 31.1342° E
-                </p>
-              </div>
-            </div>
-            <div
-              class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10"
-            >
-              <h5
-                class="text-xs font-bold text-slate-400 uppercase mb-4 tracking-widest"
-              >
-                Case History
-              </h5>
-              <ul class="space-y-4">
-                <li class="flex gap-3 items-start">
-                  <div
-                    class="w-2 h-2 rounded-full bg-cyan-500 mt-1.5 shrink-0"
-                  ></div>
-                  <div>
-                    <p class="text-xs font-bold text-on-surface">
-                      SOS Received
-                    </p>
-                    <p class="text-[10px] text-slate-400">
-                      14:22 • Automated response sent
-                    </p>
-                  </div>
-                </li>
-                <li class="flex gap-3 items-start opacity-50">
-                  <div
-                    class="w-2 h-2 rounded-full bg-slate-300 mt-1.5 shrink-0"
-                  ></div>
-                  <div>
-                    <p class="text-xs font-bold text-on-surface">
-                      Awaiting Review
-                    </p>
-                    <p class="text-[10px] text-slate-400">
-                      Pending admin assignment
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </div>
+          <div class="bg-surface-container-low rounded-xl p-4">
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Description</p>
+            <p class="text-sm text-on-surface leading-relaxed" id="modal-description">—</p>
+          </div>
+          <div class="flex gap-3 flex-wrap pt-2">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest w-full mb-1">Update Status</p>
+            <button onclick="updateStatus('pending')"      class="status-action-btn px-4 py-2 rounded-lg text-xs font-bold border border-error/30 text-error hover:bg-error hover:text-white transition-all">Pending</button>
+            <button onclick="updateStatus('investigating')" class="status-action-btn px-4 py-2 rounded-lg text-xs font-bold border border-cyan-300 text-cyan-700 hover:bg-cyan-600 hover:text-white transition-all">Investigating</button>
+            <button onclick="updateStatus('resolved')"     class="status-action-btn px-4 py-2 rounded-lg text-xs font-bold border border-emerald-300 text-emerald-700 hover:bg-emerald-600 hover:text-white transition-all">Resolved</button>
+            <button onclick="updateStatus('dismissed')"    class="status-action-btn px-4 py-2 rounded-lg text-xs font-bold border border-slate-300 text-slate-500 hover:bg-slate-500 hover:text-white transition-all">Dismissed</button>
           </div>
         </div>
       </div>
-    </main>
+    </div>
+
+    <script>
+      let allReports = [];
+      let activeReportId = null;
+      let activeFilter = 'all';
+
+      const statusCfg = {
+        pending:       { dot: 'bg-error animate-pulse',  text: 'text-error',      label: 'Pending' },
+        investigating: { dot: 'bg-cyan-500',              text: 'text-cyan-600',   label: 'Investigating' },
+        resolved:      { dot: 'bg-emerald-500',           text: 'text-emerald-600',label: 'Resolved' },
+        dismissed:     { dot: 'bg-slate-400',             text: 'text-slate-500',  label: 'Dismissed' },
+      };
+
+      function initials(name) {
+        if (!name) return '?';
+        return name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2);
+      }
+
+      function fmtDate(iso) {
+        if (!iso) return '—';
+        const d = new Date(iso);
+        return d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
+      }
+
+      function renderTable(reports) {
+        const tbody = document.getElementById('reportsTableBody');
+        if (!reports.length) {
+          tbody.innerHTML = `<tr><td colspan="6" class="px-8 py-12 text-center text-slate-400 text-sm">
+            <span class="material-symbols-outlined text-3xl block mb-2 opacity-30">check_circle</span>
+            No reports found.</td></tr>`;
+          document.getElementById('pagination-label').textContent = '0 reports';
+          return;
+        }
+        document.getElementById('pagination-label').textContent = `${reports.length} report${reports.length !== 1 ? 's' : ''}`;
+        tbody.innerHTML = reports.map(r => {
+          const s = statusCfg[r.status] || statusCfg.pending;
+          const ini = initials(r.reporter_name);
+          return `
+          <tr class="hover:bg-surface-container-low transition-colors group cursor-pointer" onclick="openModal(${r.report_id})">
+            <td class="px-8 py-5">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-error/10 text-error flex items-center justify-center font-bold text-xs flex-shrink-0">${ini}</div>
+                <div>
+                  <p class="text-sm font-semibold text-on-surface">${r.reporter_name || '—'}</p>
+                  <p class="text-[10px] text-slate-400">ID: #FRD-${r.report_id}</p>
+                </div>
+              </div>
+            </td>
+            <td class="px-6 py-5">
+              <div class="flex items-center gap-1.5 text-sm text-secondary">
+                <span class="material-symbols-outlined text-sm">location_on</span>
+                ${r.location || '—'}
+              </div>
+            </td>
+            <td class="px-6 py-5">
+              <span class="bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight">${r.fraud_type || '—'}</span>
+            </td>
+            <td class="px-6 py-5">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full ${s.dot}"></span>
+                <span class="text-sm font-medium ${s.text}">${s.label}</span>
+              </div>
+            </td>
+            <td class="px-6 py-5">
+              <p class="text-sm text-on-surface">${fmtDate(r.created_at)}</p>
+              <p class="text-[10px] text-slate-400">${r.incident_date || ''}</p>
+            </td>
+            <td class="px-8 py-5 text-right">
+              <button class="bg-surface-container-highest p-2 rounded-lg text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                <span class="material-symbols-outlined text-sm">visibility</span>
+              </button>
+            </td>
+          </tr>`;
+        }).join('');
+      }
+
+      function updateStats(reports) {
+        const total        = reports.length;
+        const pending      = reports.filter(r => r.status === 'pending').length;
+        const investigating= reports.filter(r => r.status === 'investigating').length;
+        const resolved     = reports.filter(r => r.status === 'resolved').length;
+
+        document.getElementById('stat-total').textContent = total;
+        document.getElementById('stat-pending').textContent = pending;
+        document.getElementById('stat-investigating').textContent = investigating;
+        document.getElementById('stat-resolved').textContent = resolved;
+        document.getElementById('stat-pending-label').textContent =
+          pending > 0 ? `${pending} pending review` : 'No pending reports';
+
+        if (total > 0) {
+          setTimeout(() => {
+            document.getElementById('bar-pending').style.width       = Math.round((pending/total)*100)+'%';
+            document.getElementById('bar-investigating').style.width = Math.round((investigating/total)*100)+'%';
+            document.getElementById('bar-resolved').style.width      = Math.round((resolved/total)*100)+'%';
+          }, 100);
+        }
+      }
+
+      function applyFilter(type) {
+        activeFilter = type;
+        document.querySelectorAll('.filter-chip').forEach(b => {
+          const isActive = b.dataset.filter === type;
+          b.className = isActive
+            ? 'filter-chip bg-primary text-white px-4 py-2 rounded-full text-xs font-semibold transition-all'
+            : 'filter-chip bg-surface-container-highest text-on-surface px-4 py-2 rounded-full text-xs font-semibold hover:bg-surface-variant transition-all';
+        });
+        const filtered = type === 'all' ? allReports : allReports.filter(r => (r.fraud_type||'').toLowerCase().includes(type));
+        renderTable(filtered);
+      }
+
+      function openModal(id) {
+        const r = allReports.find(x => x.report_id === id);
+        if (!r) return;
+        activeReportId = id;
+        const s = statusCfg[r.status] || statusCfg.pending;
+        document.getElementById('modal-title').textContent = r.fraud_type || 'Fraud Report';
+        document.getElementById('modal-reporter').textContent = r.reporter_name || '—';
+        document.getElementById('modal-email').textContent = r.reporter_email || '—';
+        document.getElementById('modal-type').textContent = r.fraud_type || '—';
+        document.getElementById('modal-location').textContent = r.location || '—';
+        document.getElementById('modal-date').textContent = r.incident_date || fmtDate(r.created_at);
+        document.getElementById('modal-id').textContent = '#FRD-' + r.report_id;
+        document.getElementById('modal-description').textContent = r.description || '—';
+        document.getElementById('modal-status-wrap').innerHTML =
+          `<div class="flex items-center gap-2 mt-1"><span class="w-3 h-3 rounded-full ${s.dot}"></span><span class="text-sm font-semibold ${s.text}">${s.label}</span></div>`;
+        document.getElementById('reportModal').classList.remove('hidden');
+        document.getElementById('reportModal').classList.add('flex');
+      }
+
+      function closeModal() {
+        document.getElementById('reportModal').classList.add('hidden');
+        document.getElementById('reportModal').classList.remove('flex');
+        activeReportId = null;
+      }
+
+      async function updateStatus(newStatus) {
+        if (!activeReportId) return;
+        try {
+          const res = await fetch(`/api/admin/fraud-reports/update/${activeReportId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status: newStatus })
+          });
+          if (res.ok) {
+            const r = allReports.find(x => x.report_id === activeReportId);
+            if (r) r.status = newStatus;
+            closeModal();
+            renderTable(activeFilter === 'all' ? allReports : allReports.filter(r => (r.fraud_type||'').toLowerCase().includes(activeFilter)));
+            updateStats(allReports);
+          }
+        } catch(e) { console.error(e); }
+      }
+
+      // Filter chips wiring
+      document.querySelectorAll('.filter-chip').forEach(btn => {
+        btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+      });
+
+      // Close modal on backdrop click
+      document.getElementById('reportModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+      });
+
+      // Load data
+      fetch('/api/admin/fraud-reports')
+        .then(r => r.json())
+        .then(data => {
+          allReports = Array.isArray(data) ? data : [];
+          updateStats(allReports);
+          renderTable(allReports);
+        })
+        .catch(() => {
+          document.getElementById('reportsTableBody').innerHTML =
+            `<tr><td colspan="6" class="px-8 py-10 text-center text-error text-sm">Failed to load reports.</td></tr>`;
+        });
+    </script>
   </body>
 </html>

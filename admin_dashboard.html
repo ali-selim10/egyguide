@@ -164,14 +164,7 @@
         </a>
       </nav>
       <div class="mt-auto px-2">
-        <button
-          class="w-full bg-primary-container text-on-primary-container py-3 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
-        >
-          <span class="material-symbols-outlined text-sm" data-icon="add"
-            >add</span
-          >
-          New Report
-        </button>
+
         <div
           class="mt-6 flex items-center gap-3 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
         >
@@ -316,20 +309,12 @@
             class="md:col-span-1 p-6 rounded-2xl bg-surface-container-lowest premium-shadow flex flex-col justify-between border-l-4 border-error"
           >
             <div>
-              <p
-                class="text-xs font-bold text-secondary uppercase tracking-widest mb-1"
-              >
-                Fraud Reports
-              </p>
-              <h3 class="text-3xl font-extrabold text-error">14</h3>
+              <p class="text-xs font-bold text-secondary uppercase tracking-widest mb-1">Fraud Reports</p>
+              <h3 class="text-3xl font-extrabold text-error" id="dash-fraud-count">—</h3>
             </div>
             <div class="mt-4 flex items-center text-xs text-error font-medium">
-              <span
-                class="material-symbols-outlined text-sm mr-1"
-                data-icon="warning"
-                >warning</span
-              >
-              <span class="font-bold underline">Needs urgent review</span>
+              <span class="material-symbols-outlined text-sm mr-1">warning</span>
+              <a href="/admin_fraud_report" class="font-bold underline hover:opacity-80" id="dash-pending-label">View reports</a>
             </div>
           </div>
           <div
@@ -610,78 +595,98 @@
                 </button>
               </div>
             </div>
-            <!-- Pending Fraud Reports -->
-            <div
-              class="p-8 rounded-2xl bg-surface-container-lowest premium-shadow border border-error/10"
-            >
+            <!-- Live Fraud Reports from DB -->
+            <div class="p-8 rounded-2xl bg-surface-container-lowest premium-shadow border border-error/10">
               <div class="flex justify-between items-center mb-6">
-                <h2 class="text-lg font-bold text-on-surface tracking-tight">
-                  Recent Incidents
-                </h2>
-                <span
-                  class="px-2 py-1 bg-error/10 text-error text-[10px] font-bold rounded"
-                  >High Priority</span
-                >
+                <h2 class="text-lg font-bold text-on-surface tracking-tight">Recent Fraud Reports</h2>
+                <span class="px-2 py-1 bg-error/10 text-error text-[10px] font-bold rounded" id="dash-pending-badge">Loading</span>
               </div>
-              <div class="space-y-6">
-                <div class="flex gap-4">
-                  <div
-                    class="flex-shrink-0 w-2 h-2 rounded-full bg-error mt-1.5"
-                  ></div>
-                  <div>
-                    <p class="text-sm font-bold text-on-surface">
-                      Suspicious Transaction: ID-4829
-                    </p>
-                    <p class="text-xs text-secondary mb-1">
-                      User: Omar Farouk • $1,200.00
-                    </p>
-                    <p class="text-[10px] font-medium text-slate-400 uppercase">
-                      12 minutes ago
-                    </p>
-                  </div>
-                </div>
-                <div class="flex gap-4">
-                  <div
-                    class="flex-shrink-0 w-2 h-2 rounded-full bg-error/40 mt-1.5"
-                  ></div>
-                  <div>
-                    <p class="text-sm font-bold text-on-surface">
-                      Review Flagged: Giza Pyramids
-                    </p>
-                    <p class="text-xs text-secondary mb-1">
-                      Potential bot-generated content
-                    </p>
-                    <p class="text-[10px] font-medium text-slate-400 uppercase">
-                      2 hours ago
-                    </p>
-                  </div>
-                </div>
-                <div class="flex gap-4">
-                  <div
-                    class="flex-shrink-0 w-2 h-2 rounded-full bg-error/40 mt-1.5"
-                  ></div>
-                  <div>
-                    <p class="text-sm font-bold text-on-surface">
-                      Unauthorized Login Attempt
-                    </p>
-                    <p class="text-xs text-secondary mb-1">
-                      IP: 192.168.1.45 (Luxembourg)
-                    </p>
-                    <p class="text-[10px] font-medium text-slate-400 uppercase">
-                      4 hours ago
-                    </p>
-                  </div>
+              <div class="space-y-5" id="dash-fraud-list">
+                <div class="flex gap-3 items-center">
+                  <div class="w-2 h-2 rounded-full bg-slate-200 mt-1 flex-shrink-0"></div>
+                  <p class="text-sm text-slate-400">Loading reports...</p>
                 </div>
               </div>
-              <button
-                class="w-full mt-8 py-3 text-xs font-bold text-primary uppercase tracking-widest border border-primary/20 rounded-xl hover:bg-primary hover:text-white transition-all"
-              >
-                View All Incidents
-              </button>
+              <a href="/admin_fraud_report"
+                class="w-full mt-8 py-3 text-xs font-bold text-primary uppercase tracking-widest border border-primary/20 rounded-xl hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2">
+                View All Reports
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </main>
+
+    <script>
+      const statusColors = {
+        pending:       'bg-error',
+        investigating: 'bg-cyan-500',
+        resolved:      'bg-emerald-500',
+        dismissed:     'bg-slate-400',
+      };
+      const statusLabels = {
+        pending: 'Pending', investigating: 'Investigating',
+        resolved: 'Resolved', dismissed: 'Dismissed'
+      };
+
+      function fmtDate(iso) {
+        if (!iso) return '';
+        const d = new Date(iso);
+        const now = new Date();
+        const diff = Math.floor((now - d) / 1000);
+        if (diff < 3600)  return Math.floor(diff/60) + ' min ago';
+        if (diff < 86400) return Math.floor(diff/3600) + ' hr ago';
+        return d.toLocaleDateString('en-GB', { day:'2-digit', month:'short' });
+      }
+
+      fetch('/api/admin/fraud-reports')
+        .then(r => r.json())
+        .then(reports => {
+          if (!Array.isArray(reports)) return;
+
+          const total   = reports.length;
+          const pending = reports.filter(r => r.status === 'pending').length;
+
+          // Update stat card
+          document.getElementById('dash-fraud-count').textContent = total;
+          document.getElementById('dash-pending-label').textContent =
+            pending > 0 ? pending + ' pending review' : 'View all reports';
+          document.getElementById('dash-pending-badge').textContent =
+            pending > 0 ? pending + ' Pending' : 'All Clear';
+          document.getElementById('dash-pending-badge').className =
+            pending > 0
+              ? 'px-2 py-1 bg-error/10 text-error text-[10px] font-bold rounded'
+              : 'px-2 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-bold rounded';
+
+          // Render last 5 reports in the panel
+          const listEl = document.getElementById('dash-fraud-list');
+          const recent = reports.slice(0, 5);
+          if (!recent.length) {
+            listEl.innerHTML = '<p class="text-sm text-slate-400 text-center py-4">No reports yet.</p>';
+            return;
+          }
+          listEl.innerHTML = recent.map(r => {
+            const dot = statusColors[r.status] || 'bg-slate-400';
+            return `
+            <div class="flex gap-3 items-start group">
+              <div class="flex-shrink-0 w-2 h-2 rounded-full ${dot} mt-1.5"></div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-bold text-on-surface truncate">${r.fraud_type || 'Report'} — ${r.reporter_name || 'Anonymous'}</p>
+                <p class="text-xs text-secondary truncate">${r.location || 'No location'} • ${statusLabels[r.status] || r.status}</p>
+                <p class="text-[10px] font-medium text-slate-400 uppercase mt-0.5">${fmtDate(r.created_at)}</p>
+              </div>
+              <a href="/admin_fraud_report" class="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                <span class="material-symbols-outlined text-primary text-sm">arrow_forward</span>
+              </a>
+            </div>`;
+          }).join('');
+        })
+        .catch(() => {
+          document.getElementById('dash-fraud-count').textContent = 'ERR';
+          document.getElementById('dash-fraud-list').innerHTML =
+            '<p class="text-sm text-error text-center py-4">Could not load reports.</p>';
+        });
+    </script>
   </body>
 </html>

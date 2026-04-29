@@ -6,6 +6,7 @@ import os
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "change-this-to-a-random-secret")
+app.config["SESSION_PERMANENT"] = False   # sessions expire when browser closes unless "remember me" is checked
 
 # ── Supabase client ───────────────────────────────────────────────────────────
 SUPABASE_URL = "https://wfmijhnvzhndjwjpidiw.supabase.co"
@@ -240,8 +241,9 @@ def signup():
         session["email"]     = email
         session["role"]      = "user"
 
+        session.permanent = False  # new signups always get session cookies
         response = make_response(redirect(url_for("home")))
-        response.set_cookie("logged_in", "true", max_age=60*60*24*7)
+        response.set_cookie("logged_in", "true")  # session cookie, no max_age
         return response
     except Exception as e:
         print(f"[SIGNUP ERROR] {e}")
@@ -270,11 +272,20 @@ def signin():
         session["email"]     = email
         session["role"]      = user["role"]
 
+        remember = request.form.get("remember") == "on"
+        session.permanent = remember  # only persist session if "keep me signed in" checked
+
         response = make_response(redirect(
             url_for("admin_overview") if user["role"] == "admin" else url_for("home")
         ))
-        response.set_cookie("logged_in", "true", max_age=60*60*24*7)
-        response.set_cookie("user_role", user["role"], max_age=60*60*24*7)
+        if remember:
+            # Persist cookies for 7 days only if user opted in
+            response.set_cookie("logged_in", "true", max_age=60*60*24*7)
+            response.set_cookie("user_role", user["role"], max_age=60*60*24*7)
+        else:
+            # Session cookies — expire when browser closes, no max_age
+            response.set_cookie("logged_in", "true")
+            response.set_cookie("user_role", user["role"])
         return response
     except Exception as e:
         print(f"[SIGNIN ERROR] {e}")
